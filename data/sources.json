@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Google Cloud Free Program",
+    "url": "https://cloud.google.com/free",
+    "category": "cloud_credits",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "GitHub Education Pack",
+    "url": "https://education.github.com/pack",
+    "category": "developer_tools",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "Cloudflare Workers Pricing",
+    "url": "https://developers.cloudflare.com/workers/platform/pricing/",
+    "category": "developer_tools",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "AppSumo",
+    "url": "https://appsumo.com/",
+    "category": "saas",
+    "source_type": "trusted_community",
+    "auto_publish_threshold": 90
+  },
+  {
+    "name": "Product Hunt",
+    "url": "https://www.producthunt.com/",
+    "category": "saas",
+    "source_type": "trusted_community",
+    "auto_publish_threshold": 90
+  },
+  {
+    "name": "Hacker News",
+    "url": "https://news.ycombinator.com/",
+    "category": "developer_tools",
+    "source_type": "trusted_community",
+    "auto_publish_threshold": 92
+  }
+]
