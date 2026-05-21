@@ -46,6 +46,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div>
             <Link href="/admin">Admin</Link>
             <Link href="/newsletter">Newsletter</Link>
+            <Link href="/affiliate-disclosure">Disclosure</Link>
+            <Link href="/privacy">Privacy</Link>
           </div>
         </footer>
       </body>
