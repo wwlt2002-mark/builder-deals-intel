@@ -71,6 +71,41 @@ export function MoneyPageView({ page, deals }: { page: MoneyPage; deals: Deal[] 
           ))}
         </div>
       </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Questions builders ask</h2>
+            <p>Short answers for readers comparing offers before they click out.</p>
+          </div>
+        </div>
+        <div className="faq-grid">
+          {page.faqs.map((faq) => (
+            <article className="panel" key={faq.question}>
+              <h3>{faq.question}</h3>
+              <p className="summary">{faq.answer}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: page.faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer
+              }
+            }))
+          })
+        }}
+      />
     </div>
   );
 }

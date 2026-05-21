@@ -7,6 +7,10 @@ export type MoneyPage = {
   category: DealCategory;
   intent: string[];
   evaluation: string[];
+  faqs: Array<{
+    question: string;
+    answer: string;
+  }>;
 };
 
 export const moneyPages: MoneyPage[] = [
@@ -21,6 +25,23 @@ export const moneyPages: MoneyPage[] = [
       "Source must be official or clearly attributable.",
       "Eligibility and region must be visible before publishing.",
       "Token or unverifiable airdrop claims stay out of auto-publish."
+    ],
+    faqs: [
+      {
+        question: "What counts as an AI deal?",
+        answer:
+          "We include verified discounts, credits, workspace promotions, and trial offers for AI apps, model APIs, coding tools, and builder workflows."
+      },
+      {
+        question: "Are token or airdrop offers included?",
+        answer:
+          "No. Token, airdrop, and unverifiable reward offers stay out of automatic publishing because they create compliance and trust risk."
+      },
+      {
+        question: "How are AI deals ranked?",
+        answer:
+          "Official source quality, eligibility clarity, billing risk, expiration certainty, and practical builder value all affect ranking."
+      }
     ]
   },
   {
@@ -34,6 +55,23 @@ export const moneyPages: MoneyPage[] = [
       "Billing and auto-renewal risks are labeled.",
       "Credit value and expiration terms must be source-backed.",
       "Student-only or startup-only eligibility is clearly flagged."
+    ],
+    faqs: [
+      {
+        question: "Do free cloud credits require a credit card?",
+        answer:
+          "Many cloud credit and trial offers require billing details. We flag card and auto-billing risk when the source terms make that clear."
+      },
+      {
+        question: "Are startup-only credits listed?",
+        answer:
+          "Yes, but eligibility restrictions must be visible. Student-only, startup-only, and region-limited offers are labeled."
+      },
+      {
+        question: "Can cloud credit terms change?",
+        answer:
+          "Yes. Cloud providers can change credit values, usage limits, and promo windows, so each listing includes a source link and last-checked time."
+      }
     ]
   },
   {
@@ -47,6 +85,23 @@ export const moneyPages: MoneyPage[] = [
       "Free tiers are separated from limited-time discounts.",
       "Usage limits and commercial-use restrictions are surfaced.",
       "Affiliate links cannot replace source verification."
+    ],
+    faqs: [
+      {
+        question: "Are free tiers considered discounts?",
+        answer:
+          "Free tiers are listed when they are commercially useful to builders, but we separate always-free plans from limited-time deals."
+      },
+      {
+        question: "What developer tools are covered?",
+        answer:
+          "We cover deployment, email APIs, databases, monitoring, automation, testing, analytics, and other software used to build and operate products."
+      },
+      {
+        question: "How do affiliate links affect ranking?",
+        answer:
+          "Affiliate links do not replace source checks. A deal still needs clear terms, eligibility notes, risk labels, and a useful buyer path."
+      }
     ]
   }
 ];
