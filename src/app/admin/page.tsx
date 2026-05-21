@@ -4,7 +4,7 @@ import { affiliatePrograms } from "@/lib/affiliate-programs";
 import { getCategoryLabel } from "@/lib/categories";
 import { getClickStats, getTopClickedDeals } from "@/lib/clicks";
 import { getAllDeals, getReviewDeals } from "@/lib/deals";
-import { getSponsorLeads, getSubmissions } from "@/lib/storage";
+import { getSponsorLeads, getSubscriberStats, getSubmissions } from "@/lib/storage";
 import type { DealStatus } from "@/lib/types";
 
 export const metadata = {
@@ -28,6 +28,7 @@ export default async function AdminPage() {
   const reviewDeals = await getReviewDeals();
   const submissions = await getSubmissions();
   const sponsorLeads = await getSponsorLeads();
+  const subscriberStats = await getSubscriberStats();
   const clickStats = await getClickStats();
   const topClickedDeals = await getTopClickedDeals();
   const publishedDeals = allDeals.filter((deal) => deal.status === "auto_published");
@@ -78,6 +79,14 @@ export default async function AdminPage() {
         <div className="metric">
           <strong>{newSponsorLeads.length}</strong>
           <span>new sponsor leads</span>
+        </div>
+        <div className="metric">
+          <strong>{subscriberStats.total}</strong>
+          <span>newsletter subscribers</span>
+        </div>
+        <div className="metric">
+          <strong>{subscriberStats.last7d}</strong>
+          <span>subscribers in 7d</span>
         </div>
       </div>
 

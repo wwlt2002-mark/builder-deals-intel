@@ -538,6 +538,43 @@ nav a:hover,
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.newsletter-sponsor-band,
+.brief-panel {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow-tight);
+}
+
+.newsletter-sponsor-band {
+  align-items: center;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin-top: 18px;
+  padding: 22px;
+}
+
+.newsletter-sponsor-band h2 {
+  margin: 0 0 8px;
+}
+
+.brief-panel {
+  display: grid;
+  gap: 16px;
+  padding: 22px;
+}
+
+.light-topline {
+  color: var(--muted);
+}
+
+.light-topline strong {
+  background: rgba(18, 130, 119, 0.12);
+  border: 1px solid var(--line);
+  color: var(--accent-strong);
+}
+
 .sponsor-card {
   display: grid;
   gap: 10px;
@@ -799,6 +836,11 @@ nav a:hover,
 
   .site-header,
   .site-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .newsletter-sponsor-band {
     align-items: flex-start;
     flex-direction: column;
   }

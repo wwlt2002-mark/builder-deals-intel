@@ -5,7 +5,7 @@ import { moneyPages } from "@/lib/money-pages";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://builderdeals.example.com";
-  const staticRoutes = ["", "/submit", "/newsletter", "/sponsor"].map((route) => ({
+  const staticRoutes = ["", "/submit", "/newsletter", "/newsletter/archive", "/sponsor"].map((route) => ({
     url: `${siteUrl}${route}`,
     lastModified: new Date()
   }));

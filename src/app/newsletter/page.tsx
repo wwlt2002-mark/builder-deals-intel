@@ -31,12 +31,25 @@ export default async function NewsletterPage({
           Join the daily brief
         </button>
       </form>
+      <section className="newsletter-sponsor-band">
+        <div>
+          <span className="eyebrow">Sponsor slot</span>
+          <h2>Daily brief sponsorship is reserved for verified builder tools.</h2>
+          <p className="summary">One labeled slot, source-backed terms, no hidden placement.</p>
+        </div>
+        <a className="secondary-button" href="/sponsor">
+          Partner desk
+        </a>
+      </section>
       <section>
         <div className="section-head">
           <div>
             <h2>Current brief preview</h2>
             <p>High-confidence items only.</p>
           </div>
+          <a className="secondary-button" href="/newsletter/archive">
+            View archive
+          </a>
         </div>
         <div className="admin-list">
           {deals.map((deal, index) => (

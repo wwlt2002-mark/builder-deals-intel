@@ -89,6 +89,30 @@ export async function appendSubscriber(record: SubscriberRecord) {
   }
 }
 
+export async function getSubscriberStats() {
+  if (hasDatabase()) {
+    const result = await getPool().query(
+      `select
+         count(*)::int as total,
+         count(*) filter (where created_at >= now() - interval '7 days')::int as last7d
+       from subscribers`
+    );
+
+    return {
+      total: Number(result.rows[0]?.total ?? 0),
+      last7d: Number(result.rows[0]?.last7d ?? 0)
+    };
+  }
+
+  const subscribers = await readJsonFile<SubscriberRecord[]>("data/subscribers.json", []);
+  const sevenDaysAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
+
+  return {
+    total: subscribers.length,
+    last7d: subscribers.filter((subscriber) => new Date(subscriber.created_at).getTime() >= sevenDaysAgo).length
+  };
+}
+
 export async function getSubmissions(limit = 50): Promise<Submission[]> {
   if (hasDatabase()) {
     const result = await getPool().query(
