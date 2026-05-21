@@ -36,3 +36,22 @@ export const sponsorPackages: SponsorPackage[] = [
     proof: "Affiliate click counts, network field, program status, and payout readiness tracking."
   }
 ];
+
+export function getSponsorOfferCatalog() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    name: "Builder Deals Intel sponsor packages",
+    url: "https://builderdealintel.com/sponsor",
+    itemListElement: sponsorPackages.map((sponsorPackage) => ({
+      "@type": "Offer",
+      name: sponsorPackage.name,
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        priceCurrency: "USD",
+        description: sponsorPackage.price
+      },
+      description: `${sponsorPackage.bestFor} ${sponsorPackage.included}`
+    }))
+  };
+}

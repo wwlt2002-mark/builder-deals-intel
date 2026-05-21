@@ -1,4 +1,4 @@
-import { sponsorPackages } from "@/lib/sponsor-packages";
+import { getSponsorOfferCatalog, sponsorPackages } from "@/lib/sponsor-packages";
 
 export const metadata = {
   title: "Sponsor Builder Deals Intel",
@@ -10,8 +10,14 @@ export default function SponsorPage({
 }: {
   searchParams?: Promise<{ submitted?: string }>;
 }) {
+  const offerCatalog = getSponsorOfferCatalog();
+
   return (
     <div className="page">
+      <script
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(offerCatalog) }}
+        type="application/ld+json"
+      />
       <section className="hero media-hero">
         <div className="hero-copy">
           <span className="eyebrow">Partner desk</span>
