@@ -126,6 +126,24 @@ export default async function AdminDealEditPage({ params }: Props) {
             <label htmlFor="is_affiliate">Affiliate link active</label>
             <input id="is_affiliate" name="is_affiliate" type="checkbox" defaultChecked={deal.is_affiliate} />
           </div>
+          <div className="field">
+            <label htmlFor="affiliate_status">Affiliate status</label>
+            <select id="affiliate_status" name="affiliate_status" defaultValue={deal.affiliate_status}>
+              <option value="none">none</option>
+              <option value="applied">applied</option>
+              <option value="approved">approved</option>
+              <option value="active">active</option>
+              <option value="rejected">rejected</option>
+            </select>
+          </div>
+          <div className="field">
+            <label htmlFor="affiliate_network">Affiliate network</label>
+            <input id="affiliate_network" name="affiliate_network" type="text" defaultValue={deal.affiliate_network ?? ""} />
+          </div>
+          <div className="field">
+            <label htmlFor="affiliate_program">Affiliate program</label>
+            <input id="affiliate_program" name="affiliate_program" type="text" defaultValue={deal.affiliate_program ?? ""} />
+          </div>
         </div>
 
         <div className="field">
@@ -143,6 +161,10 @@ export default async function AdminDealEditPage({ params }: Props) {
         <div className="field">
           <label htmlFor="affiliate_url">Affiliate URL</label>
           <input id="affiliate_url" name="affiliate_url" type="url" defaultValue={deal.affiliate_url ?? ""} />
+        </div>
+        <div className="field">
+          <label htmlFor="affiliate_notes">Affiliate notes</label>
+          <textarea id="affiliate_notes" name="affiliate_notes" defaultValue={deal.affiliate_notes ?? ""} />
         </div>
         <div className="field">
           <label htmlFor="risk_tags">Risk tags</label>

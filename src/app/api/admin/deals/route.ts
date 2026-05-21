@@ -51,6 +51,10 @@ export async function POST(request: NextRequest) {
     deal_url: text(form.get("deal_url")),
     affiliate_url: nullable(form.get("affiliate_url")),
     is_affiliate: form.get("is_affiliate") === "on",
+    affiliate_network: nullable(form.get("affiliate_network")),
+    affiliate_program: nullable(form.get("affiliate_program")),
+    affiliate_status: text(form.get("affiliate_status")) || "none",
+    affiliate_notes: nullable(form.get("affiliate_notes")),
     source_type: sourceType,
     confidence_score: confidenceScore,
     risk_tags: text(form.get("risk_tags"))

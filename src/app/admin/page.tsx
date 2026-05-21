@@ -138,7 +138,7 @@ export default async function AdminPage() {
                 </div>
                 <div>{getCategoryLabel(deal.category)}</div>
                 <div>{statusLabels[deal.status]}</div>
-                <div>{deal.is_affiliate ? "Yes" : "No"}</div>
+                <div>{deal.affiliate_status}</div>
                 <div>
                   <Link className="secondary-button" href={`/admin/deals/${deal.id}`}>
                     Edit

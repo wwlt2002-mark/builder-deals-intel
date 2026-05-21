@@ -34,6 +34,10 @@ export type Deal = {
   deal_url: string;
   affiliate_url: string | null;
   is_affiliate: boolean;
+  affiliate_network: string | null;
+  affiliate_program: string | null;
+  affiliate_status: string;
+  affiliate_notes: string | null;
   source_type: SourceType;
   confidence_score: number;
   risk_tags: string[];
