@@ -382,6 +382,20 @@ nav a:hover,
   color: #a7bab3;
 }
 
+.media-hero {
+  align-items: stretch;
+}
+
+.media-kit {
+  align-content: start;
+}
+
+.media-kit p {
+  color: #c4d2ce;
+  line-height: 1.6;
+  margin: 0;
+}
+
 .section-head {
   align-items: flex-end;
   display: flex;
@@ -506,6 +520,41 @@ nav a:hover,
 .category-panel {
   border-left: 4px solid var(--accent);
   min-height: 150px;
+}
+
+.sponsor-card {
+  display: grid;
+  gap: 10px;
+}
+
+.sponsor-card strong {
+  color: var(--accent-strong);
+  font-size: 18px;
+}
+
+.policy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.policy-grid div {
+  border-right: 1px solid var(--line);
+  display: grid;
+  gap: 8px;
+  padding: 20px;
+}
+
+.policy-grid div:last-child {
+  border-right: 0;
+}
+
+.policy-grid strong {
+  font-size: 18px;
+}
+
+.policy-grid span {
+  color: var(--muted);
+  line-height: 1.5;
 }
 
 .panel h2,
@@ -663,6 +712,11 @@ nav a:hover,
   padding: 14px 18px;
 }
 
+.affiliate-table .admin-table-head,
+.affiliate-table .admin-table-row {
+  grid-template-columns: minmax(340px, 1fr) 150px 130px 100px 100px;
+}
+
 .admin-table-head {
   background: #eef3f1;
   border-bottom: 1px solid var(--line);
@@ -735,8 +789,14 @@ nav a:hover,
   .deal-grid,
   .metric-row,
   .signal-metrics,
-  .form-columns {
+  .form-columns,
+  .policy-grid {
     grid-template-columns: 1fr;
+  }
+
+  .policy-grid div {
+    border-bottom: 1px solid var(--line);
+    border-right: 0;
   }
 
   .admin-row-wide {

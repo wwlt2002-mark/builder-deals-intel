@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Hostinger Affiliate Program",
+    "category": "hosting",
+    "fit": "Hosting and domain offers for builders launching projects.",
+    "network": "Direct",
+    "priority": "high",
+    "url": "https://www.hostinger.com/affiliates"
+  },
+  {
+    "name": "Beehiiv Partner Program",
+    "category": "saas",
+    "fit": "Newsletter tooling for creators and startup operators.",
+    "network": "PartnerStack",
+    "priority": "high",
+    "url": "https://www.beehiiv.com/partners"
+  },
+  {
+    "name": "Notion Affiliate Program",
+    "category": "saas",
+    "fit": "Workspace and productivity buyers with strong SaaS intent.",
+    "network": "PartnerStack",
+    "priority": "medium",
+    "url": "https://www.notion.so/affiliates"
+  },
+  {
+    "name": "Canva Affiliate Program",
+    "category": "saas",
+    "fit": "Creator and startup design-tool discounts.",
+    "network": "Impact",
+    "priority": "medium",
+    "url": "https://www.canva.com/affiliates/"
+  },
+  {
+    "name": "Framer Partners",
+    "category": "developer_tools",
+    "fit": "No-code site builders and startup landing pages.",
+    "network": "Direct",
+    "priority": "medium",
+    "url": "https://www.framer.com/partners/"
+  },
+  {
+    "name": "Make Affiliate Program",
+    "category": "saas",
+    "fit": "Automation tools for operators and AI workflow builders.",
+    "network": "PartnerStack",
+    "priority": "medium",
+    "url": "https://www.make.com/en/affiliates"
+  },
+  {
+    "name": "Pipedream Affiliate Program",
+    "category": "developer_tools",
+    "fit": "API automation and developer workflow audience.",
+    "network": "Rewardful",
+    "priority": "medium",
+    "url": "https://pipedream.com/affiliates"
+  },
+  {
+    "name": "DigitalOcean Referral Program",
+    "category": "cloud_credits",
+    "fit": "Cloud credits and VPS trials for developers.",
+    "network": "Direct/referral",
+    "priority": "medium",
+    "url": "https://www.digitalocean.com/referral-program"
+  }
+]

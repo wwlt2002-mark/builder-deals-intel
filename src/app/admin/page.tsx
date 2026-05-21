@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { requireAdminPage } from "@/lib/admin";
+import { affiliatePrograms } from "@/lib/affiliate-programs";
 import { getCategoryLabel } from "@/lib/categories";
 import { getAllDeals, getReviewDeals } from "@/lib/deals";
 import { getSubmissions } from "@/lib/storage";
@@ -195,6 +196,40 @@ export default async function AdminPage() {
               <p className="summary">No submissions yet.</p>
             </div>
           )}
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Affiliate pipeline</h2>
+            <p>Apply only where the product fits builder intent and has trackable payouts.</p>
+          </div>
+        </div>
+        <div className="table-panel">
+          <div className="admin-table affiliate-table">
+            <div className="admin-table-head">Program</div>
+            <div className="admin-table-head">Category</div>
+            <div className="admin-table-head">Network</div>
+            <div className="admin-table-head">Priority</div>
+            <div className="admin-table-head">Action</div>
+            {affiliatePrograms.map((program) => (
+              <div className="admin-table-row" key={program.name}>
+                <div>
+                  <strong>{program.name}</strong>
+                  <span>{program.fit}</span>
+                </div>
+                <div>{getCategoryLabel(program.category)}</div>
+                <div>{program.network}</div>
+                <div>{program.priority}</div>
+                <div>
+                  <a className="secondary-button" href={program.url} rel="noopener noreferrer" target="_blank">
+                    Open
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </div>
