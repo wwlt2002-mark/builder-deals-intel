@@ -72,3 +72,87 @@ export function getDisclosureText(deal: Deal) {
 
   return "This listing may include an affiliate link. We may earn a commission if you purchase through it, at no extra cost to you.";
 }
+
+export type DealUpdateInput = {
+  title: string;
+  product_name: string;
+  merchant: string;
+  category: DealCategory;
+  original_price: string | null;
+  deal_price: string | null;
+  discount_summary: string;
+  region: string;
+  expires_at: string | null;
+  source_url: string;
+  deal_url: string;
+  affiliate_url: string | null;
+  is_affiliate: boolean;
+  source_type: Deal["source_type"];
+  confidence_score: number;
+  risk_tags: string[];
+  ai_summary: string;
+  status: DealStatus;
+};
+
+export async function updateDeal(id: string, input: DealUpdateInput) {
+  if (!hasDatabase()) {
+    throw new Error("Database is required to update deals.");
+  }
+
+  await getPool().query(
+    `update deals
+     set title = $2,
+         product_name = $3,
+         merchant = $4,
+         category = $5,
+         original_price = $6,
+         deal_price = $7,
+         discount_summary = $8,
+         region = $9,
+         expires_at = $10,
+         source_url = $11,
+         deal_url = $12,
+         affiliate_url = $13,
+         is_affiliate = $14,
+         source_type = $15,
+         confidence_score = $16,
+         risk_tags = $17,
+         ai_summary = $18,
+         status = $19,
+         last_checked_at = now(),
+         updated_at = now()
+     where id = $1`,
+    [
+      id,
+      input.title,
+      input.product_name,
+      input.merchant,
+      input.category,
+      input.original_price,
+      input.deal_price,
+      input.discount_summary,
+      input.region,
+      input.expires_at,
+      input.source_url,
+      input.deal_url,
+      input.affiliate_url,
+      input.is_affiliate,
+      input.source_type,
+      input.confidence_score,
+      input.risk_tags,
+      input.ai_summary,
+      input.status
+    ]
+  );
+}
+
+export async function updateDealStatus(id: string, status: DealStatus) {
+  if (!hasDatabase()) {
+    throw new Error("Database is required to update deal status.");
+  }
+
+  await getPool().query(
+    "update deals set status = $2, last_checked_at = now(), updated_at = now() where id = $1",
+    [id, status]
+  );
+}

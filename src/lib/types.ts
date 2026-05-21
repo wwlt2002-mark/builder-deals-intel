@@ -42,6 +42,17 @@ export type Deal = {
   last_checked_at: string;
 };
 
+export type Submission = {
+  id: string;
+  submitted_url: string;
+  submitter_email: string | null;
+  relationship: string;
+  submitter_note: string | null;
+  generated_deal_id: string | null;
+  status: string;
+  created_at: string;
+};
+
 export type SourceConfig = {
   name: string;
   url: string;

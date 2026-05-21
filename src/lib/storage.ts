@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { getPool, hasDatabase } from "./db";
+import type { Submission } from "./types";
 
 const root = process.cwd();
 
@@ -73,4 +74,44 @@ export async function appendSubscriber(record: SubscriberRecord) {
     subscribers.unshift(record);
     await writeJsonFile("data/subscribers.json", subscribers);
   }
+}
+
+export async function getSubmissions(limit = 50): Promise<Submission[]> {
+  if (hasDatabase()) {
+    const result = await getPool().query(
+      `select id,
+              submitted_url,
+              submitter_email,
+              relationship,
+              submitter_note,
+              generated_deal_id,
+              status,
+              created_at
+       from submissions
+       order by created_at desc
+       limit $1`,
+      [limit]
+    );
+
+    return result.rows.map((row) => ({
+      id: String(row.id),
+      submitted_url: String(row.submitted_url),
+      submitter_email: row.submitter_email ? String(row.submitter_email) : null,
+      relationship: String(row.relationship ?? "reader"),
+      submitter_note: row.submitter_note ? String(row.submitter_note) : null,
+      generated_deal_id: row.generated_deal_id ? String(row.generated_deal_id) : null,
+      status: String(row.status),
+      created_at: new Date(String(row.created_at)).toISOString()
+    }));
+  }
+
+  return readJsonFile<Submission[]>("data/submissions.json", []);
+}
+
+export async function updateSubmissionStatus(id: string, status: string) {
+  if (!hasDatabase()) {
+    throw new Error("Database is required to update submissions.");
+  }
+
+  await getPool().query("update submissions set status = $2 where id = $1", [id, status]);
 }
