@@ -75,6 +75,29 @@ export function MoneyPageView({ page, deals }: { page: MoneyPage; deals: Deal[] 
       <section>
         <div className="section-head">
           <div>
+            <h2>Partner fit</h2>
+            <p>Why this page can convert for relevant sponsors and affiliate programs.</p>
+          </div>
+        </div>
+        <div className="policy-grid table-panel">
+          <div>
+            <strong>Audience</strong>
+            <span>{page.sponsorFit.audience}</span>
+          </div>
+          <div>
+            <strong>Best package</strong>
+            <span>{page.sponsorFit.package}</span>
+          </div>
+          <div>
+            <strong>Buyer path</strong>
+            <span>{page.sponsorFit.buyerPath}</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
             <h2>Questions builders ask</h2>
             <p>Short answers for readers comparing offers before they click out.</p>
           </div>

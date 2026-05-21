@@ -11,6 +11,11 @@ export type MoneyPage = {
     question: string;
     answer: string;
   }>;
+  sponsorFit: {
+    audience: string;
+    package: string;
+    buyerPath: string;
+  };
 };
 
 export const moneyPages: MoneyPage[] = [
@@ -42,7 +47,12 @@ export const moneyPages: MoneyPage[] = [
         answer:
           "Official source quality, eligibility clarity, billing risk, expiration certainty, and practical builder value all affect ranking."
       }
-    ]
+    ],
+    sponsorFit: {
+      audience: "AI tool buyers, founders testing new workflows, and teams comparing model/API subscriptions.",
+      package: "Newsletter sponsor or category feature for verified AI tool offers.",
+      buyerPath: "Readers compare the offer, inspect risk labels, then click through the tracked deal route."
+    }
   },
   {
     slug: "free-cloud-credits",
@@ -72,7 +82,12 @@ export const moneyPages: MoneyPage[] = [
         answer:
           "Yes. Cloud providers can change credit values, usage limits, and promo windows, so each listing includes a source link and last-checked time."
       }
-    ]
+    ],
+    sponsorFit: {
+      audience: "Developers, startup founders, and operators evaluating cloud, hosting, API, and infrastructure credits.",
+      package: "Launch monitoring or category feature for cloud, hosting, API, and infrastructure providers.",
+      buyerPath: "Readers check eligibility and billing risk before opening the provider source or tracked offer."
+    }
   },
   {
     slug: "developer-tool-discounts",
@@ -102,7 +117,12 @@ export const moneyPages: MoneyPage[] = [
         answer:
           "Affiliate links do not replace source checks. A deal still needs clear terms, eligibility notes, risk labels, and a useful buyer path."
       }
-    ]
+    ],
+    sponsorFit: {
+      audience: "Engineers and technical founders buying deployment, automation, email API, monitoring, and workflow tools.",
+      package: "Affiliate partnership or sponsored category placement for developer tooling.",
+      buyerPath: "Readers evaluate practical limits, commercial restrictions, and source quality before clicking out."
+    }
   }
 ];
 
