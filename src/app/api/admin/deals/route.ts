@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isAdminRequest } from "@/lib/admin";
+import { normalizeAffiliateFields, validateAffiliateFields } from "@/lib/admin-deal-form";
 import { createDeal } from "@/lib/deals";
 import type { DealCategory, DealStatus, SourceType } from "@/lib/types";
 
@@ -37,7 +38,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Confidence score must be 0-100." }, { status: 400 });
   }
 
-  const id = await createDeal({
+  const input = normalizeAffiliateFields({
     title: text(form.get("title")),
     product_name: text(form.get("product_name")),
     merchant: text(form.get("merchant")),
@@ -64,6 +65,14 @@ export async function POST(request: NextRequest) {
     ai_summary: text(form.get("ai_summary")),
     status
   });
+
+  const affiliateErrors = validateAffiliateFields(input);
+
+  if (affiliateErrors.length) {
+    return NextResponse.json({ error: affiliateErrors.join(" ") }, { status: 400 });
+  }
+
+  const id = await createDeal(input);
 
   return NextResponse.redirect(new URL(`/admin/deals/${id}`, request.url), 303);
 }

@@ -773,6 +773,13 @@ nav a:hover,
   overflow-x: auto;
 }
 
+.warning-panel {
+  background: rgba(178, 106, 22, 0.09);
+  border-color: rgba(178, 106, 22, 0.34);
+  margin-bottom: 16px;
+  padding: 16px;
+}
+
 .admin-table {
   display: grid;
   min-width: 860px;

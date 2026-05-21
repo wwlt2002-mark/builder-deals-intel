@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireAdminPage } from "@/lib/admin";
+import { validateAffiliateFields } from "@/lib/admin-deal-form";
 import { getCategoryLabel } from "@/lib/categories";
 import { getAllDeals } from "@/lib/deals";
 import type { DealCategory, DealStatus, SourceType } from "@/lib/types";
@@ -34,6 +35,31 @@ export default async function AdminDealEditPage({ params }: Props) {
     notFound();
   }
 
+  const affiliateWarnings = validateAffiliateFields({
+    title: deal.title,
+    product_name: deal.product_name,
+    merchant: deal.merchant,
+    category: deal.category,
+    original_price: deal.original_price,
+    deal_price: deal.deal_price,
+    discount_summary: deal.discount_summary,
+    region: deal.region,
+    expires_at: deal.expires_at,
+    source_url: deal.source_url,
+    deal_url: deal.deal_url,
+    affiliate_url: deal.affiliate_url,
+    is_affiliate: deal.is_affiliate,
+    affiliate_network: deal.affiliate_network,
+    affiliate_program: deal.affiliate_program,
+    affiliate_status: deal.affiliate_status,
+    affiliate_notes: deal.affiliate_notes,
+    source_type: deal.source_type,
+    confidence_score: deal.confidence_score,
+    risk_tags: deal.risk_tags,
+    ai_summary: deal.ai_summary,
+    status: deal.status
+  });
+
   return (
     <div className="page">
       <section className="page-title compact-title">
@@ -43,6 +69,16 @@ export default async function AdminDealEditPage({ params }: Props) {
         <h1>Edit deal.</h1>
         <p>{deal.title}</p>
       </section>
+
+      {affiliateWarnings.length ? (
+        <section className="table-panel warning-panel">
+          {affiliateWarnings.map((warning) => (
+            <p className="summary" key={warning}>
+              {warning}
+            </p>
+          ))}
+        </section>
+      ) : null}
 
       <form action={`/api/admin/deals/${deal.id}`} className="panel form-grid admin-edit-form" method="post">
         <input name="action" type="hidden" value="update" />
