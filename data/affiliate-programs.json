@@ -4,63 +4,95 @@
     "category": "hosting",
     "fit": "Hosting and domain offers for builders launching projects.",
     "network": "Direct",
+    "commission": "Starts at 40% and scales by volume",
+    "payout": "$100 PayPal minimum or $500 bank transfer minimum",
+    "next_step": "Apply after the site has a few more deal pages and clear traffic positioning.",
     "priority": "high",
-    "url": "https://www.hostinger.com/affiliates"
+    "url": "https://www.hostinger.com/affiliates",
+    "source_url": "https://www.hostinger.com/uk/affiliates"
   },
   {
     "name": "Beehiiv Partner Program",
     "category": "saas",
     "fit": "Newsletter tooling for creators and startup operators.",
     "network": "PartnerStack",
+    "commission": "Up to 60% recurring commission for one year",
+    "payout": "Partner dashboard payout after signup and approval",
+    "next_step": "Apply when newsletter signup flow and sponsor page are polished.",
     "priority": "high",
-    "url": "https://www.beehiiv.com/partners"
+    "url": "https://www.beehiiv.com/partners",
+    "source_url": "https://www.beehiiv.com/partners"
   },
   {
     "name": "Notion Affiliate Program",
     "category": "saas",
     "fit": "Workspace and productivity buyers with strong SaaS intent.",
     "network": "PartnerStack",
+    "commission": "To verify during application",
+    "payout": "PartnerStack payout account required",
+    "next_step": "Hold until category pages show productivity/SaaS buyer intent.",
     "priority": "medium",
-    "url": "https://www.notion.so/affiliates"
+    "url": "https://www.notion.so/affiliates",
+    "source_url": "https://www.notion.so/affiliates"
   },
   {
     "name": "Canva Affiliate Program",
     "category": "saas",
     "fit": "Creator and startup design-tool discounts.",
     "network": "Impact",
+    "commission": "To verify during application",
+    "payout": "Impact payout account required",
+    "next_step": "Apply after adding design-tool deal pages.",
     "priority": "medium",
-    "url": "https://www.canva.com/affiliates/"
+    "url": "https://www.canva.com/affiliates/",
+    "source_url": "https://www.canva.com/affiliates/"
   },
   {
     "name": "Framer Partners",
     "category": "developer_tools",
     "fit": "No-code site builders and startup landing pages.",
     "network": "Direct",
+    "commission": "To verify during application",
+    "payout": "Direct partner payout details required",
+    "next_step": "Apply after publishing landing-page builder comparison pages.",
     "priority": "medium",
-    "url": "https://www.framer.com/partners/"
+    "url": "https://www.framer.com/partners/",
+    "source_url": "https://www.framer.com/partners/"
   },
   {
     "name": "Make Affiliate Program",
     "category": "saas",
     "fit": "Automation tools for operators and AI workflow builders.",
     "network": "PartnerStack",
+    "commission": "35% commission for 12 months",
+    "payout": "PartnerStack payout account required",
+    "next_step": "Apply after adding automation/workflow deal pages.",
     "priority": "medium",
-    "url": "https://www.make.com/en/affiliates"
+    "url": "https://www.make.com/en/affiliate",
+    "source_url": "https://www.make.com/en/affiliate"
   },
   {
     "name": "Pipedream Affiliate Program",
     "category": "developer_tools",
     "fit": "API automation and developer workflow audience.",
     "network": "Rewardful",
+    "commission": "To verify during application",
+    "payout": "Rewardful or direct payout setup required",
+    "next_step": "Apply after publishing API automation use-case pages.",
     "priority": "medium",
-    "url": "https://pipedream.com/affiliates"
+    "url": "https://pipedream.com/affiliates",
+    "source_url": "https://pipedream.com/affiliates"
   },
   {
     "name": "DigitalOcean Referral Program",
     "category": "cloud_credits",
     "fit": "Cloud credits and VPS trials for developers.",
     "network": "Direct/referral",
+    "commission": "Referral credit model, not classic cash-first affiliate",
+    "payout": "Account credit or referral reward terms apply",
+    "next_step": "Use as content value first; do not prioritize for cash revenue.",
     "priority": "medium",
-    "url": "https://www.digitalocean.com/referral-program"
+    "url": "https://www.digitalocean.com/referral-program",
+    "source_url": "https://www.digitalocean.com/referral-program"
   }
 ]

@@ -6,8 +6,12 @@ export type AffiliateProgram = {
   category: DealCategory;
   fit: string;
   network: string;
+  commission: string;
+  payout: string;
+  next_step: string;
   priority: "high" | "medium" | "low";
   url: string;
+  source_url: string;
 };
 
 export const affiliatePrograms = programsJson as AffiliateProgram[];

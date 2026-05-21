@@ -211,17 +211,18 @@ export default async function AdminPage() {
             <div className="admin-table-head">Program</div>
             <div className="admin-table-head">Category</div>
             <div className="admin-table-head">Network</div>
-            <div className="admin-table-head">Priority</div>
+            <div className="admin-table-head">Commission</div>
             <div className="admin-table-head">Action</div>
             {affiliatePrograms.map((program) => (
               <div className="admin-table-row" key={program.name}>
                 <div>
                   <strong>{program.name}</strong>
                   <span>{program.fit}</span>
+                  <span>{program.next_step}</span>
                 </div>
                 <div>{getCategoryLabel(program.category)}</div>
                 <div>{program.network}</div>
-                <div>{program.priority}</div>
+                <div>{program.commission}</div>
                 <div>
                   <a className="secondary-button" href={program.url} rel="noopener noreferrer" target="_blank">
                     Open
