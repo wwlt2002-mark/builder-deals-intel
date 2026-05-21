@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCategoryLabel } from "@/lib/categories";
-import { getAllDeals, getDealBySlug, getDisclosureText } from "@/lib/deals";
+import { getDealBySlug, getDisclosureText } from "@/lib/deals";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const deal = await getDealBySlug(slug);
 
-  if (!deal) {
+  if (!deal || deal.status !== "auto_published") {
     return {};
   }
 
@@ -29,7 +29,7 @@ export default async function DealPage({ params }: Props) {
   const { slug } = await params;
   const deal = await getDealBySlug(slug);
 
-  if (!deal) {
+  if (!deal || deal.status !== "auto_published") {
     notFound();
   }
 

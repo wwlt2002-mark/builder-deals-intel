@@ -12,7 +12,7 @@ export async function GET(request: NextRequest, { params }: Props) {
   const { slug } = await params;
   const deal = await getDealBySlug(slug);
 
-  if (!deal) {
+  if (!deal || deal.status !== "auto_published") {
     return NextResponse.redirect(new URL("/", request.url), 302);
   }
 
