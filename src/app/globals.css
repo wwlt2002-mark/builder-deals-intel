@@ -396,6 +396,12 @@ nav a:hover,
   margin: 0;
 }
 
+.dark-tags .tag {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(201, 214, 209, 0.2);
+  color: #dce8e4;
+}
+
 .section-head {
   align-items: flex-end;
   display: flex;

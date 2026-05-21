@@ -1,11 +1,17 @@
 import type { MetadataRoute } from "next";
 import { categories } from "@/lib/categories";
 import { getAllDeals } from "@/lib/deals";
+import { moneyPages } from "@/lib/money-pages";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://builderdeals.example.com";
   const staticRoutes = ["", "/submit", "/newsletter", "/sponsor"].map((route) => ({
     url: `${siteUrl}${route}`,
+    lastModified: new Date()
+  }));
+
+  const moneyRoutes = moneyPages.map((page) => ({
+    url: `${siteUrl}/${page.slug}`,
     lastModified: new Date()
   }));
 
@@ -19,5 +25,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(deal.last_checked_at)
   }));
 
-  return [...staticRoutes, ...categoryRoutes, ...dealRoutes];
+  return [...staticRoutes, ...moneyRoutes, ...categoryRoutes, ...dealRoutes];
 }
