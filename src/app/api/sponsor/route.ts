@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { honeypotFilled } from "@/lib/forms";
 import { appendSponsorLead } from "@/lib/storage";
 
 export const runtime = "nodejs";
@@ -14,6 +15,11 @@ function optional(form: FormData, name: string) {
 
 export async function POST(request: Request) {
   const form = await request.formData();
+
+  if (honeypotFilled(form, ["company_website"])) {
+    return NextResponse.redirect(new URL("/sponsor?submitted=1", request.url), 303);
+  }
+
   const company = field(form, "company");
   const email = field(form, "email");
   const website = optional(form, "website");

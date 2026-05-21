@@ -126,6 +126,10 @@ export default function SponsorPage({
         </div>
         <form action="/api/sponsor" className="panel form-grid admin-edit-form" method="post">
           {searchParams ? <SponsorNotice searchParams={searchParams} /> : null}
+          <div aria-hidden="true" className="hp-field">
+            <label htmlFor="company_website">Company website</label>
+            <input id="company_website" name="company_website" tabIndex={-1} type="text" />
+          </div>
           <div className="form-columns">
             <div className="field">
               <label htmlFor="company">Company</label>

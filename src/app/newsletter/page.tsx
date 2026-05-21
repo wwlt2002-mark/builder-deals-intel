@@ -23,6 +23,10 @@ export default async function NewsletterPage({
       </section>
       <form action="/api/newsletter" className="panel form-grid" method="post">
         {searchParams ? <NewsletterNotice searchParams={searchParams} /> : null}
+        <div aria-hidden="true" className="hp-field">
+          <label htmlFor="name">Name</label>
+          <input id="name" name="name" tabIndex={-1} type="text" />
+        </div>
         <div className="field">
           <label htmlFor="email">Email</label>
           <input id="email" name="email" placeholder="you@example.com" type="email" required />

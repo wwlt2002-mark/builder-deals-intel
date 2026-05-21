@@ -689,6 +689,15 @@ nav a:hover,
   resize: vertical;
 }
 
+.hp-field {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  width: 0;
+}
+
 .compact-title {
   display: grid;
   gap: 14px;

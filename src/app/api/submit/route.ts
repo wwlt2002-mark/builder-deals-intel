@@ -1,10 +1,16 @@
 import { NextResponse } from "next/server";
+import { honeypotFilled } from "@/lib/forms";
 import { appendSubmission } from "@/lib/storage";
 
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
   const form = await request.formData();
+
+  if (honeypotFilled(form, ["homepage"])) {
+    return NextResponse.redirect(new URL("/submit?queued=1", request.url), 303);
+  }
+
   const url = String(form.get("url") ?? "").trim();
   const email = String(form.get("email") ?? "").trim();
   const relationship = String(form.get("relationship") ?? "I am not affiliated with this merchant");

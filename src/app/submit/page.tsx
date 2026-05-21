@@ -19,6 +19,10 @@ export default function SubmitPage({
       </section>
       <form action="/api/submit" className="panel form-grid" method="post">
         {searchParams ? <SubmitNotice searchParams={searchParams} /> : null}
+        <div aria-hidden="true" className="hp-field">
+          <label htmlFor="homepage">Homepage</label>
+          <input id="homepage" name="homepage" tabIndex={-1} type="text" />
+        </div>
         <div className="field">
           <label htmlFor="url">Source or deal URL</label>
           <input id="url" name="url" placeholder="https://example.com/promo" type="url" required />
