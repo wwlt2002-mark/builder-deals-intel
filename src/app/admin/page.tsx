@@ -4,6 +4,7 @@ import { affiliatePrograms } from "@/lib/affiliate-programs";
 import { getCategoryLabel } from "@/lib/categories";
 import { getClickStats, getTopClickedDeals } from "@/lib/clicks";
 import { getAllDeals, getReviewDeals } from "@/lib/deals";
+import { getRevenueReadiness } from "@/lib/revenue";
 import { getSponsorLeads, getSubscriberStats, getSubscribers, getSubmissions } from "@/lib/storage";
 import type { DealStatus } from "@/lib/types";
 
@@ -36,6 +37,7 @@ export default async function AdminPage() {
   const affiliateDeals = allDeals.filter((deal) => deal.is_affiliate);
   const queuedSubmissions = submissions.filter((submission) => submission.status === "queued");
   const newSponsorLeads = sponsorLeads.filter((lead) => lead.status === "new");
+  const revenueReadiness = getRevenueReadiness(allDeals, affiliatePrograms);
 
   return (
     <div className="page">
@@ -90,6 +92,49 @@ export default async function AdminPage() {
           <span>subscribers in 7d</span>
         </div>
       </div>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Revenue readiness</h2>
+            <p>Turn traffic into tracked affiliate clicks, sponsor leads, and payout-ready applications.</p>
+          </div>
+        </div>
+        <div className="metric-row">
+          <div className="metric">
+            <strong>{revenueReadiness.affiliateReadyDeals}</strong>
+            <span>affiliate links live</span>
+          </div>
+          <div className="metric">
+            <strong>{revenueReadiness.applicationReadyPrograms}</strong>
+            <span>programs ready to apply</span>
+          </div>
+          <div className="metric">
+            <strong>{revenueReadiness.missingAffiliateUrls}</strong>
+            <span>approved links missing URLs</span>
+          </div>
+          <div className="metric">
+            <strong>{revenueReadiness.sponsoredInventory.length}</strong>
+            <span>sponsor inventory types</span>
+          </div>
+        </div>
+        <div className="table-panel revenue-panel">
+          <div className="policy-grid">
+            <div>
+              <strong>Sell first</strong>
+              <span>{revenueReadiness.sponsoredInventory.join(", ")}</span>
+            </div>
+            <div>
+              <strong>Payout setup needed</strong>
+              <span>{revenueReadiness.payoutSetupNeeded.join("; ") || "No payout blockers detected."}</span>
+            </div>
+            <div>
+              <strong>Next moves</strong>
+              <span>{revenueReadiness.nextMoves.join(" ")}</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section>
         <div className="section-head">
