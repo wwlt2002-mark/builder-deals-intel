@@ -159,7 +159,7 @@ export async function unsubscribeByToken(token: string) {
     [token]
   );
 
-  return result.rowCount > 0;
+  return (result.rowCount ?? 0) > 0;
 }
 
 export async function getSubmissions(limit = 50): Promise<Submission[]> {
