@@ -4,7 +4,7 @@ import { affiliatePrograms } from "@/lib/affiliate-programs";
 import { getCategoryLabel } from "@/lib/categories";
 import { getClickStats, getTopClickedDeals } from "@/lib/clicks";
 import { getAllDeals, getReviewDeals } from "@/lib/deals";
-import { getSponsorLeads, getSubscriberStats, getSubmissions } from "@/lib/storage";
+import { getSponsorLeads, getSubscriberStats, getSubscribers, getSubmissions } from "@/lib/storage";
 import type { DealStatus } from "@/lib/types";
 
 export const metadata = {
@@ -29,6 +29,7 @@ export default async function AdminPage() {
   const submissions = await getSubmissions();
   const sponsorLeads = await getSponsorLeads();
   const subscriberStats = await getSubscriberStats();
+  const subscribers = await getSubscribers(10);
   const clickStats = await getClickStats();
   const topClickedDeals = await getTopClickedDeals();
   const publishedDeals = allDeals.filter((deal) => deal.status === "auto_published");
@@ -359,6 +360,46 @@ export default async function AdminPage() {
               <p className="summary">No sponsor leads yet.</p>
             </div>
           )}
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Newsletter subscribers</h2>
+            <p>Recent subscribers and unsubscribe-token readiness.</p>
+          </div>
+        </div>
+        <div className="table-panel">
+          <div className="admin-table subscriber-table">
+            <div className="admin-table-head">Email</div>
+            <div className="admin-table-head">Source</div>
+            <div className="admin-table-head">Status</div>
+            <div className="admin-table-head">Joined</div>
+            {subscribers.length ? (
+              subscribers.map((subscriber) => (
+                <div className="admin-table-row" key={subscriber.id}>
+                  <div>
+                    <strong>{subscriber.email}</strong>
+                    <span>{subscriber.unsubscribe_token ? "unsubscribe ready" : "token pending"}</span>
+                  </div>
+                  <div>{subscriber.source}</div>
+                  <div>{subscriber.status}</div>
+                  <div>{new Date(subscriber.created_at).toLocaleString("en-US")}</div>
+                </div>
+              ))
+            ) : (
+              <div className="admin-table-row">
+                <div>
+                  <strong>No subscribers yet</strong>
+                  <span>Newsletter signups will appear here.</span>
+                </div>
+                <div />
+                <div />
+                <div />
+              </div>
+            )}
+          </div>
         </div>
       </section>
     </div>

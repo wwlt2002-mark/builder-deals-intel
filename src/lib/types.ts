@@ -70,6 +70,15 @@ export type SponsorLead = {
   created_at: string;
 };
 
+export type Subscriber = {
+  id: string;
+  email: string;
+  source: string;
+  status: string;
+  unsubscribe_token: string | null;
+  created_at: string;
+};
+
 export type SourceConfig = {
   name: string;
   url: string;

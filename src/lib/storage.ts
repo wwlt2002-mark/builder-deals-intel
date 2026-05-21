@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { getPool, hasDatabase } from "./db";
-import type { SponsorLead, Submission } from "./types";
+import type { SponsorLead, Subscriber, Submission } from "./types";
 
 const root = process.cwd();
 
@@ -74,9 +74,9 @@ export async function appendSubmission(record: SubmissionRecord) {
 export async function appendSubscriber(record: SubscriberRecord) {
   if (hasDatabase()) {
     await getPool().query(
-      `insert into subscribers (id, email, source, created_at)
-       values ($1, $2, $3, $4)
-       on conflict (email) do nothing`,
+      `insert into subscribers (id, email, source, status, created_at)
+       values ($1, $2, $3, 'active', $4)
+       on conflict (email) do update set status = 'active'`,
       [record.id, record.email, record.source, record.created_at]
     );
     return;
@@ -93,8 +93,8 @@ export async function getSubscriberStats() {
   if (hasDatabase()) {
     const result = await getPool().query(
       `select
-         count(*)::int as total,
-         count(*) filter (where created_at >= now() - interval '7 days')::int as last7d
+         count(*) filter (where status = 'active')::int as total,
+         count(*) filter (where status = 'active' and created_at >= now() - interval '7 days')::int as last7d
        from subscribers`
     );
 
@@ -111,6 +111,55 @@ export async function getSubscriberStats() {
     total: subscribers.length,
     last7d: subscribers.filter((subscriber) => new Date(subscriber.created_at).getTime() >= sevenDaysAgo).length
   };
+}
+
+export async function getSubscribers(limit = 50): Promise<Subscriber[]> {
+  if (hasDatabase()) {
+    const result = await getPool().query(
+      `select id,
+              email,
+              source,
+              status,
+              unsubscribe_token,
+              created_at
+       from subscribers
+       order by created_at desc
+       limit $1`,
+      [limit]
+    );
+
+    return result.rows.map((row) => ({
+      id: String(row.id),
+      email: String(row.email),
+      source: String(row.source),
+      status: String(row.status ?? "active"),
+      unsubscribe_token: row.unsubscribe_token ? String(row.unsubscribe_token) : null,
+      created_at: new Date(String(row.created_at)).toISOString()
+    }));
+  }
+
+  const subscribers = await readJsonFile<SubscriberRecord[]>("data/subscribers.json", []);
+  return subscribers.slice(0, limit).map((subscriber) => ({
+    id: subscriber.id,
+    email: subscriber.email,
+    source: subscriber.source,
+    status: "active",
+    unsubscribe_token: null,
+    created_at: subscriber.created_at
+  }));
+}
+
+export async function unsubscribeByToken(token: string) {
+  if (!hasDatabase()) {
+    return false;
+  }
+
+  const result = await getPool().query(
+    "update subscribers set status = 'unsubscribed' where unsubscribe_token = $1 returning id",
+    [token]
+  );
+
+  return result.rowCount > 0;
 }
 
 export async function getSubmissions(limit = 50): Promise<Submission[]> {

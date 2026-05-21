@@ -69,6 +69,8 @@ create table subscribers (
   email text not null unique,
   categories deal_category[] not null default '{}',
   source text not null default 'site',
+  status text not null default 'active',
+  unsubscribe_token text not null default encode(gen_random_bytes(18), 'hex'),
   created_at timestamptz not null default now()
 );
 
@@ -116,3 +118,4 @@ create index sources_enabled_idx on sources(enabled);
 create index outbound_clicks_deal_created_idx on outbound_clicks(deal_id, created_at desc);
 create index outbound_clicks_created_idx on outbound_clicks(created_at desc);
 create index sponsor_leads_status_created_idx on sponsor_leads(status, created_at desc);
+create index subscribers_status_created_idx on subscribers(status, created_at desc);

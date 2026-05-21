@@ -775,6 +775,11 @@ nav a:hover,
   grid-template-columns: minmax(360px, 1fr) 150px 90px 90px 180px;
 }
 
+.subscriber-table .admin-table-head,
+.subscriber-table .admin-table-row {
+  grid-template-columns: minmax(360px, 1fr) 130px 130px 180px;
+}
+
 .admin-table-head {
   background: #eef3f1;
   border-bottom: 1px solid var(--line);
