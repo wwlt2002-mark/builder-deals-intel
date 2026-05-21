@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <span className="brand-mark">BD</span>
             <span>
               <strong>Builder Deals Intel</strong>
-              <small>Daily deals for builders</small>
+              <small>Signal-ranked tech deals</small>
             </span>
           </Link>
           <nav aria-label="Primary navigation">

@@ -10,7 +10,8 @@ export default async function HomePage() {
   return (
     <div className="page">
       <section className="hero">
-        <div>
+        <div className="hero-copy">
+          <span className="eyebrow">Live deal intelligence for builders</span>
           <h1>Today&apos;s best builder deals, filtered for signal.</h1>
           <p>
             Daily AI, SaaS, cloud credit, hosting, and developer tool deals with source links, risk labels, and
@@ -26,18 +27,33 @@ export default async function HomePage() {
             </Link>
           </div>
         </div>
-        <aside className="metric-row" aria-label="Deal intelligence metrics">
-          <div className="metric">
-            <strong>{featuredDeals.length}</strong>
-            <span>high-confidence deals live</span>
+        <aside className="signal-console" aria-label="Deal intelligence metrics">
+          <div className="console-topline">
+            <span>Signal Monitor</span>
+            <strong>LIVE</strong>
           </div>
-          <div className="metric">
-            <strong>{reviewDeals.length}</strong>
-            <span>items in review queue</span>
+          <div className="signal-map" aria-hidden="true">
+            <span className="signal-node node-a" />
+            <span className="signal-node node-b" />
+            <span className="signal-node node-c" />
+            <span className="signal-node node-d" />
+            <span className="signal-line line-a" />
+            <span className="signal-line line-b" />
+            <span className="signal-line line-c" />
           </div>
-          <div className="metric">
-            <strong>5</strong>
-            <span>commercial categories</span>
+          <div className="metric-row signal-metrics">
+            <div className="metric">
+              <strong>{featuredDeals.length}</strong>
+              <span>verified live</span>
+            </div>
+            <div className="metric">
+              <strong>{reviewDeals.length}</strong>
+              <span>in review</span>
+            </div>
+            <div className="metric">
+              <strong>5</strong>
+              <span>buyer categories</span>
+            </div>
           </div>
         </aside>
       </section>
@@ -68,7 +84,7 @@ export default async function HomePage() {
         </div>
         <div className="deal-grid">
           {categories.map((category) => (
-            <Link className="panel" href={`/categories/${category.id}`} key={category.id}>
+            <Link className="panel category-panel" href={`/categories/${category.id}`} key={category.id}>
               <h3>{category.label}</h3>
               <p className="summary">{category.description}</p>
             </Link>

@@ -20,6 +20,11 @@ export function DealCard({ deal }: { deal: Deal }) {
         <strong>{deal.deal_price ?? "See terms"}</strong>
         <span>{deal.discount_summary}</span>
       </div>
+      <div className="source-strip">
+        <span />
+        <span />
+        <span />
+      </div>
       <div className="tag-row">
         {deal.risk_tags.slice(0, 4).map((tag) => (
           <span className="tag" key={tag}>
