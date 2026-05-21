@@ -501,6 +501,12 @@ nav a:hover,
   color: var(--muted);
 }
 
+.deal-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .source-strip {
   display: grid;
   gap: 6px;

@@ -46,7 +46,7 @@ export function MoneyPageView({ page, deals }: { page: MoneyPage; deals: Deal[] 
         </div>
         <div className="deal-grid">
           {deals.length ? (
-            deals.map((deal) => <DealCard deal={deal} key={deal.id} />)
+            deals.map((deal) => <DealCard deal={deal} key={deal.id} placement={`${page.slug}_card`} />)
           ) : (
             <div className="panel">
               <p className="summary">No verified offers are live in this segment yet.</p>

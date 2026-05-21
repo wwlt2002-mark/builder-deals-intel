@@ -40,7 +40,7 @@ export default async function CategoryPage({ params }: Props) {
       </section>
       <section className="deal-grid">
         {deals.map((deal) => (
-          <DealCard deal={deal} key={deal.id} />
+          <DealCard deal={deal} key={deal.id} placement={`category_${category.id}_card`} />
         ))}
       </section>
     </div>

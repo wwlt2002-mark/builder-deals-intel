@@ -70,7 +70,7 @@ export default async function HomePage() {
         </div>
         <div className="deal-grid">
           {featuredDeals.map((deal) => (
-            <DealCard deal={deal} key={deal.id} />
+            <DealCard deal={deal} key={deal.id} placement="home_featured_card" />
           ))}
         </div>
       </section>

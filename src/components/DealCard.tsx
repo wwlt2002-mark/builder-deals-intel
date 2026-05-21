@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getCategoryLabel } from "@/lib/categories";
 import type { Deal } from "@/lib/types";
 
-export function DealCard({ deal }: { deal: Deal }) {
+export function DealCard({ deal, placement = "deal_card" }: { deal: Deal; placement?: string }) {
   return (
     <article className="deal-card">
       <div className="deal-meta">
@@ -32,9 +32,19 @@ export function DealCard({ deal }: { deal: Deal }) {
           </span>
         ))}
       </div>
-      <Link className="secondary-button" href={`/deals/${deal.slug}`}>
-        View source and terms
-      </Link>
+      <div className="deal-card-actions">
+        <a
+          className="button"
+          href={`/out/${deal.slug}?placement=${encodeURIComponent(placement)}`}
+          rel="nofollow sponsored noopener noreferrer"
+          target="_blank"
+        >
+          Open deal
+        </a>
+        <Link className="secondary-button" href={`/deals/${deal.slug}`}>
+          Source and terms
+        </Link>
+      </div>
     </article>
   );
 }
