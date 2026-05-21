@@ -3,7 +3,11 @@ export const metadata = {
   description: "Reach builders looking for AI tools, SaaS discounts, cloud credits, and developer products."
 };
 
-export default function SponsorPage() {
+export default function SponsorPage({
+  searchParams
+}: {
+  searchParams?: Promise<{ submitted?: string }>;
+}) {
   return (
     <div className="page">
       <section className="hero media-hero">
@@ -98,6 +102,7 @@ export default function SponsorPage() {
           </div>
         </div>
         <form action="/api/sponsor" className="panel form-grid admin-edit-form" method="post">
+          {searchParams ? <SponsorNotice searchParams={searchParams} /> : null}
           <div className="form-columns">
             <div className="field">
               <label htmlFor="company">Company</label>
@@ -144,4 +149,14 @@ export default function SponsorPage() {
       </section>
     </div>
   );
+}
+
+async function SponsorNotice({ searchParams }: { searchParams: Promise<{ submitted?: string }> }) {
+  const params = await searchParams;
+
+  if (params.submitted !== "1") {
+    return null;
+  }
+
+  return <p className="summary">Partnership request received. It is queued for commercial review.</p>;
 }

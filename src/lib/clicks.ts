@@ -60,3 +60,43 @@ export async function getClickStats() {
     last24h: Number(result.rows[0]?.last24h ?? 0)
   };
 }
+
+export type TopClickedDeal = {
+  slug: string;
+  title: string;
+  merchant: string;
+  clicks: number;
+  affiliate_clicks: number;
+  last_click_at: string | null;
+};
+
+export async function getTopClickedDeals(limit = 8): Promise<TopClickedDeal[]> {
+  if (!hasDatabase()) {
+    return [];
+  }
+
+  const result = await getPool().query(
+    `select
+       oc.slug,
+       coalesce(d.title, oc.slug) as title,
+       coalesce(d.merchant, 'Unknown') as merchant,
+       count(*)::int as clicks,
+       count(*) filter (where oc.is_affiliate)::int as affiliate_clicks,
+       max(oc.created_at) as last_click_at
+     from outbound_clicks oc
+     left join deals d on d.id = oc.deal_id
+     group by oc.slug, d.title, d.merchant
+     order by clicks desc, last_click_at desc
+     limit $1`,
+    [limit]
+  );
+
+  return result.rows.map((row) => ({
+    slug: String(row.slug),
+    title: String(row.title),
+    merchant: String(row.merchant),
+    clicks: Number(row.clicks),
+    affiliate_clicks: Number(row.affiliate_clicks),
+    last_click_at: row.last_click_at ? new Date(String(row.last_click_at)).toISOString() : null
+  }));
+}

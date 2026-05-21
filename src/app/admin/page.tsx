@@ -2,7 +2,7 @@ import Link from "next/link";
 import { requireAdminPage } from "@/lib/admin";
 import { affiliatePrograms } from "@/lib/affiliate-programs";
 import { getCategoryLabel } from "@/lib/categories";
-import { getClickStats } from "@/lib/clicks";
+import { getClickStats, getTopClickedDeals } from "@/lib/clicks";
 import { getAllDeals, getReviewDeals } from "@/lib/deals";
 import { getSponsorLeads, getSubmissions } from "@/lib/storage";
 import type { DealStatus } from "@/lib/types";
@@ -29,6 +29,7 @@ export default async function AdminPage() {
   const submissions = await getSubmissions();
   const sponsorLeads = await getSponsorLeads();
   const clickStats = await getClickStats();
+  const topClickedDeals = await getTopClickedDeals();
   const publishedDeals = allDeals.filter((deal) => deal.status === "auto_published");
   const affiliateDeals = allDeals.filter((deal) => deal.is_affiliate);
   const queuedSubmissions = submissions.filter((submission) => submission.status === "queued");
@@ -166,6 +167,49 @@ export default async function AdminPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Click intelligence</h2>
+            <p>Outbound clicks show which offers have monetization gravity.</p>
+          </div>
+        </div>
+        <div className="table-panel">
+          <div className="admin-table click-table">
+            <div className="admin-table-head">Deal</div>
+            <div className="admin-table-head">Merchant</div>
+            <div className="admin-table-head">Clicks</div>
+            <div className="admin-table-head">Affiliate</div>
+            <div className="admin-table-head">Last click</div>
+            {topClickedDeals.length ? (
+              topClickedDeals.map((deal) => (
+                <div className="admin-table-row" key={deal.slug}>
+                  <div>
+                    <strong>{deal.title}</strong>
+                    <span>{deal.slug}</span>
+                  </div>
+                  <div>{deal.merchant}</div>
+                  <div>{deal.clicks}</div>
+                  <div>{deal.affiliate_clicks}</div>
+                  <div>{deal.last_click_at ? new Date(deal.last_click_at).toLocaleString("en-US") : "None"}</div>
+                </div>
+              ))
+            ) : (
+              <div className="admin-table-row">
+                <div>
+                  <strong>No outbound clicks yet</strong>
+                  <span>Click data appears after users open deal links.</span>
+                </div>
+                <div />
+                <div />
+                <div />
+                <div />
+              </div>
+            )}
           </div>
         </div>
       </section>
