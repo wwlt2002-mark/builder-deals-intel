@@ -84,7 +84,21 @@ create table sources (
   created_at timestamptz not null default now()
 );
 
+create table outbound_clicks (
+  id uuid primary key default gen_random_uuid(),
+  deal_id uuid references deals(id) on delete set null,
+  slug text not null,
+  destination_url text not null,
+  is_affiliate boolean not null default false,
+  affiliate_network text,
+  referrer text,
+  user_agent text,
+  created_at timestamptz not null default now()
+);
+
 create index deals_category_status_idx on deals(category, status);
 create index deals_confidence_idx on deals(confidence_score desc);
 create index deals_last_checked_idx on deals(last_checked_at desc);
 create index sources_enabled_idx on sources(enabled);
+create index outbound_clicks_deal_created_idx on outbound_clicks(deal_id, created_at desc);
+create index outbound_clicks_created_idx on outbound_clicks(created_at desc);

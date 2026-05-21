@@ -2,6 +2,7 @@ import Link from "next/link";
 import { requireAdminPage } from "@/lib/admin";
 import { affiliatePrograms } from "@/lib/affiliate-programs";
 import { getCategoryLabel } from "@/lib/categories";
+import { getClickStats } from "@/lib/clicks";
 import { getAllDeals, getReviewDeals } from "@/lib/deals";
 import { getSubmissions } from "@/lib/storage";
 import type { DealStatus } from "@/lib/types";
@@ -26,6 +27,7 @@ export default async function AdminPage() {
   const allDeals = await getAllDeals();
   const reviewDeals = await getReviewDeals();
   const submissions = await getSubmissions();
+  const clickStats = await getClickStats();
   const publishedDeals = allDeals.filter((deal) => deal.status === "auto_published");
   const affiliateDeals = allDeals.filter((deal) => deal.is_affiliate);
   const queuedSubmissions = submissions.filter((submission) => submission.status === "queued");
@@ -57,6 +59,18 @@ export default async function AdminPage() {
         <div className="metric">
           <strong>{queuedSubmissions.length}</strong>
           <span>queued submissions</span>
+        </div>
+        <div className="metric">
+          <strong>{clickStats.total}</strong>
+          <span>outbound clicks tracked</span>
+        </div>
+        <div className="metric">
+          <strong>{clickStats.affiliate}</strong>
+          <span>affiliate clicks</span>
+        </div>
+        <div className="metric">
+          <strong>{clickStats.last24h}</strong>
+          <span>clicks in 24h</span>
         </div>
       </div>
 

@@ -33,8 +33,6 @@ export default async function DealPage({ params }: Props) {
     notFound();
   }
 
-  const outboundUrl = deal.affiliate_url ?? deal.deal_url;
-
   return (
     <div className="page">
       <section className="detail-layout">
@@ -58,7 +56,7 @@ export default async function DealPage({ params }: Props) {
             ))}
           </div>
           <div className="hero-actions">
-            <a className="button" href={outboundUrl} rel="nofollow sponsored noopener noreferrer" target="_blank">
+            <a className="button" href={`/out/${deal.slug}`} rel="nofollow sponsored noopener noreferrer" target="_blank">
               Open deal
             </a>
             <a className="secondary-button" href={deal.source_url} rel="noopener noreferrer" target="_blank">
