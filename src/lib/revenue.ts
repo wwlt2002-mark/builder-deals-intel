@@ -17,9 +17,7 @@ export function getRevenueReadiness(deals: Deal[], programs: AffiliateProgram[])
   const affiliateReadyDeals = publishedDeals.filter(
     (deal) => deal.is_affiliate && deal.affiliate_url && ["approved", "active"].includes(deal.affiliate_status)
   ).length;
-  const applicationReadyPrograms = programs.filter(
-    (program) => program.priority === "high" || /^Apply/i.test(program.next_step)
-  ).length;
+  const applicationReadyPrograms = programs.filter((program) => program.application_stage === "ready").length;
   const highPriorityPrograms = programs.filter((program) => program.priority === "high").length;
   const missingAffiliateUrls = publishedDeals.filter(
     (deal) => deal.affiliate_status !== "none" && !deal.affiliate_url

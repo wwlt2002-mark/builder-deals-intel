@@ -773,7 +773,7 @@ nav a:hover,
 
 .affiliate-table .admin-table-head,
 .affiliate-table .admin-table-row {
-  grid-template-columns: minmax(360px, 1fr) 150px 130px 180px 100px;
+  grid-template-columns: minmax(360px, 1fr) 150px 130px 180px minmax(280px, 0.9fr) 100px;
 }
 
 .click-table .admin-table-head,

@@ -9,7 +9,10 @@
     "next_step": "Apply after the site has a few more deal pages and clear traffic positioning.",
     "priority": "high",
     "url": "https://www.hostinger.com/affiliates",
-    "source_url": "https://www.hostinger.com/uk/affiliates"
+    "source_url": "https://www.hostinger.com/uk/affiliates",
+    "application_stage": "ready",
+    "owner_blocker": "Payout account and tax/identity details when the application asks for them.",
+    "launch_asset": "Hosting category, free cloud credits page, sponsor policy, and disclosure page."
   },
   {
     "name": "Beehiiv Partner Program",
@@ -21,7 +24,10 @@
     "next_step": "Apply when newsletter signup flow and sponsor page are polished.",
     "priority": "high",
     "url": "https://www.beehiiv.com/partners",
-    "source_url": "https://www.beehiiv.com/partners"
+    "source_url": "https://www.beehiiv.com/partners",
+    "application_stage": "ready",
+    "owner_blocker": "Partner dashboard payout setup after approval.",
+    "launch_asset": "Newsletter page, archive preview, sponsor page, and daily brief positioning."
   },
   {
     "name": "Notion Affiliate Program",
@@ -33,7 +39,10 @@
     "next_step": "Hold until category pages show productivity/SaaS buyer intent.",
     "priority": "medium",
     "url": "https://www.notion.so/affiliates",
-    "source_url": "https://www.notion.so/affiliates"
+    "source_url": "https://www.notion.so/affiliates",
+    "application_stage": "content_needed",
+    "owner_blocker": "PartnerStack payout account if accepted.",
+    "launch_asset": "More productivity/SaaS deal pages and one workflow-focused buyer page."
   },
   {
     "name": "Canva Affiliate Program",
@@ -45,7 +54,10 @@
     "next_step": "Apply after adding design-tool deal pages.",
     "priority": "medium",
     "url": "https://www.canva.com/affiliates/",
-    "source_url": "https://www.canva.com/affiliates/"
+    "source_url": "https://www.canva.com/affiliates/",
+    "application_stage": "content_needed",
+    "owner_blocker": "Impact account, payout profile, and possible identity verification.",
+    "launch_asset": "Design-tool deal pages and startup launch asset angle."
   },
   {
     "name": "Framer Partners",
@@ -57,7 +69,10 @@
     "next_step": "Apply after publishing landing-page builder comparison pages.",
     "priority": "medium",
     "url": "https://www.framer.com/partners/",
-    "source_url": "https://www.framer.com/partners/"
+    "source_url": "https://www.framer.com/partners/",
+    "application_stage": "content_needed",
+    "owner_blocker": "Direct partner payout details if accepted.",
+    "launch_asset": "Landing-page builder comparison content and startup website deal examples."
   },
   {
     "name": "Make Affiliate Program",
@@ -69,7 +84,10 @@
     "next_step": "Apply after adding automation/workflow deal pages.",
     "priority": "medium",
     "url": "https://www.make.com/en/affiliate",
-    "source_url": "https://www.make.com/en/affiliate"
+    "source_url": "https://www.make.com/en/affiliate",
+    "application_stage": "ready",
+    "owner_blocker": "PartnerStack payout account if accepted.",
+    "launch_asset": "Automation/workflow deal pages and AI operations positioning."
   },
   {
     "name": "Pipedream Affiliate Program",
@@ -81,7 +99,10 @@
     "next_step": "Apply after publishing API automation use-case pages.",
     "priority": "medium",
     "url": "https://pipedream.com/affiliates",
-    "source_url": "https://pipedream.com/affiliates"
+    "source_url": "https://pipedream.com/affiliates",
+    "application_stage": "content_needed",
+    "owner_blocker": "Rewardful or direct payout setup if accepted.",
+    "launch_asset": "API automation use-case pages and developer workflow examples."
   },
   {
     "name": "DigitalOcean Referral Program",
@@ -93,6 +114,9 @@
     "next_step": "Use as content value first; do not prioritize for cash revenue.",
     "priority": "medium",
     "url": "https://www.digitalocean.com/referral-program",
-    "source_url": "https://www.digitalocean.com/referral-program"
+    "source_url": "https://www.digitalocean.com/referral-program",
+    "application_stage": "watch",
+    "owner_blocker": "DigitalOcean account/referral reward terms; cash payout may not apply.",
+    "launch_asset": "Cloud credits page and developer infrastructure deal coverage."
   }
 ]

@@ -331,17 +331,23 @@ export default async function AdminPage() {
             <div className="admin-table-head">Category</div>
             <div className="admin-table-head">Network</div>
             <div className="admin-table-head">Commission</div>
+            <div className="admin-table-head">Application</div>
             <div className="admin-table-head">Action</div>
             {affiliatePrograms.map((program) => (
               <div className="admin-table-row" key={program.name}>
                 <div>
                   <strong>{program.name}</strong>
                   <span>{program.fit}</span>
-                  <span>{program.next_step}</span>
+                  <span>Asset: {program.launch_asset}</span>
                 </div>
                 <div>{getCategoryLabel(program.category)}</div>
                 <div>{program.network}</div>
                 <div>{program.commission}</div>
+                <div>
+                  <strong>{program.application_stage.replace("_", " ")}</strong>
+                  <span>{program.owner_blocker}</span>
+                  <span>{program.next_step}</span>
+                </div>
                 <div>
                   <a className="secondary-button" href={program.url} rel="noopener noreferrer" target="_blank">
                     Open
