@@ -7,6 +7,7 @@ Live domain:
 Current hosting:
 
 - Hostinger Node.js Web App
+- Deployment source: GitHub repository `wwlt2002-mark/builder-deals-intel`
 - Framework preset: Next.js
 - Node version: 22.x
 - Build command: `npm run build`
