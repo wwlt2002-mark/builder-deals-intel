@@ -93,6 +93,8 @@ create table outbound_clicks (
   destination_url text not null,
   is_affiliate boolean not null default false,
   affiliate_network text,
+  placement text not null default 'unknown',
+  campaign text,
   referrer text,
   user_agent text,
   created_at timestamptz not null default now()
@@ -117,5 +119,6 @@ create index deals_last_checked_idx on deals(last_checked_at desc);
 create index sources_enabled_idx on sources(enabled);
 create index outbound_clicks_deal_created_idx on outbound_clicks(deal_id, created_at desc);
 create index outbound_clicks_created_idx on outbound_clicks(created_at desc);
+create index outbound_clicks_placement_created_idx on outbound_clicks(placement, created_at desc);
 create index sponsor_leads_status_created_idx on sponsor_leads(status, created_at desc);
 create index subscribers_status_created_idx on subscribers(status, created_at desc);

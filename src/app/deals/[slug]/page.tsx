@@ -56,7 +56,12 @@ export default async function DealPage({ params }: Props) {
             ))}
           </div>
           <div className="hero-actions">
-            <a className="button" href={`/out/${deal.slug}`} rel="nofollow sponsored noopener noreferrer" target="_blank">
+            <a
+              className="button"
+              href={`/out/${deal.slug}?placement=deal_detail_primary`}
+              rel="nofollow sponsored noopener noreferrer"
+              target="_blank"
+            >
               Open deal
             </a>
             <a className="secondary-button" href={deal.source_url} rel="noopener noreferrer" target="_blank">

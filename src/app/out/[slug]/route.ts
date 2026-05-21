@@ -17,6 +17,8 @@ export async function GET(request: NextRequest, { params }: Props) {
   }
 
   const destination = deal.affiliate_url ?? deal.deal_url;
+  const placement = request.nextUrl.searchParams.get("placement") || "deal_detail";
+  const campaign = request.nextUrl.searchParams.get("campaign");
 
   await recordOutboundClick({
     deal_id: deal.id,
@@ -24,6 +26,8 @@ export async function GET(request: NextRequest, { params }: Props) {
     destination_url: destination,
     is_affiliate: deal.is_affiliate,
     affiliate_network: deal.affiliate_network,
+    placement,
+    campaign,
     referrer: request.headers.get("referer"),
     user_agent: request.headers.get("user-agent")
   });

@@ -781,6 +781,11 @@ nav a:hover,
   grid-template-columns: minmax(360px, 1fr) 150px 90px 90px 180px;
 }
 
+.placement-table .admin-table-head,
+.placement-table .admin-table-row {
+  grid-template-columns: minmax(360px, 1fr) 100px 100px 180px;
+}
+
 .subscriber-table .admin-table-head,
 .subscriber-table .admin-table-row {
   grid-template-columns: minmax(360px, 1fr) 130px 130px 180px;

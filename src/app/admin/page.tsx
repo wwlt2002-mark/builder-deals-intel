@@ -2,7 +2,7 @@ import Link from "next/link";
 import { requireAdminPage } from "@/lib/admin";
 import { affiliatePrograms } from "@/lib/affiliate-programs";
 import { getCategoryLabel } from "@/lib/categories";
-import { getClickStats, getTopClickedDeals } from "@/lib/clicks";
+import { getClickStats, getTopClickedDeals, getTopClickPlacements } from "@/lib/clicks";
 import { getAllDeals, getReviewDeals } from "@/lib/deals";
 import { getRevenueReadiness } from "@/lib/revenue";
 import { getSponsorLeads, getSubscriberStats, getSubscribers, getSubmissions } from "@/lib/storage";
@@ -33,6 +33,7 @@ export default async function AdminPage() {
   const subscribers = await getSubscribers(10);
   const clickStats = await getClickStats();
   const topClickedDeals = await getTopClickedDeals();
+  const topClickPlacements = await getTopClickPlacements();
   const publishedDeals = allDeals.filter((deal) => deal.status === "auto_published");
   const affiliateDeals = allDeals.filter((deal) => deal.is_affiliate);
   const queuedSubmissions = submissions.filter((submission) => submission.status === "queued");
@@ -260,6 +261,46 @@ export default async function AdminPage() {
                   <span>Click data appears after users open deal links.</span>
                 </div>
                 <div />
+                <div />
+                <div />
+                <div />
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Placement attribution</h2>
+            <p>Track which page positions produce affiliate and sponsor value.</p>
+          </div>
+        </div>
+        <div className="table-panel">
+          <div className="admin-table placement-table">
+            <div className="admin-table-head">Placement</div>
+            <div className="admin-table-head">Clicks</div>
+            <div className="admin-table-head">Affiliate</div>
+            <div className="admin-table-head">Last click</div>
+            {topClickPlacements.length ? (
+              topClickPlacements.map((placement) => (
+                <div className="admin-table-row" key={placement.placement}>
+                  <div>
+                    <strong>{placement.placement}</strong>
+                    <span>Outbound route attribution</span>
+                  </div>
+                  <div>{placement.clicks}</div>
+                  <div>{placement.affiliate_clicks}</div>
+                  <div>{placement.last_click_at ? new Date(placement.last_click_at).toLocaleString("en-US") : "None"}</div>
+                </div>
+              ))
+            ) : (
+              <div className="admin-table-row">
+                <div>
+                  <strong>No placement clicks yet</strong>
+                  <span>Attribution appears after users open tracked deal links.</span>
+                </div>
                 <div />
                 <div />
                 <div />
