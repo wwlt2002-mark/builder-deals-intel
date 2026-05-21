@@ -1,4 +1,5 @@
 import type { AffiliateProgram } from "./affiliate-programs";
+import { sponsorPackages } from "./sponsor-packages";
 import type { Deal } from "./types";
 
 export type RevenueReadiness = {
@@ -44,7 +45,7 @@ export function getRevenueReadiness(deals: Deal[], programs: AffiliateProgram[])
     applicationReadyPrograms,
     highPriorityPrograms,
     missingAffiliateUrls,
-    sponsoredInventory: ["Newsletter sponsor", "Category feature", "Launch monitoring", "Affiliate partnership"],
+    sponsoredInventory: sponsorPackages.map((sponsorPackage) => sponsorPackage.name),
     payoutSetupNeeded,
     nextMoves
   };

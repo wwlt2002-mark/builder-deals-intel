@@ -1,3 +1,5 @@
+import { sponsorPackages } from "@/lib/sponsor-packages";
+
 export const metadata = {
   title: "Sponsor Builder Deals Intel",
   description: "Reach builders looking for AI tools, SaaS discounts, cloud credits, and developer products."
@@ -47,25 +49,40 @@ export default function SponsorPage({
       </section>
 
       <section className="deal-grid">
-        <div className="panel sponsor-card">
-          <h2>Newsletter sponsor</h2>
-          <strong>$150-$500 test package</strong>
-          <p className="summary">One clearly labeled placement inside the daily Top 10 Deals for Builders brief.</p>
+        {sponsorPackages.map((sponsorPackage) => (
+          <div className="panel sponsor-card" key={sponsorPackage.name}>
+            <h2>{sponsorPackage.name}</h2>
+            <strong>{sponsorPackage.price}</strong>
+            <p className="summary">{sponsorPackage.bestFor}</p>
+          </div>
+        ))}
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Placement specs</h2>
+            <p>Each paid slot has a defined buyer path, required assets, and tracking expectation.</p>
+          </div>
         </div>
-        <div className="panel sponsor-card">
-          <h2>Category feature</h2>
-          <strong>$250-$750 test package</strong>
-          <p className="summary">A verified offer on a relevant category page, with source link and eligibility notes.</p>
-        </div>
-        <div className="panel sponsor-card">
-          <h2>Launch monitoring</h2>
-          <strong>$300-$1,000 per promo window</strong>
-          <p className="summary">We track your official promo page and surface qualifying updates when terms change.</p>
-        </div>
-        <div className="panel sponsor-card">
-          <h2>Affiliate partnership</h2>
-          <strong>CPA or revenue share</strong>
-          <p className="summary">Best fit for SaaS, AI, hosting, cloud, API, and developer products with public terms.</p>
+        <div className="table-panel">
+          <div className="sponsor-spec-table">
+            <div className="sponsor-spec-head">
+              <div>Package</div>
+              <div>Included</div>
+              <div>Reporting</div>
+            </div>
+            {sponsorPackages.map((sponsorPackage) => (
+              <div className="sponsor-spec-row" key={sponsorPackage.name}>
+                <div>
+                  <strong>{sponsorPackage.name}</strong>
+                  <span>{sponsorPackage.price}</span>
+                </div>
+                <div>{sponsorPackage.included}</div>
+                <div>{sponsorPackage.proof}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
