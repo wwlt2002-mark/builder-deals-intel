@@ -89,6 +89,59 @@ export default function SponsorPage() {
           </div>
         </div>
       </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Start a partnership</h2>
+            <p>Send the offer details needed for review. We will not publish hidden or unverifiable terms.</p>
+          </div>
+        </div>
+        <form action="/api/sponsor" className="panel form-grid admin-edit-form" method="post">
+          <div className="form-columns">
+            <div className="field">
+              <label htmlFor="company">Company</label>
+              <input id="company" name="company" required type="text" />
+            </div>
+            <div className="field">
+              <label htmlFor="contact_name">Contact name</label>
+              <input id="contact_name" name="contact_name" type="text" />
+            </div>
+            <div className="field">
+              <label htmlFor="email">Email</label>
+              <input id="email" name="email" required type="email" />
+            </div>
+            <div className="field">
+              <label htmlFor="website">Website or offer URL</label>
+              <input id="website" name="website" type="url" />
+            </div>
+            <div className="field">
+              <label htmlFor="offer_type">Partnership type</label>
+              <select id="offer_type" name="offer_type" defaultValue="affiliate">
+                <option value="affiliate">Affiliate partnership</option>
+                <option value="newsletter">Newsletter sponsor</option>
+                <option value="category">Category feature</option>
+                <option value="monitoring">Launch monitoring</option>
+              </select>
+            </div>
+            <div className="field">
+              <label htmlFor="budget">Budget or CPA terms</label>
+              <input id="budget" name="budget" type="text" placeholder="$500 test, 30% rev share, $80 CPA" />
+            </div>
+          </div>
+          <div className="field">
+            <label htmlFor="message">Offer details</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Product, promo terms, eligibility, region, expiry date, tracking link, and anything users should know."
+            />
+          </div>
+          <button className="button" type="submit">
+            Send partnership request
+          </button>
+        </form>
+      </section>
     </div>
   );
 }

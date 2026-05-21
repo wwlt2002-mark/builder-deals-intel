@@ -96,9 +96,23 @@ create table outbound_clicks (
   created_at timestamptz not null default now()
 );
 
+create table sponsor_leads (
+  id uuid primary key default gen_random_uuid(),
+  company text not null,
+  contact_name text,
+  email text not null,
+  website text,
+  offer_type text not null,
+  budget text,
+  message text,
+  status text not null default 'new',
+  created_at timestamptz not null default now()
+);
+
 create index deals_category_status_idx on deals(category, status);
 create index deals_confidence_idx on deals(confidence_score desc);
 create index deals_last_checked_idx on deals(last_checked_at desc);
 create index sources_enabled_idx on sources(enabled);
 create index outbound_clicks_deal_created_idx on outbound_clicks(deal_id, created_at desc);
 create index outbound_clicks_created_idx on outbound_clicks(created_at desc);
+create index sponsor_leads_status_created_idx on sponsor_leads(status, created_at desc);

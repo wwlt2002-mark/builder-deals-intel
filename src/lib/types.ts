@@ -57,6 +57,19 @@ export type Submission = {
   created_at: string;
 };
 
+export type SponsorLead = {
+  id: string;
+  company: string;
+  contact_name: string | null;
+  email: string;
+  website: string | null;
+  offer_type: string;
+  budget: string | null;
+  message: string | null;
+  status: string;
+  created_at: string;
+};
+
 export type SourceConfig = {
   name: string;
   url: string;

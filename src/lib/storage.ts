@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { getPool, hasDatabase } from "./db";
-import type { Submission } from "./types";
+import type { SponsorLead, Submission } from "./types";
 
 const root = process.cwd();
 
@@ -32,6 +32,19 @@ export type SubscriberRecord = {
   id: string;
   email: string;
   source: string;
+  created_at: string;
+};
+
+export type SponsorLeadRecord = {
+  id: string;
+  company: string;
+  contact_name: string | null;
+  email: string;
+  website: string | null;
+  offer_type: string;
+  budget: string | null;
+  message: string | null;
+  status: "new";
   created_at: string;
 };
 
@@ -114,4 +127,84 @@ export async function updateSubmissionStatus(id: string, status: string) {
   }
 
   await getPool().query("update submissions set status = $2 where id = $1", [id, status]);
+}
+
+export async function appendSponsorLead(record: SponsorLeadRecord) {
+  if (hasDatabase()) {
+    await getPool().query(
+      `insert into sponsor_leads (
+         id,
+         company,
+         contact_name,
+         email,
+         website,
+         offer_type,
+         budget,
+         message,
+         status,
+         created_at
+       ) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+      [
+        record.id,
+        record.company,
+        record.contact_name,
+        record.email,
+        record.website,
+        record.offer_type,
+        record.budget,
+        record.message,
+        record.status,
+        record.created_at
+      ]
+    );
+    return;
+  }
+
+  const leads = await readJsonFile<SponsorLeadRecord[]>("data/sponsor-leads.json", []);
+  leads.unshift(record);
+  await writeJsonFile("data/sponsor-leads.json", leads);
+}
+
+export async function getSponsorLeads(limit = 50): Promise<SponsorLead[]> {
+  if (hasDatabase()) {
+    const result = await getPool().query(
+      `select id,
+              company,
+              contact_name,
+              email,
+              website,
+              offer_type,
+              budget,
+              message,
+              status,
+              created_at
+       from sponsor_leads
+       order by created_at desc
+       limit $1`,
+      [limit]
+    );
+
+    return result.rows.map((row) => ({
+      id: String(row.id),
+      company: String(row.company),
+      contact_name: row.contact_name ? String(row.contact_name) : null,
+      email: String(row.email),
+      website: row.website ? String(row.website) : null,
+      offer_type: String(row.offer_type),
+      budget: row.budget ? String(row.budget) : null,
+      message: row.message ? String(row.message) : null,
+      status: String(row.status),
+      created_at: new Date(String(row.created_at)).toISOString()
+    }));
+  }
+
+  return readJsonFile<SponsorLead[]>("data/sponsor-leads.json", []);
+}
+
+export async function updateSponsorLeadStatus(id: string, status: string) {
+  if (!hasDatabase()) {
+    throw new Error("Database is required to update sponsor leads.");
+  }
+
+  await getPool().query("update sponsor_leads set status = $2 where id = $1", [id, status]);
 }

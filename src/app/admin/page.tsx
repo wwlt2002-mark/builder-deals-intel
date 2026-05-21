@@ -4,7 +4,7 @@ import { affiliatePrograms } from "@/lib/affiliate-programs";
 import { getCategoryLabel } from "@/lib/categories";
 import { getClickStats } from "@/lib/clicks";
 import { getAllDeals, getReviewDeals } from "@/lib/deals";
-import { getSubmissions } from "@/lib/storage";
+import { getSponsorLeads, getSubmissions } from "@/lib/storage";
 import type { DealStatus } from "@/lib/types";
 
 export const metadata = {
@@ -27,10 +27,12 @@ export default async function AdminPage() {
   const allDeals = await getAllDeals();
   const reviewDeals = await getReviewDeals();
   const submissions = await getSubmissions();
+  const sponsorLeads = await getSponsorLeads();
   const clickStats = await getClickStats();
   const publishedDeals = allDeals.filter((deal) => deal.status === "auto_published");
   const affiliateDeals = allDeals.filter((deal) => deal.is_affiliate);
   const queuedSubmissions = submissions.filter((submission) => submission.status === "queued");
+  const newSponsorLeads = sponsorLeads.filter((lead) => lead.status === "new");
 
   return (
     <div className="page">
@@ -71,6 +73,10 @@ export default async function AdminPage() {
         <div className="metric">
           <strong>{clickStats.last24h}</strong>
           <span>clicks in 24h</span>
+        </div>
+        <div className="metric">
+          <strong>{newSponsorLeads.length}</strong>
+          <span>new sponsor leads</span>
         </div>
       </div>
 
@@ -245,6 +251,61 @@ export default async function AdminPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Sponsor leads</h2>
+            <p>Partner requests captured from the public sponsor page.</p>
+          </div>
+        </div>
+        <div className="admin-list">
+          {sponsorLeads.length ? (
+            sponsorLeads.map((lead) => (
+              <article className="admin-row admin-row-wide" key={lead.id}>
+                <div>
+                  <div className="deal-meta">
+                    <span>{lead.status}</span>
+                    <span>{lead.offer_type}</span>
+                    <span>{new Date(lead.created_at).toLocaleString("en-US")}</span>
+                  </div>
+                  <h3>{lead.company}</h3>
+                  <p className="summary">
+                    {lead.email}
+                    {lead.website ? ` · ${lead.website}` : ""}
+                    {lead.budget ? ` · ${lead.budget}` : ""}
+                  </p>
+                  <p className="summary">{lead.message ?? "No message."}</p>
+                </div>
+                <div className="admin-actions">
+                  <form action={`/api/admin/sponsor-leads/${lead.id}`} method="post">
+                    <input name="status" type="hidden" value="contacted" />
+                    <button className="button" type="submit">
+                      Contacted
+                    </button>
+                  </form>
+                  <form action={`/api/admin/sponsor-leads/${lead.id}`} method="post">
+                    <input name="status" type="hidden" value="qualified" />
+                    <button className="secondary-button" type="submit">
+                      Qualified
+                    </button>
+                  </form>
+                  <form action={`/api/admin/sponsor-leads/${lead.id}`} method="post">
+                    <input name="status" type="hidden" value="rejected" />
+                    <button className="secondary-button" type="submit">
+                      Reject
+                    </button>
+                  </form>
+                </div>
+              </article>
+            ))
+          ) : (
+            <div className="panel">
+              <p className="summary">No sponsor leads yet.</p>
+            </div>
+          )}
         </div>
       </section>
     </div>
