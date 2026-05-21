@@ -38,6 +38,13 @@ export default function AffiliateDisclosurePage() {
           </p>
         </div>
         <div className="panel">
+          <h2>Tracking</h2>
+          <p className="summary">
+            Outbound commercial links may pass through a first-party tracking route so we can measure clicks by page
+            placement, affiliate network, and sponsorship campaign.
+          </p>
+        </div>
+        <div className="panel">
           <h2>Rejections</h2>
           <p className="summary">
             We reject hidden terms, unverifiable token offers, misleading lifetime deals, and claims that cannot be

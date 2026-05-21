@@ -50,6 +50,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/newsletter/archive">Brief Archive</Link>
             <Link href="/best-ai-deals">AI Deals</Link>
             <Link href="/free-cloud-credits">Cloud Credits</Link>
+            <Link href="/media-kit">Media Kit</Link>
+            <Link href="/advertise">Advertise</Link>
             <Link href="/affiliate-disclosure">Disclosure</Link>
             <Link href="/privacy">Privacy</Link>
           </div>
