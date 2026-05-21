@@ -34,8 +34,9 @@ export default async function AdminPage() {
   const clickStats = await getClickStats();
   const topClickedDeals = await getTopClickedDeals();
   const topClickPlacements = await getTopClickPlacements();
+  const operationalDeals = allDeals.filter((deal) => deal.status !== "rejected");
   const publishedDeals = allDeals.filter((deal) => deal.status === "auto_published");
-  const affiliateDeals = allDeals.filter((deal) => deal.is_affiliate);
+  const affiliateDeals = operationalDeals.filter((deal) => deal.is_affiliate);
   const queuedSubmissions = submissions.filter((submission) => submission.status === "queued");
   const newSponsorLeads = sponsorLeads.filter((lead) => lead.status === "new");
   const revenueReadiness = getRevenueReadiness(allDeals, affiliatePrograms);
@@ -197,7 +198,7 @@ export default async function AdminPage() {
         <div className="section-head">
           <div>
             <h2>All tracked deals</h2>
-            <p>Keep affiliate status, expiration, and confidence aligned with reality.</p>
+            <p>Keep active operational listings aligned with source, affiliate, expiration, and confidence reality.</p>
           </div>
         </div>
         <div className="table-panel">
@@ -207,7 +208,7 @@ export default async function AdminPage() {
             <div className="admin-table-head">Status</div>
             <div className="admin-table-head">Affiliate</div>
             <div className="admin-table-head">Action</div>
-            {allDeals.map((deal) => (
+            {operationalDeals.map((deal) => (
               <div className="admin-table-row" key={deal.id}>
                 <div>
                   <strong>{deal.title}</strong>

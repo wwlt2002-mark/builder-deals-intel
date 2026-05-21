@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { categories } from "@/lib/categories";
-import { getAllDeals } from "@/lib/deals";
+import { getPublishedDeals } from "@/lib/deals";
 import { moneyPages } from "@/lib/money-pages";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -29,7 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date()
   }));
 
-  const dealRoutes = (await getAllDeals()).map((deal) => ({
+  const dealRoutes = (await getPublishedDeals()).map((deal) => ({
     url: `${siteUrl}/deals/${deal.slug}`,
     lastModified: new Date(deal.last_checked_at)
   }));
