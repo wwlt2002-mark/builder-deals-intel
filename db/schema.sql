@@ -1,3 +1,5 @@
+create extension if not exists pgcrypto;
+
 create type deal_category as enum (
   'ai_tools',
   'saas',
@@ -51,6 +53,7 @@ create table submissions (
   id uuid primary key default gen_random_uuid(),
   submitted_url text not null,
   submitter_email text,
+  relationship text not null default 'reader',
   submitter_note text,
   generated_deal_id uuid references deals(id),
   status text not null default 'queued',

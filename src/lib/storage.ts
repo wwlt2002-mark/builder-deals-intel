@@ -37,9 +37,17 @@ export type SubscriberRecord = {
 export async function appendSubmission(record: SubmissionRecord) {
   if (hasDatabase()) {
     await getPool().query(
-      `insert into submissions (id, submitted_url, submitter_email, submitter_note, status, created_at)
-       values ($1, $2, $3, $4, $5, $6)`,
-      [record.id, record.submitted_url, record.submitter_email, record.submitter_note, record.status, record.created_at]
+      `insert into submissions (id, submitted_url, submitter_email, relationship, submitter_note, status, created_at)
+       values ($1, $2, $3, $4, $5, $6, $7)`,
+      [
+        record.id,
+        record.submitted_url,
+        record.submitter_email,
+        record.relationship,
+        record.submitter_note,
+        record.status,
+        record.created_at
+      ]
     );
     return;
   }
