@@ -13,7 +13,7 @@ export async function GET(request: NextRequest, { params }: Props) {
   const deal = await getDealBySlug(slug);
 
   if (!deal || deal.status !== "auto_published") {
-    return NextResponse.redirect(new URL("/", request.url), 302);
+    return NextResponse.redirect(new URL("/", process.env.NEXT_PUBLIC_SITE_URL ?? request.nextUrl.origin), 302);
   }
 
   const destination = deal.affiliate_url ?? deal.deal_url;
