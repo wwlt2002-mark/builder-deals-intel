@@ -34,6 +34,11 @@ export default async function AdminPage() {
       <section className="page-title">
         <h1>Operations desk.</h1>
         <p>Review risky listings, attach affiliate URLs, and keep the daily deal feed clean enough to trust.</p>
+        <div className="hero-actions">
+          <Link className="button" href="/admin/deals/new">
+            Add deal
+          </Link>
+        </div>
       </section>
       <div className="metric-row">
         <div className="metric">
