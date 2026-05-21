@@ -61,9 +61,19 @@ export default async function NewsletterPage({
                 <p className="summary">{deal.discount_summary}</p>
               </div>
               <span className="status-published">{deal.confidence_score}%</span>
-              <a className="secondary-button" href={deal.source_url} rel="noopener noreferrer" target="_blank">
-                Source
-              </a>
+              <div className="admin-actions">
+                <a
+                  className="button"
+                  href={`/out/${deal.slug}?placement=newsletter_preview`}
+                  rel="nofollow sponsored noopener noreferrer"
+                  target="_blank"
+                >
+                  Open deal
+                </a>
+                <a className="secondary-button" href={deal.source_url} rel="noopener noreferrer" target="_blank">
+                  Source
+                </a>
+              </div>
             </article>
           ))}
         </div>

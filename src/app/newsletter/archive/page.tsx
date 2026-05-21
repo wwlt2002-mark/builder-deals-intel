@@ -40,6 +40,14 @@ export default async function NewsletterArchivePage() {
                 <p className="summary">{deal.ai_summary}</p>
               </div>
               <div className="admin-actions">
+                <a
+                  className="button"
+                  href={`/out/${deal.slug}?placement=newsletter_archive`}
+                  rel="nofollow sponsored noopener noreferrer"
+                  target="_blank"
+                >
+                  Open deal
+                </a>
                 <Link className="secondary-button" href={`/deals/${deal.slug}`}>
                   Inspect
                 </Link>
