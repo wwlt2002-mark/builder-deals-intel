@@ -30,4 +30,16 @@ Recommended cron schedule:
 - 09:00 Europe/London
 - 18:00 America/New_York
 
+Run this command for each scheduled job:
+
+```bash
+npm run daily:ops
+```
+
+The job order is:
+
+1. Expire past-due deals.
+2. Ingest monitored sources.
+3. Generate the newsletter draft from current published deals.
+
 The newsletter should only include `auto_published` deals with confidence scores of 85 or higher.

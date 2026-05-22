@@ -11,7 +11,8 @@
     "db:apply": "node scripts/apply-db.mjs",
     "ingest": "node scripts/ingest-feeds.mjs",
     "expire": "node scripts/expire-deals.mjs",
-    "newsletter": "node scripts/generate-newsletter.mjs"
+    "newsletter": "node scripts/generate-newsletter.mjs",
+    "daily:ops": "node scripts/daily-ops.mjs"
   },
   "dependencies": {
     "@types/node": "^22.15.21",
