@@ -13,7 +13,7 @@ export async function GET(request: NextRequest, { params }: Props) {
   const deal = await getDealBySlug(slug);
 
   if (!deal || deal.status !== "auto_published") {
-    return NextResponse.redirect(new URL("/", process.env.NEXT_PUBLIC_SITE_URL ?? request.nextUrl.origin), 302);
+    return noIndexRedirect(new URL("/", process.env.NEXT_PUBLIC_SITE_URL ?? request.nextUrl.origin));
   }
 
   const destination = deal.affiliate_url ?? deal.deal_url;
@@ -32,5 +32,12 @@ export async function GET(request: NextRequest, { params }: Props) {
     user_agent: request.headers.get("user-agent")
   });
 
-  return NextResponse.redirect(destination, 302);
+  return noIndexRedirect(destination);
+}
+
+function noIndexRedirect(destination: string | URL) {
+  const response = NextResponse.redirect(destination, 302);
+  response.headers.set("X-Robots-Tag", "noindex, nofollow");
+  response.headers.set("Cache-Control", "no-store");
+  return response;
 }
