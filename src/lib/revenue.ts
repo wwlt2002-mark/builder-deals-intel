@@ -9,6 +9,7 @@ export type RevenueReadiness = {
   missingAffiliateUrls: number;
   sponsoredInventory: string[];
   payoutSetupNeeded: string[];
+  ownerInterventions: string[];
   nextMoves: string[];
 };
 
@@ -31,6 +32,13 @@ export function getRevenueReadiness(deals: Deal[], programs: AffiliateProgram[])
         .filter((payout) => /required|minimum|account/i.test(payout))
     )
   ).slice(0, 4);
+  const ownerInterventions = Array.from(
+    new Set(
+      programs
+        .filter((program) => program.application_stage === "ready")
+        .map((program) => `${program.name}: ${program.owner_blocker}`)
+    )
+  );
 
   const nextMoves = [
     "Apply to the high-priority programs once payout account details are available.",
@@ -45,6 +53,7 @@ export function getRevenueReadiness(deals: Deal[], programs: AffiliateProgram[])
     missingAffiliateUrls,
     sponsoredInventory: sponsorPackages.map((sponsorPackage) => sponsorPackage.name),
     payoutSetupNeeded,
+    ownerInterventions,
     nextMoves
   };
 }

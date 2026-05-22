@@ -780,6 +780,15 @@ nav a:hover,
   padding: 16px;
 }
 
+.owner-blocker-panel {
+  margin-top: 14px;
+}
+
+.owner-blocker-table .admin-table-head,
+.owner-blocker-table .admin-table-row {
+  grid-template-columns: minmax(360px, 1fr) minmax(360px, 1fr);
+}
+
 .admin-table {
   display: grid;
   min-width: 860px;

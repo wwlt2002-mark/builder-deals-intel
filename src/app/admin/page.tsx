@@ -136,6 +136,21 @@ export default async function AdminPage() {
             </div>
           </div>
         </div>
+        <div className="table-panel owner-blocker-panel">
+          <div className="admin-table owner-blocker-table">
+            <div className="admin-table-head">Owner intervention queue</div>
+            <div className="admin-table-head">Why it matters</div>
+            {revenueReadiness.ownerInterventions.map((item) => (
+              <div className="admin-table-row" key={item}>
+                <div>
+                  <strong>{item.split(": ")[0]}</strong>
+                  <span>{item.split(": ").slice(1).join(": ")}</span>
+                </div>
+                <div>Needed only when the affiliate platform asks for payout, tax, identity, or account verification.</div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section>
