@@ -123,6 +123,25 @@ async function upsertToDatabase(candidates) {
 
   await client.connect();
   try {
+    for (const source of sources) {
+      await client.query(
+        `insert into sources (
+           name,
+           url,
+           category,
+           source_type,
+           auto_publish_threshold,
+           enabled
+         ) values ($1, $2, $3, $4, $5, true)
+         on conflict (url) do update
+         set name = excluded.name,
+             category = excluded.category,
+             source_type = excluded.source_type,
+             auto_publish_threshold = excluded.auto_publish_threshold`,
+        [source.name, source.url, source.category, source.source_type, source.auto_publish_threshold]
+      );
+    }
+
     for (const deal of candidates) {
       await client.query(
         `insert into deals (

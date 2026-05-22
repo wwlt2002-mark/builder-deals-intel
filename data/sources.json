@@ -21,6 +21,153 @@
     "auto_publish_threshold": 85
   },
   {
+    "name": "Vercel Pricing",
+    "url": "https://vercel.com/pricing",
+    "category": "hosting",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "Netlify Pricing",
+    "url": "https://www.netlify.com/pricing/",
+    "category": "hosting",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "Render Pricing",
+    "url": "https://render.com/pricing",
+    "category": "hosting",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "Railway Pricing",
+    "url": "https://railway.com/pricing",
+    "category": "hosting",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "Supabase Pricing",
+    "url": "https://supabase.com/pricing",
+    "category": "developer_tools",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "Neon Pricing",
+    "url": "https://neon.com/pricing",
+    "category": "developer_tools",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "PlanetScale Pricing",
+    "url": "https://planetscale.com/pricing",
+    "category": "developer_tools",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "Resend Pricing",
+    "url": "https://resend.com/pricing",
+    "category": "developer_tools",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "PostHog Pricing",
+    "url": "https://posthog.com/pricing",
+    "category": "developer_tools",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "Sentry Pricing",
+    "url": "https://sentry.io/pricing/",
+    "category": "developer_tools",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "Clerk Pricing",
+    "url": "https://clerk.com/pricing",
+    "category": "developer_tools",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "Stripe Pricing",
+    "url": "https://stripe.com/pricing",
+    "category": "saas",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "beehiiv Pricing",
+    "url": "https://www.beehiiv.com/pricing",
+    "category": "saas",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "Make Pricing",
+    "url": "https://www.make.com/en/pricing",
+    "category": "saas",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "Zapier Pricing",
+    "url": "https://zapier.com/pricing",
+    "category": "saas",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "Notion Pricing",
+    "url": "https://www.notion.com/pricing",
+    "category": "saas",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "Framer Pricing",
+    "url": "https://www.framer.com/pricing/",
+    "category": "saas",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "Canva Pricing",
+    "url": "https://www.canva.com/pricing/",
+    "category": "saas",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "DigitalOcean Pricing",
+    "url": "https://www.digitalocean.com/pricing",
+    "category": "cloud_credits",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "AWS Free Tier",
+    "url": "https://aws.amazon.com/free/",
+    "category": "cloud_credits",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
+    "name": "Azure Free Account",
+    "url": "https://azure.microsoft.com/free/",
+    "category": "cloud_credits",
+    "source_type": "official",
+    "auto_publish_threshold": 85
+  },
+  {
     "name": "AppSumo",
     "url": "https://appsumo.com/",
     "category": "saas",
