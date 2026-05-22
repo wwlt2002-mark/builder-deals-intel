@@ -26,15 +26,13 @@ function classifySource(source) {
   }[source.source_type];
 
   const confidence = Math.min(100, baseScore + (source.source_type === "official" ? 6 : 0));
-  const status = confidence >= source.auto_publish_threshold ? "auto_published" : "needs_review";
-
   return {
     source: source.name,
     url: source.url,
     category: source.category,
     source_type: source.source_type,
     confidence,
-    status
+    status: "needs_review"
   };
 }
 
@@ -67,8 +65,6 @@ function inferRiskTags(source) {
 function buildDealCandidate(source) {
   const classified = classifySource(source);
   const riskTags = inferRiskTags(source);
-  const status =
-    classified.status === "auto_published" && !riskTags.includes("needs-review") ? "auto_published" : "needs_review";
   const hash = crypto.createHash("sha1").update(source.url).digest("hex").slice(0, 8);
   const productName = source.name.replace(/\s+(Pricing|Program|Pack)$/i, "");
 
@@ -98,7 +94,7 @@ function buildDealCandidate(source) {
       source.source_type === "official"
         ? `Official source monitored for current ${source.category.replace("_", " ")} offers. Publishable when price, eligibility, and billing terms are clear.`
         : `Community or marketplace source monitored for possible offers. Keep items in review until a specific official deal page is verified.`,
-    status,
+    status: classified.status,
     last_checked_at: new Date().toISOString()
   };
 }

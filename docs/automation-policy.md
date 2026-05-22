@@ -10,6 +10,7 @@ Deals can publish automatically when all of these are true:
 - No token, crypto, airdrop, price-anomaly, or needs-review risk tag.
 - Price, eligibility, source URL, and deal URL are present.
 - AI extraction uses only facts from the source page.
+- Generic monitored-source placeholders must stay in review until a specific offer has been extracted and verified.
 
 ## Review required
 
