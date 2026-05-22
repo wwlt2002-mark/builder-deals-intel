@@ -378,6 +378,44 @@ nav a:hover,
   font-size: 13px;
 }
 
+.completion-panel {
+  display: grid;
+  gap: 18px;
+  padding: 22px;
+}
+
+.completion-score {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.completion-score strong {
+  color: var(--ink);
+  font-size: 46px;
+  line-height: 1;
+}
+
+.completion-score span {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.completion-bar {
+  background: rgba(16, 24, 39, 0.08);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  height: 14px;
+  overflow: hidden;
+}
+
+.completion-bar span {
+  background: linear-gradient(90deg, var(--accent), var(--cyan));
+  display: block;
+  height: 100%;
+}
+
 .signal-console .metric span {
   color: #a7bab3;
 }

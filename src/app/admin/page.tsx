@@ -4,6 +4,7 @@ import { affiliatePrograms } from "@/lib/affiliate-programs";
 import { applicationCopy } from "@/lib/application-copy";
 import { getCategoryLabel } from "@/lib/categories";
 import { getClickStats, getTopClickedDeals, getTopClickPlacements } from "@/lib/clicks";
+import { getCompletionAssessment } from "@/lib/completion";
 import { getAllDeals, getReviewDeals } from "@/lib/deals";
 import { getRevenueReadiness } from "@/lib/revenue";
 import { getMonitoredSources, getSourceHealth } from "@/lib/sources";
@@ -49,6 +50,13 @@ export default async function AdminPage({
   const newSponsorLeads = sponsorLeads.filter((lead) => lead.status === "new");
   const revenueReadiness = getRevenueReadiness(allDeals, affiliatePrograms);
   const sourceHealth = getSourceHealth(sources);
+  const completion = getCompletionAssessment({
+    deals: allDeals,
+    subscribers,
+    sponsorLeads,
+    affiliatePrograms,
+    enabledSources: sourceHealth.enabled
+  });
 
   return (
     <div className="page">
@@ -113,6 +121,38 @@ export default async function AdminPage({
           <span>sources stale 24h</span>
         </div>
       </div>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Completion meter</h2>
+            <p>Current distance to a polished, revenue-capable operating system.</p>
+          </div>
+        </div>
+        <div className="table-panel completion-panel">
+          <div className="completion-score">
+            <strong>{completion.percent}%</strong>
+            <span>{completion.reason}</span>
+          </div>
+          <div className="completion-bar" aria-label={`${completion.percent}% complete`}>
+            <span style={{ width: `${completion.percent}%` }} />
+          </div>
+          <div className="policy-grid">
+            <div>
+              <strong>Working</strong>
+              <span>{completion.strengths.join(" ")}</span>
+            </div>
+            <div>
+              <strong>Still missing</strong>
+              <span>{completion.gaps.join(" ")}</span>
+            </div>
+            <div>
+              <strong>Next lift</strong>
+              <span>Affiliate approvals, Resend key, real subscribers, and production AI extraction move this past 80%.</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section>
         <div className="section-head">
