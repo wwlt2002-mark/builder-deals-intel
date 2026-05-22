@@ -23,6 +23,7 @@ Optional next environment variables:
 - `DATABASE_URL=<postgres connection string>`
 - `OPENAI_API_KEY=<ai extraction key>`
 - `RESEND_API_KEY=<newsletter sending key>`
+- `NEWSLETTER_FROM_EMAIL=Builder Deals Intel <brief@builderdealintel.com>`
 
 Redeploy process before GitHub auto-deploy is connected:
 

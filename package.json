@@ -12,6 +12,7 @@
     "ingest": "node scripts/ingest-feeds.mjs",
     "expire": "node scripts/expire-deals.mjs",
     "newsletter": "node scripts/generate-newsletter.mjs",
+    "newsletter:send": "node scripts/send-newsletter.mjs",
     "daily:ops": "node scripts/daily-ops.mjs"
   },
   "dependencies": {

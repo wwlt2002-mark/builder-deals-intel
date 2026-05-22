@@ -44,3 +44,19 @@ The job order is:
 3. Generate the newsletter draft from current published deals.
 
 The newsletter should only include `auto_published` deals with confidence scores of 85 or higher.
+
+## Newsletter sending
+
+Generate a draft first:
+
+```bash
+npm run newsletter
+```
+
+Send through Resend only after `RESEND_API_KEY`, `DATABASE_URL`, and `NEWSLETTER_FROM_EMAIL` are configured:
+
+```bash
+npm run newsletter:send
+```
+
+If `RESEND_API_KEY` is missing, the send script exits as a dry run and does not contact subscribers.
