@@ -244,3 +244,22 @@ export async function updateDealStatus(id: string, status: DealStatus) {
     [id, status]
   );
 }
+
+export async function expirePastDeals() {
+  if (!hasDatabase()) {
+    return { expired: 0 };
+  }
+
+  const result = await getPool().query(
+    `update deals
+     set status = 'expired',
+         updated_at = now(),
+         last_checked_at = now()
+     where status in ('draft', 'auto_published', 'needs_review')
+       and expires_at is not null
+       and expires_at <= now()
+     returning id`
+  );
+
+  return { expired: result.rowCount ?? 0 };
+}

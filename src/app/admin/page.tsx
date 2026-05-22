@@ -23,8 +23,13 @@ const statusLabels: Record<DealStatus, string> = {
   expired: "Expired"
 };
 
-export default async function AdminPage() {
+export default async function AdminPage({
+  searchParams
+}: {
+  searchParams?: Promise<{ expired?: string }>;
+}) {
   await requireAdminPage();
+  const params = searchParams ? await searchParams : {};
 
   const allDeals = await getAllDeals();
   const reviewDeals = await getReviewDeals();
@@ -52,6 +57,7 @@ export default async function AdminPage() {
             Add deal
           </Link>
         </div>
+        {params.expired ? <p className="summary">Expiry check complete. {params.expired} deals were marked expired.</p> : null}
       </section>
       <div className="metric-row">
         <div className="metric">
@@ -151,6 +157,30 @@ export default async function AdminPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Maintenance</h2>
+            <p>Run low-risk housekeeping jobs before publishing or sending briefs.</p>
+          </div>
+        </div>
+        <div className="admin-list">
+          <article className="admin-row admin-row-wide">
+            <div>
+              <h3>Expire past-due deals</h3>
+              <p className="summary">Marks any published, draft, or review deal as expired when its expiration date has passed.</p>
+            </div>
+            <div className="admin-actions">
+              <form action="/api/admin/maintenance/expire-deals" method="post">
+                <button className="button" type="submit">
+                  Run expiry check
+                </button>
+              </form>
+            </div>
+          </article>
         </div>
       </section>
 

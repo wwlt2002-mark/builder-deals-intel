@@ -10,6 +10,7 @@
     "lint": "next lint",
     "db:apply": "node scripts/apply-db.mjs",
     "ingest": "node scripts/ingest-feeds.mjs",
+    "expire": "node scripts/expire-deals.mjs",
     "newsletter": "node scripts/generate-newsletter.mjs"
   },
   "dependencies": {
