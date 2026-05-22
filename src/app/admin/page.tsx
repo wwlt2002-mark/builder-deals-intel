@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { requireAdminPage } from "@/lib/admin";
 import { affiliatePrograms } from "@/lib/affiliate-programs";
+import { applicationCopy } from "@/lib/application-copy";
 import { getCategoryLabel } from "@/lib/categories";
 import { getClickStats, getTopClickedDeals, getTopClickPlacements } from "@/lib/clicks";
 import { getAllDeals, getReviewDeals } from "@/lib/deals";
@@ -147,6 +148,30 @@ export default async function AdminPage() {
                   <span>{item.split(": ").slice(1).join(": ")}</span>
                 </div>
                 <div>Needed only when the affiliate platform asks for payout, tax, identity, or account verification.</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Application copy bank</h2>
+            <p>Reusable answers for affiliate program forms. Keep traffic claims conservative until data exists.</p>
+          </div>
+        </div>
+        <div className="table-panel">
+          <div className="admin-table application-copy-table">
+            <div className="admin-table-head">Field</div>
+            <div className="admin-table-head">Answer</div>
+            {applicationCopy.map((item) => (
+              <div className="admin-table-row" key={item.label}>
+                <div>
+                  <strong>{item.label}</strong>
+                  <span>Ready for application forms</span>
+                </div>
+                <div>{item.value}</div>
               </div>
             ))}
           </div>

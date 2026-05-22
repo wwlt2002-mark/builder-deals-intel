@@ -789,6 +789,11 @@ nav a:hover,
   grid-template-columns: minmax(360px, 1fr) minmax(360px, 1fr);
 }
 
+.application-copy-table .admin-table-head,
+.application-copy-table .admin-table-row {
+  grid-template-columns: 220px minmax(560px, 1fr);
+}
+
 .admin-table {
   display: grid;
   min-width: 860px;
