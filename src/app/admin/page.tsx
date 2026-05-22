@@ -6,6 +6,7 @@ import { getCategoryLabel } from "@/lib/categories";
 import { getClickStats, getTopClickedDeals, getTopClickPlacements } from "@/lib/clicks";
 import { getAllDeals, getReviewDeals } from "@/lib/deals";
 import { getRevenueReadiness } from "@/lib/revenue";
+import { getMonitoredSources, getSourceHealth } from "@/lib/sources";
 import { getSponsorLeads, getSubscriberStats, getSubscribers, getSubmissions } from "@/lib/storage";
 import type { DealStatus } from "@/lib/types";
 
@@ -35,6 +36,7 @@ export default async function AdminPage({
   const reviewDeals = await getReviewDeals();
   const submissions = await getSubmissions();
   const sponsorLeads = await getSponsorLeads();
+  const sources = await getMonitoredSources();
   const subscriberStats = await getSubscriberStats();
   const subscribers = await getSubscribers(10);
   const clickStats = await getClickStats();
@@ -46,6 +48,7 @@ export default async function AdminPage({
   const queuedSubmissions = submissions.filter((submission) => submission.status === "queued");
   const newSponsorLeads = sponsorLeads.filter((lead) => lead.status === "new");
   const revenueReadiness = getRevenueReadiness(allDeals, affiliatePrograms);
+  const sourceHealth = getSourceHealth(sources);
 
   return (
     <div className="page">
@@ -99,6 +102,14 @@ export default async function AdminPage({
         <div className="metric">
           <strong>{subscriberStats.last7d}</strong>
           <span>subscribers in 7d</span>
+        </div>
+        <div className="metric">
+          <strong>{sourceHealth.enabled}</strong>
+          <span>enabled sources</span>
+        </div>
+        <div className="metric">
+          <strong>{sourceHealth.stale}</strong>
+          <span>sources stale 24h</span>
         </div>
       </div>
 
@@ -181,6 +192,36 @@ export default async function AdminPage({
               </form>
             </div>
           </article>
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Source monitor</h2>
+            <p>Track whether the crawler is checking official and community sources often enough.</p>
+          </div>
+        </div>
+        <div className="table-panel">
+          <div className="admin-table source-table">
+            <div className="admin-table-head">Source</div>
+            <div className="admin-table-head">Category</div>
+            <div className="admin-table-head">Type</div>
+            <div className="admin-table-head">Threshold</div>
+            <div className="admin-table-head">Last checked</div>
+            {sources.map((source) => (
+              <div className="admin-table-row" key={source.url}>
+                <div>
+                  <strong>{source.name}</strong>
+                  <span>{source.url}</span>
+                </div>
+                <div>{getCategoryLabel(source.category)}</div>
+                <div>{source.source_type.replace("_", " ")}</div>
+                <div>{source.auto_publish_threshold}%</div>
+                <div>{source.last_checked_at ? new Date(source.last_checked_at).toLocaleString("en-US") : "Never"}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
