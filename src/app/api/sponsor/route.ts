@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { honeypotFilled } from "@/lib/forms";
+import { rateLimit, rateLimitResponse } from "@/lib/rate-limit";
 import { appendSponsorLead } from "@/lib/storage";
 
 export const runtime = "nodejs";
@@ -14,6 +15,12 @@ function optional(form: FormData, name: string) {
 }
 
 export async function POST(request: Request) {
+  const limit = rateLimit(request, "sponsor", 5, 60 * 60 * 1000);
+
+  if (limit.limited) {
+    return rateLimitResponse(limit.resetAt);
+  }
+
   const form = await request.formData();
 
   if (honeypotFilled(form, ["company_website"])) {
