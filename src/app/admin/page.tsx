@@ -28,7 +28,7 @@ const statusLabels: Record<DealStatus, string> = {
 export default async function AdminPage({
   searchParams
 }: {
-  searchParams?: Promise<{ expired?: string; ingested?: string }>;
+  searchParams?: Promise<{ expired?: string; ingested?: string; daily?: string }>;
 }) {
   await requireAdminPage();
   const params = searchParams ? await searchParams : {};
@@ -70,6 +70,7 @@ export default async function AdminPage({
         </div>
         {params.expired ? <p className="summary">Expiry check complete. {params.expired} deals were marked expired.</p> : null}
         {params.ingested ? <p className="summary">Source ingest complete. {params.ingested} candidates were checked.</p> : null}
+        {params.daily ? <p className="summary">Daily ops complete. {params.daily} source candidates were checked.</p> : null}
       </section>
       <div className="metric-row">
         <div className="metric">
@@ -242,6 +243,19 @@ export default async function AdminPage({
               <form action="/api/admin/maintenance/ingest-sources" method="post">
                 <button className="button" type="submit">
                   Run source ingest
+                </button>
+              </form>
+            </div>
+          </article>
+          <article className="admin-row admin-row-wide">
+            <div>
+              <h3>Run daily operating loop</h3>
+              <p className="summary">Expires past-due deals, ingests monitored sources, and refreshes the admin readiness snapshot.</p>
+            </div>
+            <div className="admin-actions">
+              <form action="/api/admin/maintenance/daily-ops" method="post">
+                <button className="button" type="submit">
+                  Run daily ops
                 </button>
               </form>
             </div>
