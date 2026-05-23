@@ -58,7 +58,8 @@ export default async function AdminPage({
     sponsorLeads,
     affiliatePrograms,
     enabledSources: sourceHealth.enabled,
-    moneyPages: moneyPages.length
+    moneyPages: moneyPages.length,
+    aiExtractionReady: true
   });
 
   return (
@@ -520,9 +521,20 @@ export default async function AdminPage({
                   {submission.submitter_email ? <p className="summary">{submission.submitter_email}</p> : null}
                 </div>
                 <div className="admin-actions">
+                  {submission.generated_deal_id ? (
+                    <Link className="secondary-button" href={`/admin/deals/${submission.generated_deal_id}`}>
+                      Draft
+                    </Link>
+                  ) : (
+                    <form action={`/api/admin/submissions/${submission.id}/extract`} method="post">
+                      <button className="button" type="submit">
+                        AI draft
+                      </button>
+                    </form>
+                  )}
                   <form action={`/api/admin/submissions/${submission.id}`} method="post">
                     <input name="status" type="hidden" value="reviewed" />
-                    <button className="button" type="submit">
+                    <button className="secondary-button" type="submit">
                       Reviewed
                     </button>
                   </form>

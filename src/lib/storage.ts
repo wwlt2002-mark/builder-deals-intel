@@ -194,12 +194,61 @@ export async function getSubmissions(limit = 50): Promise<Submission[]> {
   return readJsonFile<Submission[]>("data/submissions.json", []);
 }
 
+export async function getSubmissionById(id: string): Promise<Submission | null> {
+  if (hasDatabase()) {
+    const result = await getPool().query(
+      `select id,
+              submitted_url,
+              submitter_email,
+              relationship,
+              submitter_note,
+              generated_deal_id,
+              status,
+              created_at
+       from submissions
+       where id = $1
+       limit 1`,
+      [id]
+    );
+    const row = result.rows[0];
+
+    if (!row) {
+      return null;
+    }
+
+    return {
+      id: String(row.id),
+      submitted_url: String(row.submitted_url),
+      submitter_email: row.submitter_email ? String(row.submitter_email) : null,
+      relationship: String(row.relationship ?? "reader"),
+      submitter_note: row.submitter_note ? String(row.submitter_note) : null,
+      generated_deal_id: row.generated_deal_id ? String(row.generated_deal_id) : null,
+      status: String(row.status),
+      created_at: new Date(String(row.created_at)).toISOString()
+    };
+  }
+
+  const submissions = await readJsonFile<Submission[]>("data/submissions.json", []);
+  return submissions.find((submission) => submission.id === id) ?? null;
+}
+
 export async function updateSubmissionStatus(id: string, status: string) {
   if (!hasDatabase()) {
     throw new Error("Database is required to update submissions.");
   }
 
   await getPool().query("update submissions set status = $2 where id = $1", [id, status]);
+}
+
+export async function attachGeneratedDealToSubmission(id: string, dealId: string) {
+  if (!hasDatabase()) {
+    throw new Error("Database is required to attach generated deals.");
+  }
+
+  await getPool().query(
+    "update submissions set generated_deal_id = $2, status = 'reviewed' where id = $1",
+    [id, dealId]
+  );
 }
 
 export async function appendSponsorLead(record: SponsorLeadRecord) {

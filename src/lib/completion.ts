@@ -15,6 +15,7 @@ export function getCompletionAssessment(input: {
   affiliatePrograms: AffiliateProgram[];
   enabledSources: number;
   moneyPages?: number;
+  aiExtractionReady?: boolean;
 }) {
   const publishedDeals = input.deals.filter((deal) => deal.status === "auto_published");
   const reviewDeals = input.deals.filter((deal) => deal.status === "needs_review");
@@ -31,13 +32,16 @@ export function getCompletionAssessment(input: {
   if (input.subscribers.length > 0) percent += 4;
   if (affiliateLinks.length > 0) percent += 7;
   if ((input.moneyPages ?? 0) >= 5) percent += 3;
+  if (input.aiExtractionReady) percent += 2;
 
   percent = Math.min(percent, 88);
 
   const gaps = [
     affiliateLinks.length ? "" : "no live approved affiliate tracking links",
     input.subscribers.length ? "" : "newsletter has no active subscriber base yet",
-    "AI extraction of specific limited-time offers still needs production hardening"
+    input.aiExtractionReady
+      ? "AI extraction is wired, but output quality still needs production monitoring"
+      : "AI extraction of specific limited-time offers still needs production hardening"
   ].filter(Boolean);
 
   const strengths = [
