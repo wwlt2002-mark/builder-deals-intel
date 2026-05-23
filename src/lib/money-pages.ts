@@ -90,6 +90,76 @@ export const moneyPages: MoneyPage[] = [
     }
   },
   {
+    slug: "hosting-deals",
+    title: "Hosting Deals, Domain Discounts, and Launch Infrastructure Offers",
+    description:
+      "Verified hosting, domain, email, CDN, and deployment offers for builders launching sites, apps, and client projects.",
+    category: "hosting",
+    intent: ["hosting deals", "domain discounts", "startup website stack", "deployment offers"],
+    evaluation: [
+      "Renewal price and first-year pricing must be separated when visible.",
+      "Free domain, email, CDN, and backup terms are labeled instead of treated as guaranteed.",
+      "Hosting affiliate links need source-backed pricing and clear disclosure before promotion."
+    ],
+    faqs: [
+      {
+        question: "Are first-year hosting discounts safe to compare?",
+        answer:
+          "They are useful, but renewal pricing can change the real cost. We label first-term pricing, renewal risk, and bundled extras when the source shows them."
+      },
+      {
+        question: "Do hosting deals include domains?",
+        answer:
+          "Yes. Domain, email, SSL, CDN, and migration extras can be listed when they are part of a hosting or launch bundle."
+      },
+      {
+        question: "Why is hosting a priority category?",
+        answer:
+          "Hosting has strong buyer intent, clear affiliate economics, and a practical fit for founders and builders who need to launch quickly."
+      }
+    ],
+    sponsorFit: {
+      audience: "Founders, indie builders, agencies, and operators choosing hosting, domains, email, and deployment services.",
+      package: "Affiliate partnership or launch monitoring package for verified hosting and domain offers.",
+      buyerPath: "Readers compare pricing, renewal notes, and included services before opening the tracked provider link."
+    }
+  },
+  {
+    slug: "saas-discounts",
+    title: "SaaS Discounts and Startup Software Deals",
+    description:
+      "Verified SaaS discounts, annual-plan offers, creator tools, automation platforms, and productivity software deals.",
+    category: "saas",
+    intent: ["SaaS discounts", "annual plan offers", "creator tools", "automation software"],
+    evaluation: [
+      "Annual discounts are labeled separately from limited-time promotions.",
+      "Seat limits, usage limits, and trial-to-paid billing risk are surfaced.",
+      "User-submitted SaaS deals stay in review until the source and commercial terms are clear."
+    ],
+    faqs: [
+      {
+        question: "What SaaS offers are included?",
+        answer:
+          "We cover productivity, automation, creator, marketing, analytics, and operations tools when the discount or credit is source-backed."
+      },
+      {
+        question: "Are lifetime deals included?",
+        answer:
+          "Lifetime deals can be included, but only when refund terms, plan limits, and merchant quality are clear enough to review."
+      },
+      {
+        question: "How can SaaS partners work with the site?",
+        answer:
+          "Relevant partners can use affiliate links, sponsored newsletter placements, or verified category placements without bypassing editorial checks."
+      }
+    ],
+    sponsorFit: {
+      audience: "Startup operators, creators, founders, and small teams comparing recurring software costs.",
+      package: "Newsletter sponsor, affiliate partnership, or SaaS category placement.",
+      buyerPath: "Readers inspect use case, discount type, risk labels, and source terms before clicking through."
+    }
+  },
+  {
     slug: "developer-tool-discounts",
     title: "Developer Tool Discounts and Builder Software Deals",
     description:

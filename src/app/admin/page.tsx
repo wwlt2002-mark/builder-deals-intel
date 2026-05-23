@@ -6,6 +6,7 @@ import { getCategoryLabel } from "@/lib/categories";
 import { getClickStats, getTopClickedDeals, getTopClickPlacements } from "@/lib/clicks";
 import { getCompletionAssessment } from "@/lib/completion";
 import { getAllDeals, getReviewDeals } from "@/lib/deals";
+import { moneyPages } from "@/lib/money-pages";
 import { getRevenueReadiness } from "@/lib/revenue";
 import { getMonitoredSources, getSourceHealth } from "@/lib/sources";
 import { getSponsorLeads, getSubscriberStats, getSubscribers, getSubmissions } from "@/lib/storage";
@@ -56,7 +57,8 @@ export default async function AdminPage({
     subscribers,
     sponsorLeads,
     affiliatePrograms,
-    enabledSources: sourceHealth.enabled
+    enabledSources: sourceHealth.enabled,
+    moneyPages: moneyPages.length
   });
 
   return (

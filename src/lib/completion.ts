@@ -14,6 +14,7 @@ export function getCompletionAssessment(input: {
   sponsorLeads: SponsorLead[];
   affiliatePrograms: AffiliateProgram[];
   enabledSources: number;
+  moneyPages?: number;
 }) {
   const publishedDeals = input.deals.filter((deal) => deal.status === "auto_published");
   const reviewDeals = input.deals.filter((deal) => deal.status === "needs_review");
@@ -29,6 +30,7 @@ export function getCompletionAssessment(input: {
   if (input.sponsorLeads.length > 0) percent += 3;
   if (input.subscribers.length > 0) percent += 4;
   if (affiliateLinks.length > 0) percent += 7;
+  if ((input.moneyPages ?? 0) >= 5) percent += 3;
 
   percent = Math.min(percent, 88);
 
@@ -41,7 +43,8 @@ export function getCompletionAssessment(input: {
   const strengths = [
     "site, admin, disclosure, sponsor, tracking, and source monitor are live",
     `${input.enabledSources} monitored sources are configured`,
-    `${readyPrograms.length} affiliate programs are application-ready`
+    `${readyPrograms.length} affiliate programs are application-ready`,
+    `${input.moneyPages ?? 0} buyer-intent SEO pages are live`
   ];
 
   return {

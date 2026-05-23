@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Builder Deals Intel",
   description: "Daily AI, SaaS, and developer deals intelligence for builders.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://builderdeals.example.com")
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://builderdealintel.com")
 };
 
 const navItems = [
@@ -13,6 +13,7 @@ const navItems = [
   { href: "/categories/ai_tools", label: "AI" },
   { href: "/categories/saas", label: "SaaS" },
   { href: "/categories/developer_tools", label: "Dev Tools" },
+  { href: "/hosting-deals", label: "Hosting" },
   { href: "/free-cloud-credits", label: "Cloud Credits" },
   { href: "/submit", label: "Submit" },
   { href: "/sponsor", label: "Sponsor" }
@@ -49,7 +50,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/newsletter">Newsletter</Link>
             <Link href="/newsletter/archive">Brief Archive</Link>
             <Link href="/best-ai-deals">AI Deals</Link>
+            <Link href="/saas-discounts">SaaS Discounts</Link>
             <Link href="/free-cloud-credits">Cloud Credits</Link>
+            <Link href="/hosting-deals">Hosting Deals</Link>
             <Link href="/media-kit">Media Kit</Link>
             <Link href="/advertise">Advertise</Link>
             <Link href="/affiliate-disclosure">Disclosure</Link>
