@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { requireAdminPage } from "@/lib/admin";
-import { affiliatePrograms } from "@/lib/affiliate-programs";
+import { getAffiliatePipeline } from "@/lib/affiliate-programs";
 import { applicationCopy } from "@/lib/application-copy";
 import { getCategoryLabel } from "@/lib/categories";
 import { getClickStats, getTopClickedDeals, getTopClickPlacements } from "@/lib/clicks";
@@ -28,7 +28,7 @@ const statusLabels: Record<DealStatus, string> = {
 export default async function AdminPage({
   searchParams
 }: {
-  searchParams?: Promise<{ expired?: string; ingested?: string; daily?: string }>;
+  searchParams?: Promise<{ expired?: string; ingested?: string; daily?: string; affiliate?: string }>;
 }) {
   await requireAdminPage();
   const params = searchParams ? await searchParams : {};
@@ -43,6 +43,7 @@ export default async function AdminPage({
   const clickStats = await getClickStats();
   const topClickedDeals = await getTopClickedDeals();
   const topClickPlacements = await getTopClickPlacements();
+  const affiliatePrograms = await getAffiliatePipeline();
   const operationalDeals = allDeals.filter((deal) => deal.status !== "rejected");
   const publishedDeals = allDeals.filter((deal) => deal.status === "auto_published");
   const affiliateDeals = operationalDeals.filter((deal) => deal.is_affiliate);
@@ -71,6 +72,7 @@ export default async function AdminPage({
         {params.expired ? <p className="summary">Expiry check complete. {params.expired} deals were marked expired.</p> : null}
         {params.ingested ? <p className="summary">Source ingest complete. {params.ingested} candidates were checked.</p> : null}
         {params.daily ? <p className="summary">Daily ops complete. {params.daily} source candidates were checked.</p> : null}
+        {params.affiliate ? <p className="summary">Affiliate pipeline status updated.</p> : null}
       </section>
       <div className="metric-row">
         <div className="metric">
@@ -553,7 +555,7 @@ export default async function AdminPage({
             <div className="admin-table-head">Network</div>
             <div className="admin-table-head">Commission</div>
             <div className="admin-table-head">Application</div>
-            <div className="admin-table-head">Action</div>
+            <div className="admin-table-head">Tracking</div>
             {affiliatePrograms.map((program) => (
               <div className="admin-table-row" key={program.name}>
                 <div>
@@ -570,9 +572,42 @@ export default async function AdminPage({
                   <span>{program.next_step}</span>
                 </div>
                 <div>
-                  <a className="secondary-button" href={program.url} rel="noopener noreferrer" target="_blank">
-                    Open
-                  </a>
+                  <form action={`/api/admin/affiliate-programs/${program.id}`} className="affiliate-status-form" method="post">
+                    <a className="secondary-button" href={program.url} rel="noopener noreferrer" target="_blank">
+                      Open
+                    </a>
+                    <label htmlFor={`pipeline_status_${program.id}`}>Status</label>
+                    <select
+                      id={`pipeline_status_${program.id}`}
+                      name="pipeline_status"
+                      defaultValue={program.pipeline_status}
+                    >
+                      <option value="planned">Planned</option>
+                      <option value="applied">Applied</option>
+                      <option value="approved">Approved</option>
+                      <option value="blocked">Blocked</option>
+                      <option value="rejected">Rejected</option>
+                    </select>
+                    <label htmlFor={`approved_url_${program.id}`}>Approved URL</label>
+                    <input
+                      id={`approved_url_${program.id}`}
+                      name="approved_url"
+                      placeholder="Affiliate link after approval"
+                      type="url"
+                      defaultValue={program.approved_url ?? ""}
+                    />
+                    <label htmlFor={`notes_${program.id}`}>Notes</label>
+                    <textarea
+                      id={`notes_${program.id}`}
+                      name="notes"
+                      placeholder="Payout, login, rejection, or owner blocker"
+                      defaultValue={program.notes ?? ""}
+                    />
+                    {program.updated_at ? <span>Updated {new Date(program.updated_at).toLocaleString("en-US")}</span> : null}
+                    <button className="button" type="submit">
+                      Save
+                    </button>
+                  </form>
                 </div>
               </div>
             ))}
