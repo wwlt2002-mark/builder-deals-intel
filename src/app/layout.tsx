@@ -5,7 +5,13 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Builder Deals Intel",
   description: "Daily AI, SaaS, and developer deals intelligence for builders.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://builderdealintel.com")
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://builderdealintel.com"),
+  alternates: {
+    types: {
+      "application/rss+xml": "/rss.xml",
+      "application/feed+json": "/feed.json"
+    }
+  }
 };
 
 const navItems = [
@@ -48,6 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div>
             <Link href="/admin">Admin</Link>
             <Link href="/newsletter">Newsletter</Link>
+            <Link href="/rss.xml">RSS</Link>
             <Link href="/newsletter/archive">Brief Archive</Link>
             <Link href="/best-ai-deals">AI Deals</Link>
             <Link href="/saas-discounts">SaaS Discounts</Link>

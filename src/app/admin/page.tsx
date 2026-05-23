@@ -64,7 +64,8 @@ export default async function AdminPage({
     moneyPages: moneyPages.length,
     aiExtractionReady: true,
     environmentDashboardReady: true,
-    commercialOutreachReady: true
+    commercialOutreachReady: true,
+    distributionFeedsReady: true
   });
 
   return (
