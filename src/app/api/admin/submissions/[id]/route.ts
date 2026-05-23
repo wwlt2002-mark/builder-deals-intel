@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isAdminRequest } from "@/lib/admin";
+import { getSiteUrl } from "@/lib/site-url";
 import { updateSubmissionStatus } from "@/lib/storage";
 
 export const runtime = "nodejs";
@@ -22,5 +23,5 @@ export async function POST(request: NextRequest, { params }: Props) {
   }
 
   await updateSubmissionStatus(id, status);
-  return NextResponse.redirect(new URL("/admin", request.url), 303);
+  return NextResponse.redirect(getSiteUrl("/admin"), 303);
 }

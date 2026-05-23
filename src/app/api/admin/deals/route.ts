@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { isAdminRequest } from "@/lib/admin";
 import { normalizeAffiliateFields, validateAffiliateFields } from "@/lib/admin-deal-form";
 import { createDeal } from "@/lib/deals";
+import { getSiteUrl } from "@/lib/site-url";
 import type { DealCategory, DealStatus, SourceType } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -74,5 +75,5 @@ export async function POST(request: NextRequest) {
 
   const id = await createDeal(input);
 
-  return NextResponse.redirect(new URL(`/admin/deals/${id}`, request.url), 303);
+  return NextResponse.redirect(getSiteUrl(`/admin/deals/${id}`), 303);
 }

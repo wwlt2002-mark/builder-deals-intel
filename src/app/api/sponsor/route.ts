@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { honeypotFilled } from "@/lib/forms";
 import { rateLimit, rateLimitResponse } from "@/lib/rate-limit";
+import { getSiteUrl } from "@/lib/site-url";
 import { appendSponsorLead } from "@/lib/storage";
 
 export const runtime = "nodejs";
@@ -24,7 +25,7 @@ export async function POST(request: Request) {
   const form = await request.formData();
 
   if (honeypotFilled(form, ["company_website"])) {
-    return NextResponse.redirect(new URL("/sponsor?submitted=1", request.url), 303);
+    return NextResponse.redirect(getSiteUrl("/sponsor?submitted=1"), 303);
   }
 
   const company = field(form, "company");
@@ -52,5 +53,5 @@ export async function POST(request: Request) {
     created_at: new Date().toISOString()
   });
 
-  return NextResponse.redirect(new URL("/sponsor?submitted=1", request.url), 303);
+  return NextResponse.redirect(getSiteUrl("/sponsor?submitted=1"), 303);
 }

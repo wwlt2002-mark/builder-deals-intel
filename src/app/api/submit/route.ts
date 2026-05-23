@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { honeypotFilled } from "@/lib/forms";
 import { rateLimit, rateLimitResponse } from "@/lib/rate-limit";
+import { getSiteUrl } from "@/lib/site-url";
 import { appendSubmission } from "@/lib/storage";
 
 export const runtime = "nodejs";
@@ -15,7 +16,7 @@ export async function POST(request: Request) {
   const form = await request.formData();
 
   if (honeypotFilled(form, ["homepage"])) {
-    return NextResponse.redirect(new URL("/submit?queued=1", request.url), 303);
+    return NextResponse.redirect(getSiteUrl("/submit?queued=1"), 303);
   }
 
   const url = String(form.get("url") ?? "").trim();
@@ -37,5 +38,5 @@ export async function POST(request: Request) {
     created_at: new Date().toISOString()
   });
 
-  return NextResponse.redirect(new URL("/submit?queued=1", request.url), 303);
+  return NextResponse.redirect(getSiteUrl("/submit?queued=1"), 303);
 }

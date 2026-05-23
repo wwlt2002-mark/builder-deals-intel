@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isAdminRequest } from "@/lib/admin";
 import { updateAffiliateProgramStatus, type AffiliatePipelineStatus } from "@/lib/affiliate-programs";
+import { getSiteUrl } from "@/lib/site-url";
 
 export const runtime = "nodejs";
 
@@ -35,5 +36,5 @@ export async function POST(request: NextRequest, { params }: Props) {
     notes: optionalText(form.get("notes"))
   });
 
-  return NextResponse.redirect(new URL("/admin?affiliate=updated", request.url), 303);
+  return NextResponse.redirect(getSiteUrl("/admin?affiliate=updated"), 303);
 }

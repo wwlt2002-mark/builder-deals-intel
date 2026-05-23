@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { isAdminRequest } from "@/lib/admin";
 import { normalizeAffiliateFields, validateAffiliateFields } from "@/lib/admin-deal-form";
 import { updateDeal, updateDealStatus } from "@/lib/deals";
+import { getSiteUrl } from "@/lib/site-url";
 import type { DealCategory, DealStatus, SourceType } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -40,7 +41,7 @@ export async function POST(request: NextRequest, { params }: Props) {
     }
 
     await updateDealStatus(id, status);
-    return NextResponse.redirect(new URL("/admin", request.url), 303);
+    return NextResponse.redirect(getSiteUrl("/admin"), 303);
   }
 
   const category = required(form.get("category")) as DealCategory;
@@ -92,5 +93,5 @@ export async function POST(request: NextRequest, { params }: Props) {
 
   await updateDeal(id, input);
 
-  return NextResponse.redirect(new URL("/admin", request.url), 303);
+  return NextResponse.redirect(getSiteUrl("/admin"), 303);
 }

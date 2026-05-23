@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { getSiteUrl } from "@/lib/site-url";
 
 export async function POST(request: Request) {
   const form = await request.formData();
@@ -9,7 +10,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid admin secret." }, { status: 401 });
   }
 
-  const response = NextResponse.redirect(new URL("/admin", request.url), 303);
+  const response = NextResponse.redirect(getSiteUrl("/admin"), 303);
   response.cookies.set("admin_session", adminSecret, {
     httpOnly: true,
     sameSite: "lax",

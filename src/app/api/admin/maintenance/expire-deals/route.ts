@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isAdminRequest } from "@/lib/admin";
 import { expirePastDeals } from "@/lib/deals";
+import { getSiteUrl } from "@/lib/site-url";
 
 export const runtime = "nodejs";
 
@@ -13,7 +14,7 @@ export async function POST(request: NextRequest) {
   const acceptsJson = request.headers.get("accept")?.includes("application/json");
 
   if (!acceptsJson) {
-    return NextResponse.redirect(new URL(`/admin?expired=${result.expired}`, request.url), 303);
+    return NextResponse.redirect(getSiteUrl(`/admin?expired=${result.expired}`), 303);
   }
 
   return NextResponse.json({ ok: true, ...result });
