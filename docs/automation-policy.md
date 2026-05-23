@@ -45,6 +45,16 @@ The job order is:
 
 The newsletter should only include `auto_published` deals with confidence scores of 85 or higher.
 
+## Production smoke check
+
+Run this after deploys or major content changes:
+
+```bash
+npm run smoke
+```
+
+The check verifies the homepage, sponsor page, public status page, money pages, RSS feed, JSON feed, robots.txt, and health endpoint.
+
 ## Newsletter sending
 
 Generate a draft first:

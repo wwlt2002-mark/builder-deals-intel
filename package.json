@@ -13,7 +13,8 @@
     "expire": "node scripts/expire-deals.mjs",
     "newsletter": "node scripts/generate-newsletter.mjs",
     "newsletter:send": "node scripts/send-newsletter.mjs",
-    "daily:ops": "node scripts/daily-ops.mjs"
+    "daily:ops": "node scripts/daily-ops.mjs",
+    "smoke": "node scripts/smoke-check.mjs"
   },
   "dependencies": {
     "@types/node": "^22.15.21",
