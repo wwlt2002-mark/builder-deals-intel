@@ -6,6 +6,7 @@ import { getCategoryLabel } from "@/lib/categories";
 import { getClickStats, getTopClickedDeals, getTopClickPlacements } from "@/lib/clicks";
 import { getCompletionAssessment } from "@/lib/completion";
 import { getAllDeals, getReviewDeals } from "@/lib/deals";
+import { getEnvironmentReadiness } from "@/lib/env-readiness";
 import { moneyPages } from "@/lib/money-pages";
 import { getRevenueReadiness } from "@/lib/revenue";
 import { getMonitoredSources, getSourceHealth } from "@/lib/sources";
@@ -45,6 +46,7 @@ export default async function AdminPage({
   const topClickedDeals = await getTopClickedDeals();
   const topClickPlacements = await getTopClickPlacements();
   const affiliatePrograms = await getAffiliatePipeline();
+  const environmentReadiness = getEnvironmentReadiness();
   const operationalDeals = allDeals.filter((deal) => deal.status !== "rejected");
   const publishedDeals = allDeals.filter((deal) => deal.status === "auto_published");
   const affiliateDeals = operationalDeals.filter((deal) => deal.is_affiliate);
@@ -59,7 +61,8 @@ export default async function AdminPage({
     affiliatePrograms,
     enabledSources: sourceHealth.enabled,
     moneyPages: moneyPages.length,
-    aiExtractionReady: true
+    aiExtractionReady: true,
+    environmentDashboardReady: true
   });
 
   return (
@@ -212,6 +215,38 @@ export default async function AdminPage({
                   <span>{item.split(": ").slice(1).join(": ")}</span>
                 </div>
                 <div>Needed only when the affiliate platform asks for payout, tax, identity, or account verification.</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Environment readiness</h2>
+            <p>Shows what is configured without exposing secrets.</p>
+          </div>
+        </div>
+        <div className="table-panel">
+          <div className="admin-table env-table">
+            <div className="admin-table-head">Service</div>
+            <div className="admin-table-head">Status</div>
+            <div className="admin-table-head">Required for</div>
+            <div className="admin-table-head">Owner action</div>
+            {environmentReadiness.map((item) => (
+              <div className="admin-table-row" key={item.key}>
+                <div>
+                  <strong>{item.label}</strong>
+                  <span>{item.key}</span>
+                </div>
+                <div>
+                  <span className={item.status === "configured" ? "status-published" : "status-review"}>
+                    {item.status}
+                  </span>
+                </div>
+                <div>{item.requiredFor}</div>
+                <div>{item.ownerAction}</div>
               </div>
             ))}
           </div>
