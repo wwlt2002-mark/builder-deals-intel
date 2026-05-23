@@ -55,6 +55,9 @@ npm run smoke
 
 The check verifies the homepage, sponsor page, public status page, money pages, RSS feed, JSON feed, robots.txt, and health endpoint.
 
+When the GitHub token has workflow scope, schedule the same smoke check three times per day and after production
+deploys.
+
 ## Newsletter sending
 
 Generate a draft first:
