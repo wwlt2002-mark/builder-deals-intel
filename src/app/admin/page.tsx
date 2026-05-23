@@ -10,6 +10,7 @@ import { getEnvironmentReadiness } from "@/lib/env-readiness";
 import { moneyPages } from "@/lib/money-pages";
 import { getRevenueReadiness } from "@/lib/revenue";
 import { getMonitoredSources, getSourceHealth } from "@/lib/sources";
+import { sponsorOutreach } from "@/lib/sponsor-outreach";
 import { getSponsorLeads, getSubscriberStats, getSubscribers, getSubmissions } from "@/lib/storage";
 import type { DealStatus } from "@/lib/types";
 
@@ -62,7 +63,8 @@ export default async function AdminPage({
     enabledSources: sourceHealth.enabled,
     moneyPages: moneyPages.length,
     aiExtractionReady: true,
-    environmentDashboardReady: true
+    environmentDashboardReady: true,
+    commercialOutreachReady: true
   });
 
   return (
@@ -351,6 +353,34 @@ export default async function AdminPage({
                   <span>Ready for application forms</span>
                 </div>
                 <div>{item.value}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Sponsor outreach kit</h2>
+            <p>Ready-to-send pitches for finding the first paid tests without waiting for organic traffic.</p>
+          </div>
+        </div>
+        <div className="table-panel">
+          <div className="admin-table outreach-table">
+            <div className="admin-table-head">Segment</div>
+            <div className="admin-table-head">Subject</div>
+            <div className="admin-table-head">Pitch</div>
+            <div className="admin-table-head">Ask</div>
+            {sponsorOutreach.map((item) => (
+              <div className="admin-table-row" key={item.segment}>
+                <div>
+                  <strong>{item.segment}</strong>
+                  <span>{item.target}</span>
+                </div>
+                <div>{item.subject}</div>
+                <div>{item.pitch}</div>
+                <div>{item.ask}</div>
               </div>
             ))}
           </div>

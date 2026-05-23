@@ -1,4 +1,5 @@
 import { getSponsorOfferCatalog, sponsorPackages } from "@/lib/sponsor-packages";
+import { sponsorOutreach } from "@/lib/sponsor-outreach";
 
 export const metadata = {
   title: "Sponsor Builder Deals Intel",
@@ -114,6 +115,24 @@ export default function SponsorPage({
               <span>Hidden terms, unverifiable token offers, misleading lifetime deals, copied competitor claims.</span>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Best-fit partners</h2>
+            <p>These are the first categories we are actively packaging for sponsorship and affiliate tests.</p>
+          </div>
+        </div>
+        <div className="deal-grid">
+          {sponsorOutreach.map((item) => (
+            <article className="panel sponsor-card" key={item.segment}>
+              <h3>{item.segment}</h3>
+              <strong>{item.target}</strong>
+              <p className="summary">{item.ask}</p>
+            </article>
+          ))}
         </div>
       </section>
 
