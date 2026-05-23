@@ -65,7 +65,8 @@ export default async function AdminPage({
     aiExtractionReady: true,
     environmentDashboardReady: true,
     commercialOutreachReady: true,
-    distributionFeedsReady: true
+    distributionFeedsReady: true,
+    publicStatusReady: true
   });
 
   return (

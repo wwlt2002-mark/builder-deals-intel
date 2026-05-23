@@ -22,7 +22,8 @@ const navItems = [
   { href: "/hosting-deals", label: "Hosting" },
   { href: "/free-cloud-credits", label: "Cloud Credits" },
   { href: "/submit", label: "Submit" },
-  { href: "/sponsor", label: "Sponsor" }
+  { href: "/sponsor", label: "Sponsor" },
+  { href: "/status", label: "Status" }
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -62,6 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/hosting-deals">Hosting Deals</Link>
             <Link href="/media-kit">Media Kit</Link>
             <Link href="/advertise">Advertise</Link>
+            <Link href="/status">Status</Link>
             <Link href="/affiliate-disclosure">Disclosure</Link>
             <Link href="/privacy">Privacy</Link>
           </div>

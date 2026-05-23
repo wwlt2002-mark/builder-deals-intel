@@ -19,6 +19,7 @@ export function getCompletionAssessment(input: {
   environmentDashboardReady?: boolean;
   commercialOutreachReady?: boolean;
   distributionFeedsReady?: boolean;
+  publicStatusReady?: boolean;
 }) {
   const publishedDeals = input.deals.filter((deal) => deal.status === "auto_published");
   const reviewDeals = input.deals.filter((deal) => deal.status === "needs_review");
@@ -39,6 +40,7 @@ export function getCompletionAssessment(input: {
   if (input.environmentDashboardReady) percent += 1;
   if (input.commercialOutreachReady) percent += 1;
   if (input.distributionFeedsReady) percent += 1;
+  if (input.publicStatusReady) percent += 1;
 
   percent = Math.min(percent, 88);
 
@@ -57,7 +59,8 @@ export function getCompletionAssessment(input: {
     `${input.moneyPages ?? 0} buyer-intent SEO pages are live`,
     input.environmentDashboardReady ? "environment readiness is visible in admin" : "",
     input.commercialOutreachReady ? "commercial outreach scripts are ready" : "",
-    input.distributionFeedsReady ? "RSS and JSON feeds are live for syndication" : ""
+    input.distributionFeedsReady ? "RSS and JSON feeds are live for syndication" : "",
+    input.publicStatusReady ? "public proof/status page is live" : ""
   ].filter(Boolean);
 
   return {
