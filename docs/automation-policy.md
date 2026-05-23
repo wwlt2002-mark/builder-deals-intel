@@ -23,6 +23,15 @@ Deals must enter review when any of these are true:
 - Deal claims a very large discount without an official source.
 - Region, deadline, or eligibility is unclear.
 
+## Owner interruption rules
+
+Only interrupt the owner for:
+
+- Password, account login, email verification, or CAPTCHA.
+- Payment, purchase, invoice, payout, bank, tax, or identity details.
+- OpenAI, Resend, analytics, affiliate, or other production API keys.
+- Final approval for paid sponsor publication or legal/compliance complaints.
+
 ## Daily runs
 
 Recommended cron schedule:

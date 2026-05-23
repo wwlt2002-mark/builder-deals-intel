@@ -909,6 +909,11 @@ nav a:hover,
   grid-template-columns: minmax(240px, 0.8fr) minmax(220px, 0.75fr) minmax(360px, 1fr) minmax(300px, 0.9fr);
 }
 
+.owner-action-table .admin-table-head,
+.owner-action-table .admin-table-row {
+  grid-template-columns: minmax(220px, 0.7fr) minmax(320px, 1fr) minmax(320px, 1fr) 110px;
+}
+
 .sponsor-spec-table {
   display: grid;
   min-width: 900px;

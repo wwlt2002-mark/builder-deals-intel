@@ -8,6 +8,7 @@ import { getCompletionAssessment } from "@/lib/completion";
 import { getAllDeals, getReviewDeals } from "@/lib/deals";
 import { getEnvironmentReadiness } from "@/lib/env-readiness";
 import { moneyPages } from "@/lib/money-pages";
+import { ownerActions } from "@/lib/owner-actions";
 import { getRevenueReadiness } from "@/lib/revenue";
 import { getMonitoredSources, getSourceHealth } from "@/lib/sources";
 import { sponsorOutreach } from "@/lib/sponsor-outreach";
@@ -251,6 +252,35 @@ export default async function AdminPage({
                 </div>
                 <div>{item.requiredFor}</div>
                 <div>{item.ownerAction}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Owner activation checklist</h2>
+            <p>Only these items should interrupt autonomous operation.</p>
+          </div>
+        </div>
+        <div className="table-panel">
+          <div className="admin-table owner-action-table">
+            <div className="admin-table-head">Action</div>
+            <div className="admin-table-head">When to ask</div>
+            <div className="admin-table-head">Why it matters</div>
+            <div className="admin-table-head">Status</div>
+            {ownerActions.map((item) => (
+              <div className="admin-table-row" key={item.title}>
+                <div>
+                  <strong>{item.title}</strong>
+                </div>
+                <div>{item.trigger}</div>
+                <div>{item.why}</div>
+                <div>
+                  <span className={item.status === "ready" ? "status-published" : "status-review"}>{item.status}</span>
+                </div>
               </div>
             ))}
           </div>
