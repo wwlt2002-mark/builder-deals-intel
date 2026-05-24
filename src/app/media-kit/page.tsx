@@ -25,6 +25,9 @@ export default function MediaKitPage() {
           <Link className="secondary-button" href="/partner-programs">
             Affiliate profile
           </Link>
+          <Link className="secondary-button" href="/commercial-proof">
+            Proof report
+          </Link>
         </div>
       </section>
 

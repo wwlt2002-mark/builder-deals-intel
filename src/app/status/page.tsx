@@ -105,6 +105,9 @@ export default async function StatusPage() {
           <Link className="secondary-button" href="/sponsor">
             Partner desk
           </Link>
+          <Link className="secondary-button" href="/commercial-proof">
+            Commercial proof
+          </Link>
         </div>
         <div className="admin-list">
           {featuredDeals.map((deal, index) => (

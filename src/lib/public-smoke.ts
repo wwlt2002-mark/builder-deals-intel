@@ -15,6 +15,7 @@ export const publicSmokeChecks = [
   { path: "/partner-programs", expected: "Affiliate application profile" },
   { path: "/media-kit", expected: "Partner-ready media kit" },
   { path: "/advertise", expected: "Advertise to builders" },
+  { path: "/commercial-proof", expected: "Public proof for affiliate managers" },
   { path: "/editorial-policy", expected: "Trust rules for deal intelligence" },
   { path: "/affiliate-compliance", expected: "Brand-safe promotion rules" },
   { path: "/hosting-deals", expected: "Hosting Deals, Domain Discounts" },
