@@ -13,7 +13,7 @@ export const publicSmokeChecks = [
   { path: "/status", expected: "Public operating status" },
   { path: "/sponsor", expected: "Partner FAQ" },
   { path: "/partner-programs", expected: "Affiliate application profile" },
-  { path: "/partner-programs/hostinger-affiliate-program", expected: "Hostinger Affiliate Program is a fit" },
+  { path: "/partner-programs/hostinger-affiliate-program", expected: "Affiliate fit profile" },
   { path: "/media-kit", expected: "Partner-ready media kit" },
   { path: "/advertise", expected: "Advertise to builders" },
   { path: "/commercial-proof", expected: "Public proof for affiliate managers" },
