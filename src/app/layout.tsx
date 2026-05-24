@@ -26,10 +26,37 @@ const navItems = [
   { href: "/status", label: "Status" }
 ];
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Builder Deals Intel",
+  url: "https://builderdealintel.com",
+  email: "partnerships@builderdealintel.com",
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      contactType: "business partnerships",
+      email: "partnerships@builderdealintel.com",
+      availableLanguage: ["en"]
+    },
+    {
+      "@type": "ContactPoint",
+      contactType: "editorial corrections",
+      email: "editorial@builderdealintel.com",
+      availableLanguage: ["en"]
+    }
+  ],
+  sameAs: ["https://builderdealintel.com/contact", "https://builderdealintel.com/media-kit"]
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
+        <script
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          type="application/ld+json"
+        />
         <header className="site-header">
           <Link className="brand" href="/">
             <span className="brand-mark">BD</span>
