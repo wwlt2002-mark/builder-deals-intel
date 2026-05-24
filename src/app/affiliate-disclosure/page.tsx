@@ -13,6 +13,10 @@ export default function AffiliateDisclosurePage() {
           Builder Deals Intel may earn money when readers click or purchase through certain links. Commercial
           relationships do not remove source checks, risk labels, or eligibility notes.
         </p>
+        <p>
+          Public brand: Builder Deals Intel. Business contact:{" "}
+          <a href="mailto:partnerships@builderdealintel.com">partnerships@builderdealintel.com</a>.
+        </p>
       </section>
 
       <section className="legal-grid">

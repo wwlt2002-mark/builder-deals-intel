@@ -49,11 +49,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <footer className="site-footer">
           <p>
-            Some links may be affiliate links. We prioritize source transparency, eligibility notes, and risk labels over
-            paid placement.
+            Builder Deals Intel is a source-backed technology deals publication. Contact:{" "}
+            <a href="mailto:partnerships@builderdealintel.com">partnerships@builderdealintel.com</a>. Some links may be
+            affiliate links.
           </p>
           <div>
             <Link href="/admin">Admin</Link>
+            <Link href="/contact">Contact</Link>
             <Link href="/newsletter">Newsletter</Link>
             <Link href="/rss.xml">RSS</Link>
             <Link href="/newsletter/archive">Brief Archive</Link>

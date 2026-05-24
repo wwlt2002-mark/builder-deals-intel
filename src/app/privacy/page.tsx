@@ -13,6 +13,10 @@ export default function PrivacyPage() {
           Builder Deals Intel collects only the information needed to run deal submissions, sponsor inquiries,
           newsletter signups, and basic outbound click reporting.
         </p>
+        <p>
+          Public brand: Builder Deals Intel. Contact:{" "}
+          <a href="mailto:partnerships@builderdealintel.com">partnerships@builderdealintel.com</a>.
+        </p>
       </section>
 
       <section className="legal-grid">
@@ -40,7 +44,7 @@ export default function PrivacyPage() {
         <div className="panel">
           <h2>Contact and removal</h2>
           <p className="summary">
-            If a submitted lead or email should be removed, contact the site operator through the sponsor or submission
+            If a submitted lead or email should be removed, contact partnerships@builderdealintel.com or use the sponsor
             form with enough context to identify the record.
           </p>
         </div>

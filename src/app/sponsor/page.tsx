@@ -52,6 +52,9 @@ export default function SponsorPage({
             Early packages are priced manually while traffic is building. We only need a verified offer, source page,
             terms, and tracking URL.
           </p>
+          <p>
+            Business contact: <a href="mailto:partnerships@builderdealintel.com">partnerships@builderdealintel.com</a>
+          </p>
         </aside>
       </section>
 

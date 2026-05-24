@@ -33,6 +33,14 @@ export default function MediaKitPage() {
 
       <section className="policy-grid table-panel">
         <div>
+          <strong>Public brand</strong>
+          <span>Builder Deals Intel</span>
+        </div>
+        <div>
+          <strong>Business contact</strong>
+          <a href="mailto:partnerships@builderdealintel.com">partnerships@builderdealintel.com</a>
+        </div>
+        <div>
           <strong>Audience</strong>
           <span>Founders, engineers, indie builders, operators, and creators comparing tools before buying.</span>
         </div>
