@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { requireAdminPage } from "@/lib/admin";
 import { getAffiliatePipeline } from "@/lib/affiliate-programs";
-import { applicationCopy } from "@/lib/application-copy";
+import { applicationCopy, getProgramApplicationCopy } from "@/lib/application-copy";
 import { getCategoryLabel } from "@/lib/categories";
 import { getClickStats, getTopClickCampaigns, getTopClickedDeals, getTopClickPlacements } from "@/lib/clicks";
 import { getCompletionAssessment } from "@/lib/completion";
@@ -736,6 +736,11 @@ export default async function AdminPage({
                   <strong>{program.application_stage.replace("_", " ")}</strong>
                   <span>{program.owner_blocker}</span>
                   <span>{program.next_step}</span>
+                  {getProgramApplicationCopy(program).map((item) => (
+                    <span key={item.label}>
+                      {item.label}: {item.value}
+                    </span>
+                  ))}
                 </div>
                 <div>
                   <form action={`/api/admin/affiliate-programs/${program.id}`} className="affiliate-status-form" method="post">

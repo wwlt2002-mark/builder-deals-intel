@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { applicationCopy } from "@/lib/application-copy";
+import { applicationCopy, getProgramApplicationCopy } from "@/lib/application-copy";
 import { affiliatePrograms } from "@/lib/affiliate-programs";
 
 export const metadata = {
@@ -110,7 +110,14 @@ export default function PartnerProgramsPage() {
                 <div>{program.category.replace("_", " ")}</div>
                 <div>{program.network}</div>
                 <div>{program.commission}</div>
-                <div>{program.fit}</div>
+                <div>
+                  <span>{program.fit}</span>
+                  {getProgramApplicationCopy(program).map((item) => (
+                    <span key={item.label}>
+                      {item.label}: {item.value}
+                    </span>
+                  ))}
+                </div>
                 <div>
                   <a className="secondary-button" href={program.url} rel="noopener noreferrer" target="_blank">
                     Open
