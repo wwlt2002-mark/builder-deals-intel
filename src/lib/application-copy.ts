@@ -22,6 +22,10 @@ export const applicationCopy: ApplicationCopy[] = [
     value: "https://builderdealintel.com"
   },
   {
+    label: "Business contact",
+    value: "partnerships@builderdealintel.com"
+  },
+  {
     label: "Short description",
     value:
       "Builder Deals Intel is a source-labeled deal intelligence site for builders who buy AI tools, SaaS products, hosting, cloud credits, API platforms, and developer infrastructure."
