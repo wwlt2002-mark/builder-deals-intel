@@ -32,7 +32,7 @@ const statusLabels: Record<DealStatus, string> = {
 export default async function AdminPage({
   searchParams
 }: {
-  searchParams?: Promise<{ expired?: string; ingested?: string; daily?: string; affiliate?: string }>;
+  searchParams?: Promise<{ expired?: string; ingested?: string; daily?: string; affiliate?: string; smoke?: string }>;
 }) {
   await requireAdminPage();
   const params = searchParams ? await searchParams : {};
@@ -84,6 +84,7 @@ export default async function AdminPage({
         {params.ingested ? <p className="summary">Source ingest complete. {params.ingested} candidates were checked.</p> : null}
         {params.daily ? <p className="summary">Daily ops complete. {params.daily} source candidates were checked.</p> : null}
         {params.affiliate ? <p className="summary">Affiliate pipeline status updated.</p> : null}
+        {params.smoke ? <p className="summary">Production smoke check {params.smoke}.</p> : null}
       </section>
       <div className="metric-row">
         <div className="metric">
@@ -330,6 +331,19 @@ export default async function AdminPage({
               <form action="/api/admin/maintenance/daily-ops" method="post">
                 <button className="button" type="submit">
                   Run daily ops
+                </button>
+              </form>
+            </div>
+          </article>
+          <article className="admin-row admin-row-wide">
+            <div>
+              <h3>Run production smoke check</h3>
+              <p className="summary">Checks public pages, sponsor proof, feeds, robots.txt, and health before outreach or publishing.</p>
+            </div>
+            <div className="admin-actions">
+              <form action="/api/admin/maintenance/smoke-check" method="post">
+                <button className="button" type="submit">
+                  Run smoke check
                 </button>
               </form>
             </div>
