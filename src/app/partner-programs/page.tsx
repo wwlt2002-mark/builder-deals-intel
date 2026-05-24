@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { applicationCopy, getProgramApplicationCopy } from "@/lib/application-copy";
-import { affiliatePrograms } from "@/lib/affiliate-programs";
+import { affiliatePrograms, getAffiliateProgramId } from "@/lib/affiliate-programs";
 
 export const metadata = {
   title: "Affiliate Partner Program Kit | Builder Deals Intel",
@@ -119,6 +119,9 @@ export default function PartnerProgramsPage() {
                   ))}
                 </div>
                 <div>
+                  <Link className="secondary-button" href={`/partner-programs/${getAffiliateProgramId(program.name)}`}>
+                    Fit page
+                  </Link>
                   <a className="secondary-button" href={program.url} rel="noopener noreferrer" target="_blank">
                     Open
                   </a>
