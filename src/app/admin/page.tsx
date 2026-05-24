@@ -3,7 +3,7 @@ import { requireAdminPage } from "@/lib/admin";
 import { getAffiliatePipeline } from "@/lib/affiliate-programs";
 import { applicationCopy } from "@/lib/application-copy";
 import { getCategoryLabel } from "@/lib/categories";
-import { getClickStats, getTopClickedDeals, getTopClickPlacements } from "@/lib/clicks";
+import { getClickStats, getTopClickCampaigns, getTopClickedDeals, getTopClickPlacements } from "@/lib/clicks";
 import { getCompletionAssessment } from "@/lib/completion";
 import { getAllDeals, getReviewDeals } from "@/lib/deals";
 import { getEnvironmentReadiness } from "@/lib/env-readiness";
@@ -47,6 +47,7 @@ export default async function AdminPage({
   const clickStats = await getClickStats();
   const topClickedDeals = await getTopClickedDeals();
   const topClickPlacements = await getTopClickPlacements();
+  const topClickCampaigns = await getTopClickCampaigns();
   const affiliatePrograms = await getAffiliatePipeline();
   const environmentReadiness = getEnvironmentReadiness();
   const operationalDeals = allDeals.filter((deal) => deal.status !== "rejected");
@@ -596,6 +597,46 @@ export default async function AdminPage({
                 <div>
                   <strong>No placement clicks yet</strong>
                   <span>Attribution appears after users open tracked deal links.</span>
+                </div>
+                <div />
+                <div />
+                <div />
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Campaign attribution</h2>
+            <p>Use campaign tags for sponsor tests, social drops, affiliate pushes, and newsletter experiments.</p>
+          </div>
+        </div>
+        <div className="table-panel">
+          <div className="admin-table campaign-table">
+            <div className="admin-table-head">Campaign</div>
+            <div className="admin-table-head">Clicks</div>
+            <div className="admin-table-head">Affiliate</div>
+            <div className="admin-table-head">Last click</div>
+            {topClickCampaigns.length ? (
+              topClickCampaigns.map((campaign) => (
+                <div className="admin-table-row" key={campaign.campaign}>
+                  <div>
+                    <strong>{campaign.campaign}</strong>
+                    <span>Add ?campaign=name to any /out link.</span>
+                  </div>
+                  <div>{campaign.clicks}</div>
+                  <div>{campaign.affiliate_clicks}</div>
+                  <div>{campaign.last_click_at ? new Date(campaign.last_click_at).toLocaleString("en-US") : "None"}</div>
+                </div>
+              ))
+            ) : (
+              <div className="admin-table-row">
+                <div>
+                  <strong>No campaign clicks yet</strong>
+                  <span>Campaign performance appears after tagged outbound links are used.</span>
                 </div>
                 <div />
                 <div />

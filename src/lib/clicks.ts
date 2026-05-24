@@ -139,3 +139,36 @@ export async function getTopClickPlacements(limit = 6): Promise<TopClickPlacemen
     last_click_at: row.last_click_at ? new Date(String(row.last_click_at)).toISOString() : null
   }));
 }
+
+export type TopClickCampaign = {
+  campaign: string;
+  clicks: number;
+  affiliate_clicks: number;
+  last_click_at: string | null;
+};
+
+export async function getTopClickCampaigns(limit = 6): Promise<TopClickCampaign[]> {
+  if (!hasDatabase()) {
+    return [];
+  }
+
+  const result = await getPool().query(
+    `select
+       coalesce(nullif(campaign, ''), 'uncampaignized') as campaign,
+       count(*)::int as clicks,
+       count(*) filter (where is_affiliate)::int as affiliate_clicks,
+       max(created_at) as last_click_at
+     from outbound_clicks
+     group by coalesce(nullif(campaign, ''), 'uncampaignized')
+     order by clicks desc, last_click_at desc
+     limit $1`,
+    [limit]
+  );
+
+  return result.rows.map((row) => ({
+    campaign: String(row.campaign),
+    clicks: Number(row.clicks),
+    affiliate_clicks: Number(row.affiliate_clicks),
+    last_click_at: row.last_click_at ? new Date(String(row.last_click_at)).toISOString() : null
+  }));
+}

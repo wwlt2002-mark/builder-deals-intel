@@ -889,6 +889,11 @@ nav a:hover,
   grid-template-columns: minmax(360px, 1fr) 100px 100px 180px;
 }
 
+.campaign-table .admin-table-head,
+.campaign-table .admin-table-row {
+  grid-template-columns: minmax(360px, 1fr) 100px 100px 180px;
+}
+
 .source-table .admin-table-head,
 .source-table .admin-table-row {
   grid-template-columns: minmax(320px, 1fr) 150px 150px 100px 180px;
