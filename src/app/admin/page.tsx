@@ -9,6 +9,7 @@ import { getAllDeals, getReviewDeals } from "@/lib/deals";
 import { getEnvironmentReadiness } from "@/lib/env-readiness";
 import { moneyPages } from "@/lib/money-pages";
 import { ownerActions } from "@/lib/owner-actions";
+import { payoutReadinessItems } from "@/lib/payout-readiness";
 import { getRevenueReadiness } from "@/lib/revenue";
 import { getMonitoredSources, getSourceHealth } from "@/lib/sources";
 import { sponsorOutreach } from "@/lib/sponsor-outreach";
@@ -283,6 +284,33 @@ export default async function AdminPage({
                 <div>
                   <span className={item.status === "ready" ? "status-published" : "status-review"}>{item.status}</span>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Payout readiness kit</h2>
+            <p>Keep revenue setup clean while only interrupting the owner at unavoidable verification steps.</p>
+          </div>
+        </div>
+        <div className="table-panel">
+          <div className="admin-table owner-action-table">
+            <div className="admin-table-head">Item</div>
+            <div className="admin-table-head">Needed for</div>
+            <div className="admin-table-head">Prepare</div>
+            <div className="admin-table-head">Ask owner when</div>
+            {payoutReadinessItems.map((item) => (
+              <div className="admin-table-row" key={item.item}>
+                <div>
+                  <strong>{item.item}</strong>
+                </div>
+                <div>{item.neededFor}</div>
+                <div>{item.prepare}</div>
+                <div>{item.askOwnerWhen}</div>
               </div>
             ))}
           </div>
