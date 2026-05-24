@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { affiliatePrograms, getAffiliateProgramId } from "@/lib/affiliate-programs";
 import { categories } from "@/lib/categories";
 import { getPublishedDeals } from "@/lib/deals";
 import { moneyPages } from "@/lib/money-pages";
@@ -32,6 +33,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date()
   }));
 
+  const partnerProgramRoutes = affiliatePrograms.map((program) => ({
+    url: `${siteUrl}/partner-programs/${getAffiliateProgramId(program.name)}`,
+    lastModified: new Date()
+  }));
+
   const categoryRoutes = categories.map((category) => ({
     url: `${siteUrl}/categories/${category.id}`,
     lastModified: new Date()
@@ -42,5 +48,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(deal.last_checked_at)
   }));
 
-  return [...staticRoutes, ...moneyRoutes, ...categoryRoutes, ...dealRoutes];
+  return [...staticRoutes, ...moneyRoutes, ...partnerProgramRoutes, ...categoryRoutes, ...dealRoutes];
 }
