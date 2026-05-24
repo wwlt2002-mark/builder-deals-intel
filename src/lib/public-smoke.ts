@@ -13,6 +13,7 @@ export const publicSmokeChecks = [
   { path: "/status", expected: "Public operating status" },
   { path: "/sponsor", expected: "Start a partnership" },
   { path: "/partner-programs", expected: "Affiliate application profile" },
+  { path: "/affiliate-compliance", expected: "Brand-safe promotion rules" },
   { path: "/hosting-deals", expected: "Hosting Deals, Domain Discounts" },
   { path: "/saas-discounts", expected: "SaaS Discounts and Startup Software" },
   { path: "/hosting-for-saas-projects", expected: "Best Hosting Deals for New SaaS Projects" },

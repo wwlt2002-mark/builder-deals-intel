@@ -12,7 +12,8 @@ const priorityAssets = [
   { href: "/newsletter-tools-for-builders", label: "Best Newsletter Tools for Builders" },
   { href: "/automation-tools-for-ai-workflows", label: "Best Automation Tools for AI Workflows" },
   { href: "/status", label: "Public operating status" },
-  { href: "/affiliate-disclosure", label: "Affiliate disclosure" }
+  { href: "/affiliate-disclosure", label: "Affiliate disclosure" },
+  { href: "/affiliate-compliance", label: "Affiliate compliance policy" }
 ];
 
 export default function PartnerProgramsPage() {
