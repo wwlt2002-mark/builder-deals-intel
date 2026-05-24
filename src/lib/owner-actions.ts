@@ -19,6 +19,12 @@ export const ownerActions: OwnerAction[] = [
     status: "waiting"
   },
   {
+    title: "Business email mailboxes",
+    trigger: "Before submitting affiliate applications or sending sponsor outreach.",
+    why: "partnerships@builderdealintel.com and editorial@builderdealintel.com are public contact points and need to receive replies.",
+    status: "ready"
+  },
+  {
     title: "Affiliate payout profile",
     trigger: "When Hostinger, Beehiiv, Make, or another program asks for PayPal, bank, tax, or identity details.",
     why: "Revenue cannot be withdrawn until payout and tax verification are complete.",
