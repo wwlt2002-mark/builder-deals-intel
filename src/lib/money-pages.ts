@@ -125,6 +125,41 @@ export const moneyPages: MoneyPage[] = [
     }
   },
   {
+    slug: "hosting-for-saas-projects",
+    title: "Best Hosting Deals for New SaaS Projects",
+    description:
+      "A buyer-intent guide for founders comparing hosting, domains, email, SSL, backups, and deployment costs before launching a SaaS product.",
+    category: "hosting",
+    intent: ["SaaS hosting", "startup hosting deals", "domain and email bundle", "launch infrastructure"],
+    evaluation: [
+      "First-term and renewal pricing must be separated.",
+      "Managed hosting, VPS, email, domain, backups, and migration extras are evaluated as real launch costs.",
+      "Affiliate links are disclosed and cannot replace source-backed plan terms."
+    ],
+    faqs: [
+      {
+        question: "What should a new SaaS founder compare first?",
+        answer:
+          "Start with renewal pricing, deployment workflow, database needs, email/domain bundle, backup policy, and whether the plan can handle production traffic without an early migration."
+      },
+      {
+        question: "Are cheap hosting offers always good for SaaS?",
+        answer:
+          "No. Low first-term pricing can be useful for MVPs, but renewal cost, resource limits, uptime needs, and support quality matter more once users depend on the product."
+      },
+      {
+        question: "Why does this page help hosting affiliate approval?",
+        answer:
+          "It shows a clear buyer path for founders actively choosing hosting and explains how offers will be reviewed, disclosed, and tracked."
+      }
+    ],
+    sponsorFit: {
+      audience: "Founders and indie builders preparing to launch MVPs, SaaS apps, landing pages, and client projects.",
+      package: "Hosting affiliate partnership, category feature, or launch monitoring package.",
+      buyerPath: "Readers compare launch requirements, pricing risk, included services, and source terms before opening a tracked hosting offer."
+    }
+  },
+  {
     slug: "saas-discounts",
     title: "SaaS Discounts and Startup Software Deals",
     description:
@@ -157,6 +192,76 @@ export const moneyPages: MoneyPage[] = [
       audience: "Startup operators, creators, founders, and small teams comparing recurring software costs.",
       package: "Newsletter sponsor, affiliate partnership, or SaaS category placement.",
       buyerPath: "Readers inspect use case, discount type, risk labels, and source terms before clicking through."
+    }
+  },
+  {
+    slug: "newsletter-tools-for-builders",
+    title: "Best Newsletter Tools for Builders",
+    description:
+      "A comparison-style deal guide for newsletter platforms, creator email tools, sponsor inventory, and audience growth software.",
+    category: "saas",
+    intent: ["newsletter platform deals", "creator email tools", "sponsor newsletters", "audience growth software"],
+    evaluation: [
+      "Free tiers, creator plans, and paid newsletters are evaluated separately.",
+      "Subscriber limits, sending limits, fees, and migration restrictions are surfaced.",
+      "Partner and affiliate claims must remain clearly disclosed."
+    ],
+    faqs: [
+      {
+        question: "Which newsletter features matter most for builders?",
+        answer:
+          "Builders usually need reliable sending, simple landing pages, custom domains, audience segmentation, referral features, sponsor workflows, and predictable pricing as the list grows."
+      },
+      {
+        question: "Are newsletter platform discounts common?",
+        answer:
+          "They appear as partner promos, annual plan discounts, creator offers, and migration incentives. We only list offers when a source or partner page supports the terms."
+      },
+      {
+        question: "Why does this page help newsletter affiliate approval?",
+        answer:
+          "It demonstrates a relevant audience, a natural promotion path, and a clear disclosure model for platforms such as beehiiv and similar tools."
+      }
+    ],
+    sponsorFit: {
+      audience: "Founders, creators, technical writers, indie builders, and operators building owned audiences.",
+      package: "Newsletter platform affiliate partnership or sponsored daily brief placement.",
+      buyerPath: "Readers inspect pricing, subscriber limits, monetization features, and source-backed offers before clicking through."
+    }
+  },
+  {
+    slug: "automation-tools-for-ai-workflows",
+    title: "Best Automation Tools for AI Workflows",
+    description:
+      "Verified automation, integration, API workflow, and no-code/low-code tool deals for builders connecting AI products and SaaS operations.",
+    category: "saas",
+    intent: ["AI workflow automation", "automation tool discounts", "Make affiliate", "API workflow tools"],
+    evaluation: [
+      "Usage limits, task credits, API limits, and paid plan triggers are labeled.",
+      "AI workflow claims must map to practical use cases instead of vague productivity promises.",
+      "Affiliate offers are ranked by source quality and builder usefulness, not payout size."
+    ],
+    faqs: [
+      {
+        question: "What automation tools fit AI workflows?",
+        answer:
+          "Useful tools connect forms, CRMs, databases, email, model APIs, webhooks, and internal processes so builders can automate repeatable operations without writing every integration from scratch."
+      },
+      {
+        question: "What risks should buyers check?",
+        answer:
+          "Check task limits, API rate limits, team permissions, audit logs, billing triggers, and whether AI steps require separate model API costs."
+      },
+      {
+        question: "Why does this page help automation affiliate approval?",
+        answer:
+          "It gives Make and similar automation platforms a relevant, high-intent content asset with source-backed terms and tracked outbound clicks."
+      }
+    ],
+    sponsorFit: {
+      audience: "Operators, founders, no-code builders, and technical teams connecting AI tools, APIs, and recurring SaaS workflows.",
+      package: "Automation tool affiliate partnership, category feature, or workflow-focused newsletter sponsor.",
+      buyerPath: "Readers compare task economics, workflow fit, and source terms before opening a tracked automation offer."
     }
   },
   {

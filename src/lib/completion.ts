@@ -36,6 +36,7 @@ export function getCompletionAssessment(input: {
   if (input.subscribers.length > 0) percent += 4;
   if (affiliateLinks.length > 0) percent += 7;
   if ((input.moneyPages ?? 0) >= 5) percent += 3;
+  if ((input.moneyPages ?? 0) >= 8) percent += 1;
   if (input.aiExtractionReady) percent += 2;
   if (input.environmentDashboardReady) percent += 1;
   if (input.commercialOutreachReady) percent += 1;

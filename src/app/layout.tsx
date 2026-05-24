@@ -61,6 +61,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/saas-discounts">SaaS Discounts</Link>
             <Link href="/free-cloud-credits">Cloud Credits</Link>
             <Link href="/hosting-deals">Hosting Deals</Link>
+            <Link href="/hosting-for-saas-projects">SaaS Hosting</Link>
+            <Link href="/newsletter-tools-for-builders">Newsletter Tools</Link>
+            <Link href="/automation-tools-for-ai-workflows">Automation Tools</Link>
             <Link href="/media-kit">Media Kit</Link>
             <Link href="/advertise">Advertise</Link>
             <Link href="/status">Status</Link>
