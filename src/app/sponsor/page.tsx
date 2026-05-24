@@ -1,4 +1,4 @@
-import { getSponsorOfferCatalog, sponsorPackages } from "@/lib/sponsor-packages";
+import { getSponsorOfferCatalog, sponsorFaqs, sponsorPackages } from "@/lib/sponsor-packages";
 import { sponsorOutreach } from "@/lib/sponsor-outreach";
 
 export const metadata = {
@@ -131,6 +131,23 @@ export default function SponsorPage({
               <h3>{item.segment}</h3>
               <strong>{item.target}</strong>
               <p className="summary">{item.ask}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Partner FAQ</h2>
+            <p>Clear answers for affiliate managers and sponsors reviewing the site before approval.</p>
+          </div>
+        </div>
+        <div className="deal-grid">
+          {sponsorFaqs.map((faq) => (
+            <article className="panel sponsor-card" key={faq.question}>
+              <h3>{faq.question}</h3>
+              <p className="summary">{faq.answer}</p>
             </article>
           ))}
         </div>

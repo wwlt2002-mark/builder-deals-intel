@@ -11,7 +11,7 @@ const defaultSiteUrl = "https://builderdealintel.com";
 export const publicSmokeChecks = [
   { path: "/", expected: "Today&#x27;s best builder deals" },
   { path: "/status", expected: "Public operating status" },
-  { path: "/sponsor", expected: "Start a partnership" },
+  { path: "/sponsor", expected: "Partner FAQ" },
   { path: "/partner-programs", expected: "Affiliate application profile" },
   { path: "/editorial-policy", expected: "Trust rules for deal intelligence" },
   { path: "/affiliate-compliance", expected: "Brand-safe promotion rules" },

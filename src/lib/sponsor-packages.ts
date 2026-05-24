@@ -6,6 +6,11 @@ export type SponsorPackage = {
   proof: string;
 };
 
+export type SponsorFaq = {
+  question: string;
+  answer: string;
+};
+
 export const sponsorPackages: SponsorPackage[] = [
   {
     name: "Newsletter sponsor",
@@ -34,6 +39,29 @@ export const sponsorPackages: SponsorPackage[] = [
     bestFor: "Partner programs with clean tracking URLs, public terms, and a product useful to technical buyers.",
     included: "Affiliate disclosure, source-labeled deal page, tracked outbound redirect, and status management.",
     proof: "Affiliate click counts, network field, program status, and payout readiness tracking."
+  }
+];
+
+export const sponsorFaqs: SponsorFaq[] = [
+  {
+    question: "Do paid partners get guaranteed ranking?",
+    answer:
+      "No. Sponsored and affiliate placements are labeled and tracked, but ranking still depends on source quality, buyer relevance, expiration clarity, risk notes, and editorial usefulness."
+  },
+  {
+    question: "What do you need before publishing an offer?",
+    answer:
+      "We need the official offer URL, destination URL, terms, price or credit value, eligibility, region, expiration window, tracking link, and any restrictions that a buyer should know before clicking."
+  },
+  {
+    question: "Can partners supply affiliate links?",
+    answer:
+      "Yes. Clean first-party or network tracking links are supported. The public page still keeps a source link and disclosure so readers can verify the offer terms."
+  },
+  {
+    question: "What promotion methods are excluded?",
+    answer:
+      "We avoid trademark bidding, fake coupon codes, hidden redirects, forced scarcity, cookie stuffing, browser-extension hijacks, and unverified claims copied from other deal sites."
   }
 ];
 
