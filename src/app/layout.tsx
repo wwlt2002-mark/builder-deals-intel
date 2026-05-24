@@ -66,6 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/automation-tools-for-ai-workflows">Automation Tools</Link>
             <Link href="/media-kit">Media Kit</Link>
             <Link href="/advertise">Advertise</Link>
+            <Link href="/partner-programs">Partner Programs</Link>
             <Link href="/status">Status</Link>
             <Link href="/affiliate-disclosure">Disclosure</Link>
             <Link href="/privacy">Privacy</Link>
