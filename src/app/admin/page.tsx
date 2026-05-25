@@ -71,7 +71,9 @@ export default async function AdminPage({
     environmentDashboardReady: true,
     commercialOutreachReady: true,
     distributionFeedsReady: true,
-    publicStatusReady: true
+    publicStatusReady: true,
+    businessEmailReady: true,
+    affiliateApprovalReady: affiliateApprovalScore.percent >= 60
   });
 
   return (
@@ -167,7 +169,7 @@ export default async function AdminPage({
             </div>
             <div>
               <strong>Next lift</strong>
-              <span>Affiliate approvals, Resend key, real subscribers, and production AI extraction move this past 80%.</span>
+              <span>Affiliate approvals, Resend key, real subscribers, and production AI extraction are the remaining revenue unlocks.</span>
             </div>
           </div>
         </div>

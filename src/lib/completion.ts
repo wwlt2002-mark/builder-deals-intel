@@ -20,6 +20,8 @@ export function getCompletionAssessment(input: {
   commercialOutreachReady?: boolean;
   distributionFeedsReady?: boolean;
   publicStatusReady?: boolean;
+  businessEmailReady?: boolean;
+  affiliateApprovalReady?: boolean;
 }) {
   const publishedDeals = input.deals.filter((deal) => deal.status === "auto_published");
   const reviewDeals = input.deals.filter((deal) => deal.status === "needs_review");
@@ -42,12 +44,16 @@ export function getCompletionAssessment(input: {
   if (input.commercialOutreachReady) percent += 1;
   if (input.distributionFeedsReady) percent += 1;
   if (input.publicStatusReady) percent += 1;
+  if (input.businessEmailReady) percent += 3;
+  if (input.affiliateApprovalReady) percent += 4;
 
-  percent = Math.min(percent, 88);
+  percent = Math.min(percent, 95);
 
   const gaps = [
     affiliateLinks.length ? "" : "no live approved affiliate tracking links",
     input.subscribers.length ? "" : "newsletter has no active subscriber base yet",
+    input.businessEmailReady ? "" : "business email is not ready for affiliate approval",
+    input.affiliateApprovalReady ? "" : "affiliate approval proof packet is not complete",
     input.aiExtractionReady
       ? "AI extraction is wired, but output quality still needs production monitoring"
       : "AI extraction of specific limited-time offers still needs production hardening"
@@ -61,13 +67,15 @@ export function getCompletionAssessment(input: {
     input.environmentDashboardReady ? "environment readiness is visible in admin" : "",
     input.commercialOutreachReady ? "commercial outreach scripts are ready" : "",
     input.distributionFeedsReady ? "RSS and JSON feeds are live for syndication" : "",
-    input.publicStatusReady ? "public proof/status page is live" : ""
+    input.publicStatusReady ? "public proof/status page is live" : "",
+    input.businessEmailReady ? "business mailbox and editorial alias are ready" : "",
+    input.affiliateApprovalReady ? "affiliate approval proof packet is ready" : ""
   ].filter(Boolean);
 
   return {
     percent,
     reason:
-      "The product is operational, but sustained revenue still depends on real affiliate approvals, subscriber growth, and higher-quality automated extraction.",
+      "The product is commercially presentable, but sustained revenue still depends on real affiliate approvals, subscriber growth, and higher-quality automated extraction.",
     strengths,
     gaps
   };
