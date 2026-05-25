@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { affiliateApprovalItems, getAffiliateApprovalScore } from "@/lib/affiliate-approval";
 import { applicationCopy, getProgramApplicationCopy } from "@/lib/application-copy";
 import { affiliatePrograms, getAffiliateProgramId } from "@/lib/affiliate-programs";
 
@@ -19,6 +20,7 @@ const priorityAssets = [
 
 export default function PartnerProgramsPage() {
   const readyPrograms = affiliatePrograms.filter((program) => program.application_stage === "ready");
+  const approvalScore = getAffiliateApprovalScore();
 
   return (
     <div className="page legal-page">
@@ -43,6 +45,44 @@ export default function PartnerProgramsPage() {
         <div>
           <strong>Traffic stage</strong>
           <span>Early-stage audience, built around high-intent software buyers instead of broad coupon traffic or brand bidding.</span>
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Approval readiness</h2>
+            <p>Signals affiliate managers look for before approving a new publisher.</p>
+          </div>
+        </div>
+        <div className="table-panel completion-panel">
+          <div className="completion-score">
+            <strong>{approvalScore.percent}%</strong>
+            <span>{approvalScore.reason}</span>
+          </div>
+          <div className="completion-bar" aria-label={`${approvalScore.percent}% affiliate approval ready`}>
+            <span style={{ width: `${approvalScore.percent}%` }} />
+          </div>
+          <div className="admin-table owner-action-table">
+            <div className="admin-table-head">Signal</div>
+            <div className="admin-table-head">Status</div>
+            <div className="admin-table-head">Proof</div>
+            <div className="admin-table-head">Next</div>
+            {affiliateApprovalItems.map((item) => (
+              <div className="admin-table-row" key={item.label}>
+                <div>
+                  <strong>{item.label}</strong>
+                </div>
+                <div>
+                  <span className={item.status === "ready" ? "status-published" : "status-review"}>
+                    {item.status.replace("_", " ")}
+                  </span>
+                </div>
+                <div>{item.proof}</div>
+                <div>{item.next}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

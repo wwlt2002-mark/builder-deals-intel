@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { requireAdminPage } from "@/lib/admin";
+import { affiliateApprovalItems, getAffiliateApprovalScore } from "@/lib/affiliate-approval";
 import { getAffiliatePipeline } from "@/lib/affiliate-programs";
 import { applicationCopy, getProgramApplicationCopy } from "@/lib/application-copy";
 import { getCategoryLabel } from "@/lib/categories";
@@ -50,6 +51,7 @@ export default async function AdminPage({
   const topClickPlacements = await getTopClickPlacements();
   const topClickCampaigns = await getTopClickCampaigns();
   const affiliatePrograms = await getAffiliatePipeline();
+  const affiliateApprovalScore = getAffiliateApprovalScore();
   const environmentReadiness = getEnvironmentReadiness();
   const operationalDeals = allDeals.filter((deal) => deal.status !== "rejected");
   const publishedDeals = allDeals.filter((deal) => deal.status === "auto_published");
@@ -223,6 +225,44 @@ export default async function AdminPage({
                   <span>{item.split(": ").slice(1).join(": ")}</span>
                 </div>
                 <div>Needed only when the affiliate platform asks for payout, tax, identity, or account verification.</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Affiliate approval readiness</h2>
+            <p>What reviewers need to see before they trust a new publisher account.</p>
+          </div>
+        </div>
+        <div className="table-panel completion-panel">
+          <div className="completion-score">
+            <strong>{affiliateApprovalScore.percent}%</strong>
+            <span>{affiliateApprovalScore.reason}</span>
+          </div>
+          <div className="completion-bar" aria-label={`${affiliateApprovalScore.percent}% affiliate approval ready`}>
+            <span style={{ width: `${affiliateApprovalScore.percent}%` }} />
+          </div>
+          <div className="admin-table owner-action-table">
+            <div className="admin-table-head">Signal</div>
+            <div className="admin-table-head">Status</div>
+            <div className="admin-table-head">Proof</div>
+            <div className="admin-table-head">Next action</div>
+            {affiliateApprovalItems.map((item) => (
+              <div className="admin-table-row" key={item.label}>
+                <div>
+                  <strong>{item.label}</strong>
+                </div>
+                <div>
+                  <span className={item.status === "ready" ? "status-published" : "status-review"}>
+                    {item.status.replace("_", " ")}
+                  </span>
+                </div>
+                <div>{item.proof}</div>
+                <div>{item.next}</div>
               </div>
             ))}
           </div>
