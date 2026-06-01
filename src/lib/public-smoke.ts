@@ -25,6 +25,7 @@ export const publicSmokeChecks = [
   { path: "/hosting-deals", expected: "Hosting Deals, Domain Discounts" },
   { path: "/saas-discounts", expected: "SaaS Discounts and Startup Software" },
   { path: "/hosting-for-saas-projects", expected: "Best Hosting Deals for New SaaS Projects" },
+  { path: "/ai-agent-hosting", expected: "Best Hosting for AI Agents and Automation Workflows" },
   { path: "/newsletter-tools-for-builders", expected: "Best Newsletter Tools for Builders" },
   { path: "/automation-tools-for-ai-workflows", expected: "Best Automation Tools for AI Workflows" },
   { path: "/rss.xml", expected: "<rss" },

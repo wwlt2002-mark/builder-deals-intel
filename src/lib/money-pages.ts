@@ -160,6 +160,41 @@ export const moneyPages: MoneyPage[] = [
     }
   },
   {
+    slug: "ai-agent-hosting",
+    title: "Best Hosting for AI Agents and Automation Workflows",
+    description:
+      "A buyer-intent hosting guide for builders deploying AI agents, workflow automations, webhooks, dashboards, and lightweight internal tools.",
+    category: "hosting",
+    intent: ["AI agent hosting", "workflow automation hosting", "webhook hosting", "builder infrastructure"],
+    evaluation: [
+      "Always-on runtime needs are separated from static site or landing page hosting.",
+      "Cron jobs, webhooks, queues, logs, backups, and upgrade paths are treated as deployment requirements.",
+      "Affiliate recommendations must disclose commercial links and keep plan limits source-backed."
+    ],
+    faqs: [
+      {
+        question: "What hosting features matter for AI agents?",
+        answer:
+          "AI agents and automations usually need reliable uptime, webhook handling, scheduled jobs, logs, environment variables, background workers, and an upgrade path when API usage grows."
+      },
+      {
+        question: "Can cheap shared hosting run AI workflows?",
+        answer:
+          "It can work for landing pages, dashboards, documentation, and simple scripts, but persistent workers, queues, and high-volume automation often need VPS, cloud, or managed app hosting."
+      },
+      {
+        question: "Why does this page support hosting affiliate approval?",
+        answer:
+          "It creates a clear, non-coupon buyer path for builders actively choosing infrastructure and shows how hosting offers are evaluated, disclosed, and tracked."
+      }
+    ],
+    sponsorFit: {
+      audience: "AI builders, automation operators, indie hackers, and technical founders deploying agents, webhooks, dashboards, and internal tools.",
+      package: "Hosting affiliate partnership, AI infrastructure category placement, or workflow-focused daily brief sponsor.",
+      buyerPath: "Readers map their runtime needs to hosting options, review pricing and operational risk, then open a tracked provider link."
+    }
+  },
+  {
     slug: "saas-discounts",
     title: "SaaS Discounts and Startup Software Deals",
     description:
