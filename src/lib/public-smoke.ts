@@ -10,6 +10,7 @@ const defaultSiteUrl = "https://builderdealintel.com";
 
 export const publicSmokeChecks = [
   { path: "/", expected: "Today&#x27;s best builder deals" },
+  { path: "/daily-brief", expected: "Daily builder deals brief" },
   { path: "/contact", expected: "Contact Builder Deals Intel" },
   { path: "/status", expected: "Public operating status" },
   { path: "/sponsor", expected: "Partner FAQ" },
