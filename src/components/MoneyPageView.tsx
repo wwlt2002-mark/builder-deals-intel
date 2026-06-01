@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { DealCard } from "@/components/DealCard";
 import { getCategoryLabel } from "@/lib/categories";
-import type { MoneyPage } from "@/lib/money-pages";
+import { getRelatedMoneyPages, type MoneyPage } from "@/lib/money-pages";
 import type { Deal } from "@/lib/types";
 
 export function MoneyPageView({ page, deals }: { page: MoneyPage; deals: Deal[] }) {
+  const relatedPages = getRelatedMoneyPages(page);
+
   return (
     <div className="page">
       <section className="hero media-hero">
@@ -92,6 +94,23 @@ export function MoneyPageView({ page, deals }: { page: MoneyPage; deals: Deal[] 
             <strong>Buyer path</strong>
             <span>{page.sponsorFit.buyerPath}</span>
           </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Related buyer guides</h2>
+            <p>More high-intent pages that help readers compare adjacent tools and infrastructure.</p>
+          </div>
+        </div>
+        <div className="deal-grid">
+          {relatedPages.map((relatedPage) => (
+            <Link className="panel category-panel" href={`/${relatedPage.slug}`} key={relatedPage.slug}>
+              <h3>{relatedPage.title}</h3>
+              <p className="summary">{relatedPage.description}</p>
+            </Link>
+          ))}
         </div>
       </section>
 

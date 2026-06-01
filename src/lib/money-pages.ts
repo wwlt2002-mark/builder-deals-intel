@@ -339,3 +339,20 @@ export const moneyPages: MoneyPage[] = [
 export function getMoneyPage(slug: string) {
   return moneyPages.find((page) => page.slug === slug);
 }
+
+export function getRelatedMoneyPages(page: MoneyPage, limit = 4) {
+  return moneyPages
+    .filter((candidate) => candidate.slug !== page.slug)
+    .sort((a, b) => {
+      if (a.category === page.category && b.category !== page.category) {
+        return -1;
+      }
+
+      if (a.category !== page.category && b.category === page.category) {
+        return 1;
+      }
+
+      return a.title.localeCompare(b.title);
+    })
+    .slice(0, limit);
+}
