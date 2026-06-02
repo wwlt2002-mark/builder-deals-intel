@@ -55,6 +55,41 @@ export const moneyPages: MoneyPage[] = [
     }
   },
   {
+    slug: "ai-coding-tool-deals",
+    title: "AI Coding Tool Deals and Developer Assistant Discounts",
+    description:
+      "Verified discounts, trials, credits, and team offers for AI coding assistants, code review tools, IDE extensions, and developer copilots.",
+    category: "ai_tools",
+    intent: ["AI coding tools", "developer copilot discounts", "AI code review", "IDE assistant deals"],
+    evaluation: [
+      "Seat limits, IDE support, repo access, and team billing terms must be visible before promotion.",
+      "Security-sensitive tools are labeled for data access, repository permissions, and enterprise controls when source terms show them.",
+      "Affiliate links cannot replace source-backed pricing, eligibility, trial, or cancellation details."
+    ],
+    faqs: [
+      {
+        question: "Which AI coding tools are included?",
+        answer:
+          "We include AI coding assistants, IDE extensions, code review tools, test generation products, documentation helpers, and developer copilots when the offer has a clear source."
+      },
+      {
+        question: "What should teams check before buying an AI coding assistant?",
+        answer:
+          "Teams should check repository access, data retention, supported IDEs, seat management, model limits, security controls, and whether trials convert automatically to paid plans."
+      },
+      {
+        question: "Why is this a strong affiliate category?",
+        answer:
+          "AI coding tools have clear buyer intent, recurring subscription economics, and a natural audience fit with builders who already compare developer software."
+      }
+    ],
+    sponsorFit: {
+      audience: "Engineers, technical founders, AI builders, and developer teams comparing coding assistants and code review workflows.",
+      package: "AI coding tool affiliate partnership, category feature, or developer-focused daily brief sponsor.",
+      buyerPath: "Readers compare workflow fit, team/security limits, source terms, and offer quality before opening a tracked product link."
+    }
+  },
+  {
     slug: "free-cloud-credits",
     title: "Free Cloud Credits and Startup Infrastructure Offers",
     description:

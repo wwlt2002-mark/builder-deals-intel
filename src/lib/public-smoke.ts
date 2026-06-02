@@ -22,6 +22,7 @@ export const publicSmokeChecks = [
   { path: "/commercial-proof", expected: "Public proof for affiliate managers" },
   { path: "/editorial-policy", expected: "Trust rules for deal intelligence" },
   { path: "/affiliate-compliance", expected: "Brand-safe promotion rules" },
+  { path: "/ai-coding-tool-deals", expected: "AI Coding Tool Deals and Developer Assistant Discounts" },
   { path: "/hosting-deals", expected: "Hosting Deals, Domain Discounts" },
   { path: "/saas-discounts", expected: "SaaS Discounts and Startup Software" },
   { path: "/hosting-for-saas-projects", expected: "Best Hosting Deals for New SaaS Projects" },

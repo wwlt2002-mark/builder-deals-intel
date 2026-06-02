@@ -89,6 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/rss.xml">RSS</Link>
             <Link href="/newsletter/archive">Brief Archive</Link>
             <Link href="/best-ai-deals">AI Deals</Link>
+            <Link href="/ai-coding-tool-deals">AI Coding Tools</Link>
             <Link href="/saas-discounts">SaaS Discounts</Link>
             <Link href="/free-cloud-credits">Cloud Credits</Link>
             <Link href="/hosting-deals">Hosting Deals</Link>
