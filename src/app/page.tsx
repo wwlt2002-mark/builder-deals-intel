@@ -2,6 +2,7 @@ import Link from "next/link";
 import { DealCard } from "@/components/DealCard";
 import { categories } from "@/lib/categories";
 import { getFeaturedDeals, getReviewDeals } from "@/lib/deals";
+import { moneyPages } from "@/lib/money-pages";
 
 export default async function HomePage() {
   const featuredDeals = await getFeaturedDeals(10);
@@ -87,6 +88,23 @@ export default async function HomePage() {
             <Link className="panel category-panel" href={`/categories/${category.id}`} key={category.id}>
               <h3>{category.label}</h3>
               <p className="summary">{category.description}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Buyer guides</h2>
+            <p>High-intent pages for readers comparing tools, credits, hosting, and infrastructure before they buy.</p>
+          </div>
+        </div>
+        <div className="deal-grid">
+          {moneyPages.slice(0, 6).map((page) => (
+            <Link className="panel category-panel" href={`/${page.slug}`} key={page.slug}>
+              <h3>{page.title}</h3>
+              <p className="summary">{page.description}</p>
             </Link>
           ))}
         </div>
