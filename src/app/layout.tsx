@@ -92,6 +92,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/ai-coding-tool-deals">AI Coding Tools</Link>
             <Link href="/saas-discounts">SaaS Discounts</Link>
             <Link href="/free-cloud-credits">Cloud Credits</Link>
+            <Link href="/cloud-cost-optimization-deals">Cloud Savings</Link>
             <Link href="/hosting-deals">Hosting Deals</Link>
             <Link href="/hosting-for-saas-projects">SaaS Hosting</Link>
             <Link href="/ai-agent-hosting">AI Agent Hosting</Link>

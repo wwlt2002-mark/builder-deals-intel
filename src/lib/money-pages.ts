@@ -125,6 +125,41 @@ export const moneyPages: MoneyPage[] = [
     }
   },
   {
+    slug: "cloud-cost-optimization-deals",
+    title: "Cloud Cost Optimization Deals and Infrastructure Savings",
+    description:
+      "Verified credits, trials, discounts, and tool offers for builders reducing cloud, API, hosting, observability, and infrastructure spend.",
+    category: "cloud_credits",
+    intent: ["cloud cost optimization", "infrastructure savings", "cloud billing tools", "startup cloud discounts"],
+    evaluation: [
+      "Savings claims must be tied to specific pricing, credits, usage limits, or source-backed plan terms.",
+      "Billing tools are evaluated for supported providers, reporting depth, alerts, and whether they require production account access.",
+      "Free trials and credits are labeled separately from durable long-term infrastructure savings."
+    ],
+    faqs: [
+      {
+        question: "What cloud cost offers are included?",
+        answer:
+          "We include cloud credits, billing and usage monitoring tools, observability discounts, hosting bundles, API credits, and infrastructure trials when source terms are clear."
+      },
+      {
+        question: "What should founders check before using a cloud savings tool?",
+        answer:
+          "Check supported cloud providers, required account permissions, reporting granularity, alerting, team access, cancellation terms, and whether the tool can change infrastructure automatically."
+      },
+      {
+        question: "Why does this page help affiliate and sponsor approval?",
+        answer:
+          "It targets buyers with real budget pressure and gives cloud, hosting, monitoring, and developer tool partners a clear source-backed promotion path."
+      }
+    ],
+    sponsorFit: {
+      audience: "Founders, operators, DevOps teams, and technical builders trying to reduce recurring cloud and infrastructure costs.",
+      package: "Cloud credits affiliate partnership, infrastructure savings category feature, or cost-optimization daily brief sponsor.",
+      buyerPath: "Readers identify spend risks, compare source-backed savings terms, then open tracked cloud or infrastructure offers."
+    }
+  },
+  {
     slug: "hosting-deals",
     title: "Hosting Deals, Domain Discounts, and Launch Infrastructure Offers",
     description:
