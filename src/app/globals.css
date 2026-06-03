@@ -695,6 +695,40 @@ nav a:hover,
   max-width: 760px;
 }
 
+.inline-form {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  min-width: min(100%, 420px);
+}
+
+.inline-form input[type="email"] {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-height: 46px;
+  min-width: 0;
+  padding: 11px 12px;
+  width: 100%;
+}
+
+.inline-form input[type="email"]:focus {
+  border-color: var(--accent);
+  outline: 3px solid rgba(18, 130, 119, 0.14);
+}
+
+.sr-only {
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 .field {
   display: grid;
   gap: 7px;
@@ -1030,6 +1064,12 @@ nav a:hover,
   .newsletter-sponsor-band {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .inline-form {
+    align-items: stretch;
+    flex-direction: column;
+    width: 100%;
   }
 
   nav {

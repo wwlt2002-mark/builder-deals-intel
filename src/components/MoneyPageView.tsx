@@ -131,6 +131,30 @@ export function MoneyPageView({ page, deals }: { page: MoneyPage; deals: Deal[] 
         </div>
       </section>
 
+      <section className="newsletter-sponsor-band">
+        <div>
+          <span className="eyebrow">Daily brief</span>
+          <h2>Track new deals in this segment.</h2>
+          <p className="summary">
+            Get the daily builder deals brief with source-backed AI, SaaS, hosting, cloud credit, and developer tool
+            offers.
+          </p>
+        </div>
+        <form action="/api/newsletter" className="inline-form" method="post">
+          <div aria-hidden="true" className="hp-field">
+            <label htmlFor={`${page.slug}-name`}>Name</label>
+            <input id={`${page.slug}-name`} name="name" tabIndex={-1} type="text" />
+          </div>
+          <label className="sr-only" htmlFor={`${page.slug}-email`}>
+            Email
+          </label>
+          <input id={`${page.slug}-email`} name="email" placeholder="you@example.com" required type="email" />
+          <button className="button" type="submit">
+            Join the brief
+          </button>
+        </form>
+      </section>
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
