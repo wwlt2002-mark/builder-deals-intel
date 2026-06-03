@@ -10,6 +10,8 @@ type Props = {
   params: Promise<{ category: string }>;
 };
 
+export const dynamic = "force-dynamic";
+
 export function generateStaticParams() {
   return categories.map((category) => ({ category: category.id }));
 }
