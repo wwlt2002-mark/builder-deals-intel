@@ -2,10 +2,68 @@ import Link from "next/link";
 import { DealCard } from "@/components/DealCard";
 import { getCategoryLabel } from "@/lib/categories";
 import { getRelatedMoneyPages, type MoneyPage } from "@/lib/money-pages";
+import { getSiteUrl } from "@/lib/site-url";
 import type { Deal } from "@/lib/types";
 
 export function MoneyPageView({ page, deals }: { page: MoneyPage; deals: Deal[] }) {
   const relatedPages = getRelatedMoneyPages(page);
+  const pageUrl = getSiteUrl(`/${page.slug}`).toString();
+  const categoryUrl = getSiteUrl(`/categories/${page.category}`).toString();
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: page.title,
+      description: page.description,
+      url: pageUrl,
+      isPartOf: {
+        "@type": "WebSite",
+        name: "Builder Deals Intel",
+        url: getSiteUrl("/").toString()
+      },
+      about: page.intent,
+      audience: {
+        "@type": "Audience",
+        audienceType: page.sponsorFit.audience
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: getSiteUrl("/").toString()
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: getCategoryLabel(page.category),
+          item: categoryUrl
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: page.title,
+          item: pageUrl
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: page.faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer
+        }
+      }))
+    }
+  ];
 
   return (
     <div className="page">
@@ -158,18 +216,7 @@ export function MoneyPageView({ page, deals }: { page: MoneyPage; deals: Deal[] 
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: page.faqs.map((faq) => ({
-              "@type": "Question",
-              name: faq.question,
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: faq.answer
-              }
-            }))
-          })
+          __html: JSON.stringify(structuredData)
         }}
       />
     </div>
