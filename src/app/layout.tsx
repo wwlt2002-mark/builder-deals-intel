@@ -3,13 +3,48 @@ import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  applicationName: "Builder Deals Intel",
   title: "Builder Deals Intel",
   description: "Daily AI, SaaS, and developer deals intelligence for builders.",
+  keywords: [
+    "AI deals",
+    "SaaS discounts",
+    "developer tool deals",
+    "cloud credits",
+    "hosting deals",
+    "builder tools",
+    "startup software discounts"
+  ],
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://builderdealintel.com"),
   alternates: {
+    canonical: "/",
     types: {
       "application/rss+xml": "/rss.xml",
       "application/feed+json": "/feed.json"
+    }
+  },
+  openGraph: {
+    title: "Builder Deals Intel",
+    description: "Daily AI, SaaS, cloud credit, hosting, and developer tool deals for builders.",
+    url: "/",
+    siteName: "Builder Deals Intel",
+    type: "website",
+    locale: "en_US"
+  },
+  twitter: {
+    card: "summary",
+    title: "Builder Deals Intel",
+    description: "Daily AI, SaaS, cloud credit, hosting, and developer tool deals for builders."
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1
     }
   }
 };
