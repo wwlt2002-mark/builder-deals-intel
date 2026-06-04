@@ -4,6 +4,12 @@ import { categories } from "@/lib/categories";
 import { getPublishedDeals } from "@/lib/deals";
 import { moneyPages } from "@/lib/money-pages";
 
+type SitemapFrequency = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
+
+function sitemapFrequency(value: SitemapFrequency) {
+  return value;
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://builderdealintel.com";
   const staticRoutes = [
@@ -28,35 +34,36 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ].map(({ route, priority }) => ({
     url: `${siteUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: route === "" || route === "/daily-brief" ? "daily" : "weekly",
+    changeFrequency:
+      route === "" || route === "/daily-brief" ? sitemapFrequency("daily") : sitemapFrequency("weekly"),
     priority
   }));
 
   const moneyRoutes = moneyPages.map((page) => ({
     url: `${siteUrl}/${page.slug}`,
     lastModified: new Date(),
-    changeFrequency: "weekly",
+    changeFrequency: sitemapFrequency("weekly"),
     priority: 0.9
   }));
 
   const partnerProgramRoutes = affiliatePrograms.map((program) => ({
     url: `${siteUrl}/partner-programs/${getAffiliateProgramId(program.name)}`,
     lastModified: new Date(),
-    changeFrequency: "monthly",
+    changeFrequency: sitemapFrequency("monthly"),
     priority: 0.6
   }));
 
   const categoryRoutes = categories.map((category) => ({
     url: `${siteUrl}/categories/${category.id}`,
     lastModified: new Date(),
-    changeFrequency: "daily",
+    changeFrequency: sitemapFrequency("daily"),
     priority: 0.8
   }));
 
   const dealRoutes = (await getPublishedDeals()).map((deal) => ({
     url: `${siteUrl}/deals/${deal.slug}`,
     lastModified: new Date(deal.last_checked_at),
-    changeFrequency: "weekly",
+    changeFrequency: sitemapFrequency("weekly"),
     priority: 0.7
   }));
 
