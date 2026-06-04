@@ -4,6 +4,7 @@ import { DealCard } from "@/components/DealCard";
 import { categories } from "@/lib/categories";
 import { getDealsByCategory } from "@/lib/deals";
 import { moneyPages } from "@/lib/money-pages";
+import { getSiteUrl } from "@/lib/site-url";
 import type { DealCategory } from "@/lib/types";
 
 type Props = {
@@ -36,6 +37,48 @@ export default async function CategoryPage({ params }: Props) {
 
   const deals = await getDealsByCategory(category.id as DealCategory);
   const buyerGuides = moneyPages.filter((page) => page.category === category.id);
+  const pageUrl = getSiteUrl(`/categories/${category.id}`).toString();
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: `${category.label} Deals`,
+      description: category.description,
+      url: pageUrl,
+      isPartOf: {
+        "@type": "WebSite",
+        name: "Builder Deals Intel",
+        url: getSiteUrl("/").toString()
+      },
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: deals.slice(0, 10).map((deal, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: deal.title,
+          url: getSiteUrl(`/deals/${deal.slug}`).toString()
+        }))
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: getSiteUrl("/").toString()
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: category.label,
+          item: pageUrl
+        }
+      ]
+    }
+  ];
 
   return (
     <div className="page">
@@ -68,6 +111,12 @@ export default async function CategoryPage({ params }: Props) {
           <DealCard deal={deal} key={deal.id} placement={`category_${category.id}_card`} />
         ))}
       </section>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData)
+        }}
+      />
     </div>
   );
 }
