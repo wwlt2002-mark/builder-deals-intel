@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import type { DealCategory } from "./types";
 
 export type MoneyPage = {
@@ -408,6 +409,32 @@ export const moneyPages: MoneyPage[] = [
 
 export function getMoneyPage(slug: string) {
   return moneyPages.find((page) => page.slug === slug);
+}
+
+export function getMoneyPageMetadata(page: MoneyPage): Metadata {
+  const title = `${page.title} | Builder Deals Intel`;
+
+  return {
+    title,
+    description: page.description,
+    keywords: page.intent,
+    alternates: {
+      canonical: `/${page.slug}`
+    },
+    openGraph: {
+      title,
+      description: page.description,
+      url: `/${page.slug}`,
+      siteName: "Builder Deals Intel",
+      type: "article",
+      locale: "en_US"
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description: page.description
+    }
+  };
 }
 
 export function getRelatedMoneyPages(page: MoneyPage, limit = 4) {

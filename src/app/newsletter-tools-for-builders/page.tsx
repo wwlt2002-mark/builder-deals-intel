@@ -1,13 +1,10 @@
 import { MoneyPageView } from "@/components/MoneyPageView";
 import { getDealsByCategory } from "@/lib/deals";
-import { getMoneyPage } from "@/lib/money-pages";
+import { getMoneyPage, getMoneyPageMetadata } from "@/lib/money-pages";
 
 const page = getMoneyPage("newsletter-tools-for-builders")!;
 
-export const metadata = {
-  title: `${page.title} | Builder Deals Intel`,
-  description: page.description
-};
+export const metadata = getMoneyPageMetadata(page);
 
 export default async function NewsletterToolsForBuildersPage() {
   const deals = await getDealsByCategory(page.category);
