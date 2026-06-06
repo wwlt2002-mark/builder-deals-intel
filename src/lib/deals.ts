@@ -38,7 +38,11 @@ function normalizeDeal(row: Record<string, unknown>): Deal {
 export async function getAllDeals() {
   if (hasDatabase()) {
     const result = await getPool().query("select * from deals order by confidence_score desc, created_at desc");
-    return result.rows.map(normalizeDeal);
+    const databaseDeals = result.rows.map(normalizeDeal);
+    const databaseSlugs = new Set(databaseDeals.map((deal) => deal.slug));
+    const seedOnlyDeals = deals.filter((deal) => !databaseSlugs.has(deal.slug));
+
+    return [...databaseDeals, ...seedOnlyDeals].sort((a, b) => b.confidence_score - a.confidence_score);
   }
 
   return [...deals].sort((a, b) => b.confidence_score - a.confidence_score);
