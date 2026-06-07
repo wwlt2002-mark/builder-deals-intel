@@ -52,6 +52,7 @@ export const metadata: Metadata = {
 const navItems = [
   { href: "/", label: "Today" },
   { href: "/daily-brief", label: "Brief" },
+  { href: "/deals", label: "Deals" },
   { href: "/categories/ai_tools", label: "AI" },
   { href: "/categories/saas", label: "SaaS" },
   { href: "/categories/developer_tools", label: "Dev Tools" },
@@ -121,6 +122,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/contact">Contact</Link>
             <Link href="/newsletter">Newsletter</Link>
             <Link href="/daily-brief">Daily Brief</Link>
+            <Link href="/deals">All Deals</Link>
             <Link href="/rss.xml">RSS</Link>
             <Link href="/newsletter/archive">Brief Archive</Link>
             <Link href="/best-ai-deals">AI Deals</Link>
