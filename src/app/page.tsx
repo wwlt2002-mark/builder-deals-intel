@@ -65,8 +65,8 @@ export default async function HomePage() {
             <h2>Today&apos;s Best Deals</h2>
             <p>Only high-confidence listings from official or trusted sources appear here.</p>
           </div>
-          <Link className="secondary-button" href="/admin">
-            Review queue
+          <Link className="secondary-button" href="/deals">
+            View all deals
           </Link>
         </div>
         <div className="deal-grid">
