@@ -6,7 +6,23 @@ import { getSubscriberStats } from "@/lib/storage";
 export const metadata = {
   title: "Commercial Proof | Builder Deals Intel",
   description:
-    "Public commercial proof for Builder Deals Intel, including outbound click tracking, newsletter growth, and sponsor-ready buyer intent."
+    "Public commercial proof for Builder Deals Intel, including outbound click tracking, newsletter growth, and sponsor-ready buyer intent.",
+  alternates: {
+    canonical: "/commercial-proof"
+  },
+  openGraph: {
+    title: "Commercial Proof | Builder Deals Intel",
+    description:
+      "Outbound click tracking, newsletter growth, and sponsor-ready buyer intent signals for Builder Deals Intel.",
+    url: "/commercial-proof",
+    siteName: "Builder Deals Intel",
+    type: "website"
+  },
+  twitter: {
+    card: "summary",
+    title: "Commercial Proof | Builder Deals Intel",
+    description: "Public click, subscriber, and sponsor-readiness signals for Builder Deals Intel."
+  }
 };
 
 export const dynamic = "force-dynamic";

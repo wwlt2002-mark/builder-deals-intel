@@ -2,7 +2,22 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Contact | Builder Deals Intel",
-  description: "Contact and business identity information for Builder Deals Intel."
+  description: "Contact and business identity information for Builder Deals Intel.",
+  alternates: {
+    canonical: "/contact"
+  },
+  openGraph: {
+    title: "Contact Builder Deals Intel",
+    description: "Contact routes for Builder Deals Intel partnerships, editorial corrections, and compliance questions.",
+    url: "/contact",
+    siteName: "Builder Deals Intel",
+    type: "website"
+  },
+  twitter: {
+    card: "summary",
+    title: "Contact Builder Deals Intel",
+    description: "Contact routes for partnerships, editorial corrections, and compliance questions."
+  }
 };
 
 const contacts = [

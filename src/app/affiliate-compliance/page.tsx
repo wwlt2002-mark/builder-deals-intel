@@ -2,7 +2,22 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Affiliate Compliance Policy | Builder Deals Intel",
-  description: "Traffic, disclosure, paid search, coupon, and brand safety rules for Builder Deals Intel partnerships."
+  description: "Traffic, disclosure, paid search, coupon, and brand safety rules for Builder Deals Intel partnerships.",
+  alternates: {
+    canonical: "/affiliate-compliance"
+  },
+  openGraph: {
+    title: "Affiliate Compliance Policy | Builder Deals Intel",
+    description: "Brand-safe traffic, disclosure, paid search, coupon, and tracking rules for partner programs.",
+    url: "/affiliate-compliance",
+    siteName: "Builder Deals Intel",
+    type: "website"
+  },
+  twitter: {
+    card: "summary",
+    title: "Affiliate Compliance Policy | Builder Deals Intel",
+    description: "Brand-safe promotion rules for Builder Deals Intel partner programs."
+  }
 };
 
 const policies = [

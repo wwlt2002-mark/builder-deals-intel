@@ -3,7 +3,23 @@ import Link from "next/link";
 export const metadata = {
   title: "Editorial Policy | Builder Deals Intel",
   description:
-    "How Builder Deals Intel verifies sources, labels commercial relationships, handles submissions, and ranks AI, SaaS, hosting, and developer deals."
+    "How Builder Deals Intel verifies sources, labels commercial relationships, handles submissions, and ranks AI, SaaS, hosting, and developer deals.",
+  alternates: {
+    canonical: "/editorial-policy"
+  },
+  openGraph: {
+    title: "Editorial Policy | Builder Deals Intel",
+    description:
+      "Source verification, commercial labeling, submission review, and ranking standards for Builder Deals Intel.",
+    url: "/editorial-policy",
+    siteName: "Builder Deals Intel",
+    type: "website"
+  },
+  twitter: {
+    card: "summary",
+    title: "Editorial Policy | Builder Deals Intel",
+    description: "Source verification and commercial labeling standards for Builder Deals Intel."
+  }
 };
 
 const standards = [

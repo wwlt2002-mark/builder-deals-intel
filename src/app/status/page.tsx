@@ -7,7 +7,22 @@ import { getSubscriberStats } from "@/lib/storage";
 
 export const metadata = {
   title: "Live Status | Builder Deals Intel",
-  description: "Public operating status for Builder Deals Intel deal coverage, sources, clicks, and newsletter growth."
+  description: "Public operating status for Builder Deals Intel deal coverage, sources, clicks, and newsletter growth.",
+  alternates: {
+    canonical: "/status"
+  },
+  openGraph: {
+    title: "Live Status | Builder Deals Intel",
+    description: "Public source coverage, deal coverage, click tracking, and newsletter growth status.",
+    url: "/status",
+    siteName: "Builder Deals Intel",
+    type: "website"
+  },
+  twitter: {
+    card: "summary",
+    title: "Live Status | Builder Deals Intel",
+    description: "Public operating status for Builder Deals Intel."
+  }
 };
 
 export const dynamic = "force-dynamic";
