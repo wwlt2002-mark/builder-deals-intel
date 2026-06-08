@@ -3,7 +3,24 @@ import Link from "next/link";
 export const metadata = {
   title: "About | Builder Deals Intel",
   description:
-    "About Builder Deals Intel, an independent source-backed publication tracking AI, SaaS, hosting, cloud, and developer tool offers for builders."
+    "About Builder Deals Intel, an independent source-backed publication tracking AI, SaaS, hosting, cloud, and developer tool offers for builders.",
+  alternates: {
+    canonical: "/about"
+  },
+  openGraph: {
+    title: "About Builder Deals Intel",
+    description:
+      "An independent source-backed publication tracking AI, SaaS, hosting, cloud, and developer tool offers for builders.",
+    url: "/about",
+    siteName: "Builder Deals Intel",
+    type: "website"
+  },
+  twitter: {
+    card: "summary",
+    title: "About Builder Deals Intel",
+    description:
+      "An independent source-backed publication tracking AI, SaaS, hosting, cloud, and developer tool offers for builders."
+  }
 };
 
 const principles = [
