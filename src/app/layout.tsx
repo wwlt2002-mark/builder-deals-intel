@@ -53,6 +53,7 @@ const navItems = [
   { href: "/", label: "Today" },
   { href: "/daily-brief", label: "Brief" },
   { href: "/deals", label: "Deals" },
+  { href: "/about", label: "About" },
   { href: "/categories/ai_tools", label: "AI" },
   { href: "/categories/saas", label: "SaaS" },
   { href: "/categories/developer_tools", label: "Dev Tools" },
@@ -119,6 +120,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </p>
           <div>
             <Link href="/admin">Admin</Link>
+            <Link href="/about">About</Link>
             <Link href="/contact">Contact</Link>
             <Link href="/newsletter">Newsletter</Link>
             <Link href="/daily-brief">Daily Brief</Link>

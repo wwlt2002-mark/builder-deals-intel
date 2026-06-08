@@ -12,6 +12,7 @@ export const publicSmokeChecks = [
   { path: "/", expected: "Today&#x27;s best builder deals" },
   { path: "/daily-brief", expected: "Daily builder deals brief" },
   { path: "/deals", expected: "All builder deals" },
+  { path: "/about", expected: "Builder Deals Intel tracks useful software offers" },
   { path: "/contact", expected: "Contact Builder Deals Intel" },
   { path: "/status", expected: "Public operating status" },
   { path: "/sponsor", expected: "Partner FAQ" },
