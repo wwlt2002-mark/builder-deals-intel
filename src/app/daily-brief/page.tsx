@@ -1,12 +1,29 @@
 import Link from "next/link";
 import { getCategoryLabel } from "@/lib/categories";
 import { getFeaturedDeals, getReviewDeals } from "@/lib/deals";
+import { getSiteUrl } from "@/lib/site-url";
 import type { DealCategory } from "@/lib/types";
 
 export const metadata = {
   title: "Daily Builder Deals Brief | Builder Deals Intel",
   description:
-    "A daily source-backed brief of AI, SaaS, hosting, cloud credit, and developer tool deals for builders."
+    "A daily source-backed brief of AI, SaaS, hosting, cloud credit, and developer tool deals for builders.",
+  alternates: {
+    canonical: "/daily-brief"
+  },
+  openGraph: {
+    title: "Daily Builder Deals Brief | Builder Deals Intel",
+    description:
+      "A daily source-backed brief of AI, SaaS, hosting, cloud credit, and developer tool deals for builders.",
+    url: "/daily-brief",
+    siteName: "Builder Deals Intel",
+    type: "article"
+  },
+  twitter: {
+    card: "summary",
+    title: "Daily Builder Deals Brief | Builder Deals Intel",
+    description: "Daily source-backed AI, SaaS, hosting, cloud, and developer tool deals for builders."
+  }
 };
 
 export const dynamic = "force-dynamic";
@@ -18,6 +35,24 @@ export default async function DailyBriefPage() {
     counts[deal.category] = (counts[deal.category] ?? 0) + 1;
     return counts;
   }, {});
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Daily Builder Deals Brief",
+    description: metadata.description,
+    url: getSiteUrl("/daily-brief").toString(),
+    datePublished: publishedAt.toISOString(),
+    dateModified: publishedAt.toISOString(),
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: deals.map((deal, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: deal.title,
+        url: getSiteUrl(`/deals/${deal.slug}`).toString()
+      }))
+    }
+  };
 
   return (
     <div className="page">
@@ -131,6 +166,13 @@ export default async function DailyBriefPage() {
           ))}
         </div>
       </section>
+
+      <script
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData)
+        }}
+        type="application/ld+json"
+      />
     </div>
   );
 }

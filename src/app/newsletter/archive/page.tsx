@@ -3,7 +3,22 @@ import { getFeaturedDeals } from "@/lib/deals";
 
 export const metadata = {
   title: "Newsletter Archive | Builder Deals Intel",
-  description: "Preview the latest Top 10 Deals for Builders brief."
+  description: "Preview the latest Top 10 Deals for Builders brief.",
+  alternates: {
+    canonical: "/newsletter/archive"
+  },
+  openGraph: {
+    title: "Newsletter Archive | Builder Deals Intel",
+    description: "Preview the latest source-backed Top 10 Deals for Builders brief.",
+    url: "/newsletter/archive",
+    siteName: "Builder Deals Intel",
+    type: "website"
+  },
+  twitter: {
+    card: "summary",
+    title: "Newsletter Archive | Builder Deals Intel",
+    description: "Preview the latest source-backed Top 10 Deals for Builders brief."
+  }
 };
 
 export const dynamic = "force-dynamic";
