@@ -1,6 +1,21 @@
 export const metadata = {
   title: "Submit a Deal | Builder Deals Intel",
-  description: "Submit AI, SaaS, cloud, hosting, or developer tool deals for AI-assisted review."
+  description: "Submit AI, SaaS, cloud, hosting, or developer tool deals for AI-assisted review.",
+  alternates: {
+    canonical: "/submit"
+  },
+  openGraph: {
+    title: "Submit a Deal | Builder Deals Intel",
+    description: "Submit AI, SaaS, cloud, hosting, or developer tool deals for source-backed review.",
+    url: "/submit",
+    siteName: "Builder Deals Intel",
+    type: "website"
+  },
+  twitter: {
+    card: "summary",
+    title: "Submit a Deal | Builder Deals Intel",
+    description: "Submit builder tool deals for source-backed review."
+  }
 };
 
 export default function SubmitPage({

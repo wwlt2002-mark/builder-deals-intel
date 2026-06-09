@@ -2,7 +2,22 @@ import { getFeaturedDeals } from "@/lib/deals";
 
 export const metadata = {
   title: "Daily Newsletter | Builder Deals Intel",
-  description: "Get the top 10 AI, SaaS, cloud, and developer deals every morning."
+  description: "Get the top 10 AI, SaaS, cloud, and developer deals every morning.",
+  alternates: {
+    canonical: "/newsletter"
+  },
+  openGraph: {
+    title: "Daily Newsletter | Builder Deals Intel",
+    description: "Get the top 10 source-backed AI, SaaS, cloud, and developer deals every morning.",
+    url: "/newsletter",
+    siteName: "Builder Deals Intel",
+    type: "website"
+  },
+  twitter: {
+    card: "summary",
+    title: "Daily Newsletter | Builder Deals Intel",
+    description: "Get the top 10 source-backed builder deals every morning."
+  }
 };
 
 export default async function NewsletterPage({

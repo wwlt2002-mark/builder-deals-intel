@@ -1,6 +1,21 @@
 export const metadata = {
   title: "Affiliate Disclosure | Builder Deals Intel",
-  description: "How Builder Deals Intel labels affiliate links, sponsorships, and commercial relationships."
+  description: "How Builder Deals Intel labels affiliate links, sponsorships, and commercial relationships.",
+  alternates: {
+    canonical: "/affiliate-disclosure"
+  },
+  openGraph: {
+    title: "Affiliate Disclosure | Builder Deals Intel",
+    description: "How Builder Deals Intel labels affiliate links, sponsorships, and commercial relationships.",
+    url: "/affiliate-disclosure",
+    siteName: "Builder Deals Intel",
+    type: "website"
+  },
+  twitter: {
+    card: "summary",
+    title: "Affiliate Disclosure | Builder Deals Intel",
+    description: "Affiliate, sponsorship, and commercial relationship disclosure for Builder Deals Intel."
+  }
 };
 
 export default function AffiliateDisclosurePage() {
