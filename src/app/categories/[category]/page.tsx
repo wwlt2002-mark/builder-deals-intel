@@ -20,10 +20,28 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const { category: categoryId } = await params;
   const category = categories.find((item) => item.id === categoryId);
+  const title = category ? `${category.label} Deals | Builder Deals Intel` : "Deals | Builder Deals Intel";
+  const description = category?.description ?? "Source-backed AI, SaaS, hosting, cloud, and developer tool deals.";
+  const canonical = category ? `/categories/${category.id}` : "/deals";
 
   return {
-    title: category ? `${category.label} Deals | Builder Deals Intel` : "Deals | Builder Deals Intel",
-    description: category?.description
+    title,
+    description,
+    alternates: {
+      canonical
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      siteName: "Builder Deals Intel",
+      type: "website"
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description
+    }
   };
 }
 

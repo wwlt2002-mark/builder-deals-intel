@@ -16,13 +16,35 @@ export async function generateMetadata({ params }: { params: Promise<{ program: 
 
   if (!program) {
     return {
-      title: "Affiliate Program Fit | Builder Deals Intel"
+      title: "Affiliate Program Fit | Builder Deals Intel",
+      alternates: {
+        canonical: "/partner-programs"
+      }
     };
   }
 
+  const title = `${program.name} Fit | Builder Deals Intel`;
+  const description = `Public affiliate application fit, promotion plan, and compliance notes for ${program.name}.`;
+  const canonical = `/partner-programs/${programId}`;
+
   return {
-    title: `${program.name} Fit | Builder Deals Intel`,
-    description: `Public affiliate application fit, promotion plan, and compliance notes for ${program.name}.`
+    title,
+    description,
+    alternates: {
+      canonical
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      siteName: "Builder Deals Intel",
+      type: "website"
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description
+    }
   };
 }
 
