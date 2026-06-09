@@ -4,7 +4,22 @@ import { sponsorFaqs, sponsorPackages } from "@/lib/sponsor-packages";
 
 export const metadata = {
   title: "Advertise | Builder Deals Intel",
-  description: "Advertise to builders through verified deal placements, sponsorships, and affiliate partnerships."
+  description: "Advertise to builders through verified deal placements, sponsorships, and affiliate partnerships.",
+  alternates: {
+    canonical: "/advertise"
+  },
+  openGraph: {
+    title: "Advertise | Builder Deals Intel",
+    description: "Advertise to builders through verified deal placements, sponsorships, and affiliate partnerships.",
+    url: "/advertise",
+    siteName: "Builder Deals Intel",
+    type: "website"
+  },
+  twitter: {
+    card: "summary",
+    title: "Advertise | Builder Deals Intel",
+    description: "Verified deal placements, sponsorships, and affiliate partnerships for builder software brands."
+  }
 };
 
 const dealPaths = [

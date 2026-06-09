@@ -3,7 +3,22 @@ import { sponsorOutreach } from "@/lib/sponsor-outreach";
 
 export const metadata = {
   title: "Sponsor Builder Deals Intel",
-  description: "Reach builders looking for AI tools, SaaS discounts, cloud credits, and developer products."
+  description: "Reach builders looking for AI tools, SaaS discounts, cloud credits, and developer products.",
+  alternates: {
+    canonical: "/sponsor"
+  },
+  openGraph: {
+    title: "Sponsor Builder Deals Intel",
+    description: "Reach builders through source-backed AI, SaaS, cloud, hosting, and developer deal placements.",
+    url: "/sponsor",
+    siteName: "Builder Deals Intel",
+    type: "website"
+  },
+  twitter: {
+    card: "summary",
+    title: "Sponsor Builder Deals Intel",
+    description: "Sponsor source-backed builder software deal placements."
+  }
 };
 
 export default function SponsorPage({

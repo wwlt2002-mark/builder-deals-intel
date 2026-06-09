@@ -1,6 +1,21 @@
 export const metadata = {
   title: "Privacy Policy | Builder Deals Intel",
-  description: "How Builder Deals Intel handles submitted emails, sponsor leads, and operational analytics."
+  description: "How Builder Deals Intel handles submitted emails, sponsor leads, and operational analytics.",
+  alternates: {
+    canonical: "/privacy"
+  },
+  openGraph: {
+    title: "Privacy Policy | Builder Deals Intel",
+    description: "How Builder Deals Intel handles submitted emails, sponsor leads, and operational analytics.",
+    url: "/privacy",
+    siteName: "Builder Deals Intel",
+    type: "website"
+  },
+  twitter: {
+    card: "summary",
+    title: "Privacy Policy | Builder Deals Intel",
+    description: "Privacy policy for Builder Deals Intel submissions, sponsor leads, and analytics."
+  }
 };
 
 export default function PrivacyPage() {

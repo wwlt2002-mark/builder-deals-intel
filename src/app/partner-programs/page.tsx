@@ -5,7 +5,22 @@ import { affiliatePrograms, getAffiliateProgramId } from "@/lib/affiliate-progra
 
 export const metadata = {
   title: "Affiliate Partner Program Kit | Builder Deals Intel",
-  description: "Affiliate program application profile, promotion methods, compliance rules, and content assets."
+  description: "Affiliate program application profile, promotion methods, compliance rules, and content assets.",
+  alternates: {
+    canonical: "/partner-programs"
+  },
+  openGraph: {
+    title: "Affiliate Partner Program Kit | Builder Deals Intel",
+    description: "Affiliate application profile, promotion methods, compliance rules, and content assets.",
+    url: "/partner-programs",
+    siteName: "Builder Deals Intel",
+    type: "website"
+  },
+  twitter: {
+    card: "summary",
+    title: "Affiliate Partner Program Kit | Builder Deals Intel",
+    description: "Partner program application profile and compliance assets for Builder Deals Intel."
+  }
 };
 
 const priorityAssets = [

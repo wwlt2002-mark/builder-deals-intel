@@ -5,7 +5,22 @@ import { sponsorFaqs, sponsorPackages } from "@/lib/sponsor-packages";
 
 export const metadata = {
   title: "Media Kit | Builder Deals Intel",
-  description: "Audience, sponsor inventory, commercial policy, and partner-ready assets for Builder Deals Intel."
+  description: "Audience, sponsor inventory, commercial policy, and partner-ready assets for Builder Deals Intel.",
+  alternates: {
+    canonical: "/media-kit"
+  },
+  openGraph: {
+    title: "Media Kit | Builder Deals Intel",
+    description: "Audience, sponsor inventory, commercial policy, and partner-ready assets for Builder Deals Intel.",
+    url: "/media-kit",
+    siteName: "Builder Deals Intel",
+    type: "website"
+  },
+  twitter: {
+    card: "summary",
+    title: "Media Kit | Builder Deals Intel",
+    description: "Partner-ready audience and sponsor inventory for Builder Deals Intel."
+  }
 };
 
 export default function MediaKitPage() {
