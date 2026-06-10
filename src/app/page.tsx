@@ -3,10 +3,61 @@ import { DealCard } from "@/components/DealCard";
 import { categories } from "@/lib/categories";
 import { getFeaturedDeals, getReviewDeals } from "@/lib/deals";
 import { moneyPages } from "@/lib/money-pages";
+import { getSiteUrl } from "@/lib/site-url";
+
+export const metadata = {
+  title: "Builder Deals Intel",
+  description: "Daily AI, SaaS, cloud credit, hosting, and developer tool deals intelligence for builders.",
+  alternates: {
+    canonical: "/"
+  },
+  openGraph: {
+    title: "Builder Deals Intel",
+    description: "Daily source-backed AI, SaaS, cloud credit, hosting, and developer tool deals for builders.",
+    url: "/",
+    siteName: "Builder Deals Intel",
+    type: "website"
+  },
+  twitter: {
+    card: "summary",
+    title: "Builder Deals Intel",
+    description: "Daily source-backed AI, SaaS, cloud, hosting, and developer tool deals for builders."
+  }
+};
 
 export default async function HomePage() {
   const featuredDeals = await getFeaturedDeals(10);
   const reviewDeals = await getReviewDeals();
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Builder Deals Intel",
+      url: getSiteUrl("/").toString(),
+      description: metadata.description,
+      publisher: {
+        "@type": "Organization",
+        name: "Builder Deals Intel",
+        email: "partnerships@builderdealintel.com"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: "Today's Best Builder Deals",
+      description: metadata.description,
+      url: getSiteUrl("/").toString(),
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: featuredDeals.map((deal, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: deal.title,
+          url: getSiteUrl(`/deals/${deal.slug}`).toString()
+        }))
+      }
+    }
+  ];
 
   return (
     <div className="page">
@@ -109,6 +160,13 @@ export default async function HomePage() {
           ))}
         </div>
       </section>
+
+      <script
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData)
+        }}
+        type="application/ld+json"
+      />
     </div>
   );
 }
