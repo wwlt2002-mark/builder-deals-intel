@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCategoryLabel } from "@/lib/categories";
 import { getDealBySlug, getDisclosureText } from "@/lib/deals";
+import { getSiteUrl } from "@/lib/site-url";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -21,6 +22,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: deal.ai_summary,
     alternates: {
       canonical: `/deals/${deal.slug}`
+    },
+    openGraph: {
+      title: `${deal.title} | Builder Deals Intel`,
+      description: deal.ai_summary,
+      url: `/deals/${deal.slug}`,
+      siteName: "Builder Deals Intel",
+      type: "article"
+    },
+    twitter: {
+      card: "summary",
+      title: `${deal.title} | Builder Deals Intel`,
+      description: deal.ai_summary
     }
   };
 }
@@ -32,6 +45,63 @@ export default async function DealPage({ params }: Props) {
   if (!deal || deal.status !== "auto_published") {
     notFound();
   }
+
+  const detailUrl = getSiteUrl(`/deals/${deal.slug}`).toString();
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: deal.title,
+      description: deal.ai_summary,
+      url: detailUrl,
+      dateModified: deal.last_checked_at,
+      isPartOf: {
+        "@type": "WebSite",
+        name: "Builder Deals Intel",
+        url: getSiteUrl("/").toString()
+      },
+      about: {
+        "@type": "Offer",
+        name: deal.title,
+        description: deal.discount_summary,
+        url: detailUrl,
+        category: getCategoryLabel(deal.category),
+        seller: {
+          "@type": "Organization",
+          name: deal.merchant
+        },
+        availability:
+          deal.expires_at && new Date(deal.expires_at) < new Date()
+            ? "https://schema.org/Discontinued"
+            : "https://schema.org/InStock",
+        validThrough: deal.expires_at ?? undefined
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: getSiteUrl("/").toString()
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: getCategoryLabel(deal.category),
+          item: getSiteUrl(`/categories/${deal.category}`).toString()
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: deal.title,
+          item: detailUrl
+        }
+      ]
+    }
+  ];
 
   return (
     <div className="page">
@@ -111,6 +181,12 @@ export default async function DealPage({ params }: Props) {
           </p>
         </aside>
       </section>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData)
+        }}
+        type="application/ld+json"
+      />
     </div>
   );
 }
