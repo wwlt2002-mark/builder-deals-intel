@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import "./globals.css";
+
+const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 
 export const metadata: Metadata = {
   applicationName: "Builder Deals Intel",
@@ -46,7 +51,12 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-video-preview": -1
     }
-  }
+  },
+  verification: googleSiteVerification
+    ? {
+        google: googleSiteVerification
+      }
+    : undefined
 };
 
 const navItems = [
@@ -91,6 +101,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
+        {plausibleDomain ? (
+          <Script
+            data-domain={plausibleDomain}
+            defer
+            src="https://plausible.io/js/script.js"
+            strategy="afterInteractive"
+          />
+        ) : null}
+        {gaMeasurementId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaMeasurementId}', { anonymize_ip: true });
+              `}
+            </Script>
+          </>
+        ) : null}
         <script
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
           type="application/ld+json"

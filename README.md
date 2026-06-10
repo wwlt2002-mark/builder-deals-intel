@@ -33,6 +33,27 @@ Then open `http://localhost:3000`.
 6. Add affiliate IDs only after each program approval.
 7. Set `ADMIN_SECRET`; `/admin` is protected when this variable exists.
 
+## Search and analytics
+
+Organic traffic cannot be judged until search and analytics are connected. The app supports optional public environment
+variables for this:
+
+```bash
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION="google-site-verification-code"
+NEXT_PUBLIC_GA_MEASUREMENT_ID="G-XXXXXXXXXX"
+NEXT_PUBLIC_PLAUSIBLE_DOMAIN="builderdealintel.com"
+```
+
+- `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` adds the Google Search Console verification meta tag.
+- `NEXT_PUBLIC_GA_MEASUREMENT_ID` loads GA4 with IP anonymization.
+- `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` loads Plausible analytics for the configured domain.
+
+Submit the sitemap after verification:
+
+```text
+https://builderdealintel.com/sitemap.xml
+```
+
 ## Database mode
 
 The site runs in two modes:
