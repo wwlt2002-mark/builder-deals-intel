@@ -712,9 +712,32 @@ nav a:hover,
   width: 100%;
 }
 
+.inline-form input[type="search"] {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-height: 46px;
+  min-width: min(100%, 360px);
+  padding: 11px 12px;
+  width: 100%;
+}
+
 .inline-form input[type="email"]:focus {
   border-color: var(--accent);
   outline: 3px solid rgba(18, 130, 119, 0.14);
+}
+
+.inline-form input[type="search"]:focus {
+  border-color: var(--accent);
+  outline: 3px solid rgba(18, 130, 119, 0.14);
+}
+
+.search-panel {
+  margin-bottom: 28px;
+}
+
+.search-panel .summary {
+  margin: 12px 0 0;
 }
 
 .sr-only {

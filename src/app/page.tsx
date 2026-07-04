@@ -39,6 +39,11 @@ export default async function HomePage() {
         "@type": "Organization",
         name: "Builder Deals Intel",
         email: "partnerships@builderdealintel.com"
+      },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${getSiteUrl("/deals").toString()}?q={search_term_string}`,
+        "query-input": "required name=search_term_string"
       }
     },
     {

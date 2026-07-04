@@ -14,21 +14,49 @@ export const metadata: Metadata = {
   }
 };
 
-export default async function DealsIndexPage() {
+type DealsIndexPageProps = {
+  searchParams?: Promise<{ q?: string }>;
+};
+
+function matchesDealSearch(deal: Awaited<ReturnType<typeof getPublishedDeals>>[number], query: string) {
+  const haystack = [
+    deal.title,
+    deal.product_name,
+    deal.merchant,
+    deal.discount_summary,
+    deal.ai_summary,
+    deal.region,
+    deal.category,
+    ...deal.risk_tags
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  return query
+    .toLowerCase()
+    .split(/\s+/)
+    .filter(Boolean)
+    .every((term) => haystack.includes(term));
+}
+
+export default async function DealsIndexPage({ searchParams }: DealsIndexPageProps) {
+  const params = searchParams ? await searchParams : {};
+  const query = (params.q ?? "").trim();
   const deals = await getPublishedDeals();
+  const visibleDeals = query ? deals.filter((deal) => matchesDealSearch(deal, query)) : deals;
   const categoryCounts = categories.map((category) => ({
     ...category,
-    count: deals.filter((deal) => deal.category === category.id).length
+    count: visibleDeals.filter((deal) => deal.category === category.id).length
   }));
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "All Builder Deals",
+    name: query ? `Search results for ${query}` : "All Builder Deals",
     description: metadata.description,
-    url: getSiteUrl("/deals").toString(),
+    url: getSiteUrl(query ? `/deals?q=${encodeURIComponent(query)}` : "/deals").toString(),
     mainEntity: {
       "@type": "ItemList",
-      itemListElement: deals.slice(0, 50).map((deal, index) => ({
+      itemListElement: visibleDeals.slice(0, 50).map((deal, index) => ({
         "@type": "ListItem",
         position: index + 1,
         name: deal.title,
@@ -48,11 +76,41 @@ export default async function DealsIndexPage() {
         </p>
       </section>
 
+      <section className="panel search-panel" aria-label="Search deals">
+        <form action="/deals" className="inline-form" method="get">
+          <label className="sr-only" htmlFor="deal-search">
+            Search deals
+          </label>
+          <input
+            defaultValue={query}
+            id="deal-search"
+            name="q"
+            placeholder="Search AI credits, hosting, Postgres, email, auth..."
+            type="search"
+          />
+          <button className="button" type="submit">
+            Search
+          </button>
+          {query ? (
+            <a className="secondary-button" href="/deals">
+              Clear
+            </a>
+          ) : null}
+        </form>
+        <p className="summary">
+          {query
+            ? `${visibleDeals.length} matching listings for "${query}".`
+            : "Search by product, merchant, category, risk tag, region, or deal summary."}
+        </p>
+      </section>
+
       <section>
         <div className="section-head">
           <div>
             <h2>Coverage</h2>
-            <p>{deals.length} published listings, grouped by buyer intent.</p>
+            <p>
+              {visibleDeals.length} {query ? "matching" : "published"} listings, grouped by buyer intent.
+            </p>
           </div>
         </div>
         <div className="deal-grid">
@@ -68,7 +126,7 @@ export default async function DealsIndexPage() {
       </section>
 
       {categories.map((category) => {
-        const categoryDeals = deals.filter((deal) => deal.category === category.id);
+        const categoryDeals = visibleDeals.filter((deal) => deal.category === category.id);
 
         if (!categoryDeals.length) {
           return null;
