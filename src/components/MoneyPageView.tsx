@@ -213,6 +213,25 @@ export function MoneyPageView({ page, deals }: { page: MoneyPage; deals: Deal[] 
         </form>
       </section>
 
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Growth and proof path</h2>
+            <p>Use this guide as part of the measurable loop from organic search to subscriber and outbound click data.</p>
+          </div>
+        </div>
+        <div className="deal-grid">
+          <Link className="panel category-panel" href="/growth">
+            <h3>Public growth plan</h3>
+            <p className="summary">See how buyer-intent pages, search paths, daily briefs, and tracked clicks work together.</p>
+          </Link>
+          <Link className="panel category-panel" href="/commercial-proof">
+            <h3>Commercial proof</h3>
+            <p className="summary">Review conservative subscriber, click, placement, and sponsor-readiness signals.</p>
+          </Link>
+        </div>
+      </section>
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

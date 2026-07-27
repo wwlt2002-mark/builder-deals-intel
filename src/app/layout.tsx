@@ -71,6 +71,7 @@ const navItems = [
   { href: "/free-cloud-credits", label: "Cloud Credits" },
   { href: "/submit", label: "Submit" },
   { href: "/sponsor", label: "Sponsor" },
+  { href: "/growth", label: "Growth" },
   { href: "/status", label: "Status" }
 ];
 
@@ -174,6 +175,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/media-kit">Media Kit</Link>
             <Link href="/advertise">Advertise</Link>
             <Link href="/partner-programs">Partner Programs</Link>
+            <Link href="/growth">Growth Plan</Link>
             <Link href="/commercial-proof">Commercial Proof</Link>
             <Link href="/status">Status</Link>
             <Link href="/editorial-policy">Editorial Policy</Link>

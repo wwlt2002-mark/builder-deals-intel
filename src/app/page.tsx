@@ -82,6 +82,9 @@ export default async function HomePage() {
             <Link className="secondary-button" href="/submit">
               Submit a deal
             </Link>
+            <Link className="secondary-button" href="/growth">
+              Growth plan
+            </Link>
           </div>
         </div>
         <aside className="signal-console" aria-label="Deal intelligence metrics">
@@ -113,6 +116,25 @@ export default async function HomePage() {
             </div>
           </div>
         </aside>
+      </section>
+
+      <section className="newsletter-sponsor-band">
+        <div>
+          <span className="eyebrow">Traffic and proof</span>
+          <h2>Follow the public growth loop behind the site.</h2>
+          <p className="summary">
+            Search pages, newsletter signups, tagged outbound clicks, and conservative commercial proof are now linked
+            into one measurable path.
+          </p>
+        </div>
+        <div className="hero-actions compact-actions">
+          <Link className="button" href="/growth">
+            View growth plan
+          </Link>
+          <Link className="secondary-button" href="/commercial-proof">
+            Proof page
+          </Link>
+        </div>
       </section>
 
       <section>

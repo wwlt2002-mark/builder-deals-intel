@@ -1,4 +1,5 @@
 import { getFeaturedDeals } from "@/lib/deals";
+import { growthSearches } from "@/lib/growth";
 
 export const metadata = {
   title: "Daily Newsletter | Builder Deals Intel",
@@ -59,6 +60,25 @@ export default async function NewsletterPage({
         <a className="secondary-button" href="/sponsor">
           Partner desk
         </a>
+      </section>
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>Popular paths readers follow</h2>
+            <p>These searches help turn newsletter curiosity into tagged deal clicks and organic landing pages.</p>
+          </div>
+          <a className="secondary-button" href="/growth">
+            Growth plan
+          </a>
+        </div>
+        <div className="deal-grid">
+          {growthSearches.slice(0, 4).map((item) => (
+            <a className="panel category-panel" href={`/deals?q=${encodeURIComponent(item.query)}`} key={item.query}>
+              <h3>{item.label}</h3>
+              <p className="summary">{item.intent}</p>
+            </a>
+          ))}
+        </div>
       </section>
       <section>
         <div className="section-head">

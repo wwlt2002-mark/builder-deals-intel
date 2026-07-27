@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DealCard } from "@/components/DealCard";
 import { categories } from "@/lib/categories";
 import { getPublishedDeals } from "@/lib/deals";
+import { growthSearches } from "@/lib/growth";
 import { getSiteUrl } from "@/lib/site-url";
 
 export const dynamic = "force-dynamic";
@@ -102,6 +103,13 @@ export default async function DealsIndexPage({ searchParams }: DealsIndexPagePro
             ? `${visibleDeals.length} matching listings for "${query}".`
             : "Search by product, merchant, category, risk tag, region, or deal summary."}
         </p>
+        <div className="quick-searches" aria-label="Popular deal searches">
+          {growthSearches.slice(0, 6).map((item) => (
+            <a href={`/deals?q=${encodeURIComponent(item.query)}`} key={item.query}>
+              {item.label}
+            </a>
+          ))}
+        </div>
       </section>
 
       <section>

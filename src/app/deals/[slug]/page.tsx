@@ -181,6 +181,49 @@ export default async function DealPage({ params }: Props) {
           </p>
         </aside>
       </section>
+
+      <section className="newsletter-sponsor-band">
+        <div>
+          <span className="eyebrow">Track this segment</span>
+          <h2>Get the next verified {getCategoryLabel(deal.category)} deal before it goes stale.</h2>
+          <p className="summary">
+            Join the daily brief for source-backed AI, SaaS, hosting, cloud credit, and developer tool offers. Clicks
+            from this page are tagged so the commercial proof stays measurable.
+          </p>
+        </div>
+        <form action="/api/newsletter" className="inline-form" method="post">
+          <div aria-hidden="true" className="hp-field">
+            <label htmlFor={`${deal.slug}-name`}>Name</label>
+            <input id={`${deal.slug}-name`} name="name" tabIndex={-1} type="text" />
+          </div>
+          <label className="sr-only" htmlFor={`${deal.slug}-email`}>
+            Email
+          </label>
+          <input id={`${deal.slug}-email`} name="email" placeholder="you@example.com" required type="email" />
+          <button className="button" type="submit">
+            Join the brief
+          </button>
+        </form>
+      </section>
+
+      <section>
+        <div className="section-head">
+          <div>
+            <h2>More ways to use this deal</h2>
+            <p>These links keep readers moving through high-intent pages instead of bouncing after one listing.</p>
+          </div>
+        </div>
+        <div className="deal-grid">
+          <Link className="panel category-panel" href={`/categories/${deal.category}`}>
+            <h3>Browse {getCategoryLabel(deal.category)}</h3>
+            <p className="summary">Compare adjacent offers with similar buyer intent and risk labels.</p>
+          </Link>
+          <Link className="panel category-panel" href="/growth">
+            <h3>View the growth plan</h3>
+            <p className="summary">See how search, newsletter, and outbound click signals turn into commercial proof.</p>
+          </Link>
+        </div>
+      </section>
       <script
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(structuredData)
