@@ -34,14 +34,14 @@ export default function AdvertisePage() {
     <div className="page legal-page">
       <section className="page-title">
         <span className="eyebrow">Advertise</span>
-        <h1>Advertise to builders through verified deal intelligence.</h1>
+        <h1>Buy a labeled placement test for builder software buyers.</h1>
         <p>
-          Builder Deals Intel accepts labeled sponsorships, affiliate partnerships, and launch monitoring for products
-          that have clear source terms and a real buyer path for technical audiences.
+          Builder Deals Intel sells small, source-reviewed sponsor tests for products with clear terms and a real buyer
+          path for technical audiences. Start with tracked outbound proof before scaling.
         </p>
         <div className="hero-actions">
           <Link className="button" href="/sponsor">
-            Send offer
+            Request paid test
           </Link>
           <Link className="secondary-button" href="/media-kit">
             Media kit
@@ -68,7 +68,7 @@ export default function AdvertisePage() {
         <div className="section-head">
           <div>
             <h2>Buyable placements</h2>
-            <p>Start with a small, labeled test before scaling into recurring sponsorship.</p>
+            <p>These are direct-response test packages, not display-ad inventory.</p>
           </div>
         </div>
         <div className="deal-grid">

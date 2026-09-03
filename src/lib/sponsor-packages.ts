@@ -14,21 +14,21 @@ export type SponsorFaq = {
 export const sponsorPackages: SponsorPackage[] = [
   {
     name: "Newsletter sponsor",
-    price: "$150-$500 test",
+    price: "$250 7-day test",
     bestFor: "SaaS, AI tools, APIs, hosting, and launch offers that need quick signal from builders.",
     included: "One labeled placement in the daily Top 10 Deals for Builders brief, plus source and terms review.",
     proof: "Tracked outbound clicks, sponsor lead status, and placement notes in the operations desk."
   },
   {
     name: "Category feature",
-    price: "$250-$750 test",
+    price: "$500 14-day test",
     bestFor: "Offers that match a buyer category such as AI Tools, SaaS, Developer Tools, Cloud Credits, or Hosting.",
     included: "Verified listing on the relevant category page with eligibility notes, risk labels, and tracking route.",
     proof: "Deal page visibility, category placement, and affiliate or sponsor click reporting."
   },
   {
     name: "Launch monitoring",
-    price: "$300-$1,000 window",
+    price: "$750 promo window",
     bestFor: "Vendors running limited-time promos, cloud credit campaigns, lifetime deals, or seasonal launches.",
     included: "Monitoring of official promo terms and surfaced updates when price, eligibility, or expiry changes.",
     proof: "Last-checked timestamps, source URL preservation, and change-aware editorial notes."
@@ -40,6 +40,12 @@ export const sponsorPackages: SponsorPackage[] = [
     included: "Affiliate disclosure, source-labeled deal page, tracked outbound redirect, and status management.",
     proof: "Affiliate click counts, network field, program status, and payout readiness tracking."
   }
+];
+
+export const sponsorClosePoints = [
+  "Small paid tests are available before recurring sponsorships.",
+  "Every placement is labeled, source-reviewed, and tracked by outbound click.",
+  "Partners can use sponsor leads, clicks, and placement notes as approval proof."
 ];
 
 export const sponsorFaqs: SponsorFaq[] = [

@@ -31,6 +31,7 @@ export async function POST(request: Request) {
   const company = field(form, "company");
   const email = field(form, "email");
   const website = optional(form, "website");
+  const trackingUrl = optional(form, "tracking_url");
 
   if (!company || !email.includes("@")) {
     return NextResponse.json({ error: "Company and valid email are required." }, { status: 400 });
@@ -40,6 +41,19 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Website must be a valid URL." }, { status: 400 });
   }
 
+  if (trackingUrl && !URL.canParse(trackingUrl)) {
+    return NextResponse.json({ error: "Tracking URL must be a valid URL." }, { status: 400 });
+  }
+
+  const sourcePage = optional(form, "source_page");
+  const launchWindow = optional(form, "launch_window");
+  const messageParts = [
+    optional(form, "message"),
+    trackingUrl ? `Tracking URL: ${trackingUrl}` : null,
+    launchWindow ? `Target launch window: ${launchWindow}` : null,
+    sourcePage ? `Source page: ${sourcePage}` : null
+  ].filter(Boolean);
+
   await appendSponsorLead({
     id: crypto.randomUUID(),
     company,
@@ -48,7 +62,7 @@ export async function POST(request: Request) {
     website,
     offer_type: field(form, "offer_type") || "affiliate",
     budget: optional(form, "budget"),
-    message: optional(form, "message"),
+    message: messageParts.length ? messageParts.join("\n\n") : null,
     status: "new",
     created_at: new Date().toISOString()
   });

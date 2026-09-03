@@ -79,11 +79,11 @@ export default async function HomePage() {
             <Link className="button" href="/newsletter">
               Get the daily top 10
             </Link>
+            <Link className="secondary-button" href="/sponsor">
+              Sponsor a test
+            </Link>
             <Link className="secondary-button" href="/submit">
               Submit a deal
-            </Link>
-            <Link className="secondary-button" href="/growth">
-              Growth plan
             </Link>
           </div>
         </div>
@@ -120,19 +120,19 @@ export default async function HomePage() {
 
       <section className="newsletter-sponsor-band">
         <div>
-          <span className="eyebrow">Traffic and proof</span>
-          <h2>Follow the public growth loop behind the site.</h2>
+          <span className="eyebrow">Commercial test open</span>
+          <h2>Paid sponsor tests are available now.</h2>
           <p className="summary">
-            Search pages, newsletter signups, tagged outbound clicks, and conservative commercial proof are now linked
-            into one measurable path.
+            AI, SaaS, cloud, hosting, and developer-tool partners can request labeled newsletter or category placements
+            with tracked outbound proof.
           </p>
         </div>
         <div className="hero-actions compact-actions">
           <Link className="button" href="/growth">
             View growth plan
           </Link>
-          <Link className="secondary-button" href="/commercial-proof">
-            Proof page
+          <Link className="secondary-button" href="/sponsor">
+            Request placement
           </Link>
         </div>
       </section>

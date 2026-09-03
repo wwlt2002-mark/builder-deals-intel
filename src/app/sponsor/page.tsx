@@ -1,4 +1,4 @@
-import { getSponsorOfferCatalog, sponsorFaqs, sponsorPackages } from "@/lib/sponsor-packages";
+import { getSponsorOfferCatalog, sponsorClosePoints, sponsorFaqs, sponsorPackages } from "@/lib/sponsor-packages";
 import { sponsorOutreach } from "@/lib/sponsor-outreach";
 
 export const metadata = {
@@ -67,10 +67,31 @@ export default function SponsorPage({
             Early packages are priced manually while traffic is building. We only need a verified offer, source page,
             terms, and tracking URL.
           </p>
+          <div className="fact-list sponsor-proof-list">
+            {sponsorClosePoints.map((point) => (
+              <div key={point}>
+                <strong>{point}</strong>
+              </div>
+            ))}
+          </div>
           <p>
             Business contact: <a href="mailto:partnerships@builderdealintel.com">partnerships@builderdealintel.com</a>
           </p>
         </aside>
+      </section>
+
+      <section className="newsletter-sponsor-band sponsor-close-band">
+        <div>
+          <span className="eyebrow">Revenue path</span>
+          <h2>Reserve a paid test placement.</h2>
+          <p className="summary">
+            Use the form below to request a newsletter, category, launch, or affiliate test. The first sale target is a
+            small paid placement with tracked outbound proof, not display ads.
+          </p>
+        </div>
+        <a className="button" href="#partnership-request">
+          Request placement
+        </a>
       </section>
 
       <section className="deal-grid">
@@ -171,15 +192,16 @@ export default function SponsorPage({
         </div>
       </section>
 
-      <section>
+      <section id="partnership-request">
         <div className="section-head">
           <div>
             <h2>Start a partnership</h2>
-            <p>Send the offer details needed for review. We will not publish hidden or unverifiable terms.</p>
+            <p>Send enough commercial detail to price, approve, and track a real paid or affiliate test.</p>
           </div>
         </div>
         <form action="/api/sponsor" className="panel form-grid admin-edit-form" method="post">
           {searchParams ? <SponsorNotice searchParams={searchParams} /> : null}
+          <input name="source_page" type="hidden" value="/sponsor" />
           <div aria-hidden="true" className="hp-field">
             <label htmlFor="company_website">Company website</label>
             <input id="company_website" name="company_website" tabIndex={-1} type="text" />
@@ -203,16 +225,24 @@ export default function SponsorPage({
             </div>
             <div className="field">
               <label htmlFor="offer_type">Partnership type</label>
-              <select id="offer_type" name="offer_type" defaultValue="affiliate">
-                <option value="affiliate">Affiliate partnership</option>
-                <option value="newsletter">Newsletter sponsor</option>
-                <option value="category">Category feature</option>
-                <option value="monitoring">Launch monitoring</option>
+              <select id="offer_type" name="offer_type" defaultValue="newsletter">
+                <option value="newsletter">Newsletter sponsor - $250 test</option>
+                <option value="category">Category feature - $500 test</option>
+                <option value="monitoring">Launch monitoring - $750 window</option>
+                <option value="affiliate">Affiliate partnership - CPA or rev share</option>
               </select>
             </div>
             <div className="field">
               <label htmlFor="budget">Budget or CPA terms</label>
-              <input id="budget" name="budget" type="text" placeholder="$500 test, 30% rev share, $80 CPA" />
+              <input id="budget" name="budget" type="text" placeholder="$250 test, $500 category, 30% rev share" />
+            </div>
+            <div className="field">
+              <label htmlFor="launch_window">Target launch window</label>
+              <input id="launch_window" name="launch_window" type="text" placeholder="This week, September launch, Q4 promo" />
+            </div>
+            <div className="field">
+              <label htmlFor="tracking_url">Tracking or destination URL</label>
+              <input id="tracking_url" name="tracking_url" type="url" placeholder="https://example.com/?utm_source=builderdealintel" />
             </div>
           </div>
           <div className="field">
@@ -220,11 +250,11 @@ export default function SponsorPage({
             <textarea
               id="message"
               name="message"
-              placeholder="Product, promo terms, eligibility, region, expiry date, tracking link, and anything users should know."
+              placeholder="Product, promo terms, eligibility, region, expiry date, buyer fit, source URL, and restrictions users should know."
             />
           </div>
           <button className="button" type="submit">
-            Send partnership request
+            Request paid or affiliate test
           </button>
         </form>
       </section>

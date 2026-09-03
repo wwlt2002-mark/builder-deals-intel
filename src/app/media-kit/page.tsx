@@ -28,14 +28,14 @@ export default function MediaKitPage() {
     <div className="page legal-page">
       <section className="page-title">
         <span className="eyebrow">Media kit</span>
-        <h1>Partner-ready media kit for builder software offers.</h1>
+        <h1>Media kit for paid builder software placement tests.</h1>
         <p>
           Builder Deals Intel is built for AI, SaaS, hosting, cloud, automation, and developer-tool vendors who want
-          source-backed placements rather than generic coupon traffic.
+          source-backed sponsor tests with tracked outbound proof rather than generic coupon traffic.
         </p>
         <div className="hero-actions">
           <Link className="button" href="/sponsor">
-            Start partnership
+            Request paid test
           </Link>
           <Link className="secondary-button" href="/partner-programs">
             Affiliate profile
