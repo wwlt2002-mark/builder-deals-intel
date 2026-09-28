@@ -20,6 +20,34 @@ async function loadDealsFromJson() {
   return JSON.parse(await fs.readFile(dealsPath, "utf8"));
 }
 
+async function loadDealsFromProductionFeed() {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10_000);
+
+  try {
+    const response = await fetch(`${siteUrl}/feed.json`, {
+      headers: { accept: "application/feed+json, application/json" },
+      signal: controller.signal
+    });
+
+    if (!response.ok) {
+      throw new Error(`Production feed returned HTTP ${response.status}.`);
+    }
+
+    const payload = await response.json();
+    const deals = Array.isArray(payload.items)
+      ? payload.items.map((item) => item?._builder_deal).filter(Boolean)
+      : [];
+
+    return deals.length ? deals : null;
+  } catch (error) {
+    console.warn(`Production feed unavailable; using local JSON: ${error.message}`);
+    return null;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
 async function loadDealsFromDatabase() {
   if (!process.env.DATABASE_URL) {
     return null;
@@ -75,8 +103,9 @@ function normalizeDeal(deal) {
 }
 
 const databaseDeals = await loadDealsFromDatabase();
-const source = databaseDeals ? "postgres" : "json";
-const deals = (databaseDeals ?? (await loadDealsFromJson())).map(normalizeDeal);
+const productionDeals = databaseDeals ? null : await loadDealsFromProductionFeed();
+const source = databaseDeals ? "postgres" : productionDeals ? "production_feed" : "json";
+const deals = (databaseDeals ?? productionDeals ?? (await loadDealsFromJson())).map(normalizeDeal);
 const featured = deals
   .filter((deal) => deal.confidence_score >= 85)
   .sort((a, b) => b.confidence_score - a.confidence_score)

@@ -70,7 +70,19 @@ export function buildJsonFeed(deals: Deal[]) {
       summary: dealDescription(deal),
       content_text: `${dealDescription(deal)} Open tracked deal: ${siteUrl}/out/${deal.slug}?placement=json_feed`,
       date_modified: deal.last_checked_at,
-      tags: [deal.category, deal.source_type, ...deal.risk_tags]
+      tags: [deal.category, deal.source_type, ...deal.risk_tags],
+      _builder_deal: {
+        slug: deal.slug,
+        title: deal.title,
+        deal_price: deal.deal_price,
+        source_url: deal.source_url,
+        confidence_score: deal.confidence_score,
+        risk_tags: deal.risk_tags,
+        ai_summary: deal.ai_summary,
+        is_affiliate: deal.is_affiliate,
+        affiliate_network: deal.affiliate_network,
+        last_checked_at: deal.last_checked_at
+      }
     }))
   };
 }
