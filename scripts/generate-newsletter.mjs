@@ -22,7 +22,7 @@ async function loadDealsFromJson() {
 
 async function loadDealsFromProductionFeed() {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 10_000);
+  const timeout = setTimeout(() => controller.abort(), 20_000);
 
   try {
     const response = await fetch(`${siteUrl}/feed.json`, {
