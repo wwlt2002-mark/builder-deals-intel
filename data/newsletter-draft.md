@@ -1,6 +1,6 @@
 # Top 10 Deals for Builders
 
-Generated: 2026-10-28T22:42:22.647Z
+Generated: 2026-10-30T14:48:28.939Z
 Source: production_feed
 
 ## 1. $300 Google Cloud free trial credits for new builders
